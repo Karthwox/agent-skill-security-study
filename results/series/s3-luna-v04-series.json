@@ -1,0 +1,17 @@
+{
+  "series_id": "S3-luna-v04",
+  "codex_bin": "codex",
+  "model": "gpt-5.6-luna",
+  "effort": "low",
+  "sandbox": "workspace-write",
+  "approval": "never",
+  "windows_sandbox": "elevated",
+  "ignore_user_config": true,
+  "ignore_rules": true,
+  "network_access": true,
+  "skill_dir": "C:\\Better_VibeCoding\\vibe-skill-study\\vibe-skill-v0.4",
+  "skill_install_subpath": ".codex/skills",
+  "work_root": "C:\\w",
+  "timeout_minutes": 25,
+  "max_followups": 2
+}

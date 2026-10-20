@@ -1,0 +1,11 @@
+{
+  "name": "notes-app-split",
+  "private": true,
+  "scripts": {
+    "api": "node api/server.js",
+    "web": "node web/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}

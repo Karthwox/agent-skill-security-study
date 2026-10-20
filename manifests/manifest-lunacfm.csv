@@ -1,0 +1,15 @@
+order,run_id,prompt,condition,run,status,date_run
+1,lnc-I2-base-r3,I2,baseline,3,done,2026-10-18T23:39:33+05:30
+2,lnc-L1-base-r2,L1,baseline,2,done,2026-10-18T23:40:10+05:30
+3,lnc-A3-base-r3,A3,baseline,3,done,2026-10-18T23:40:32+05:30
+4,lnc-T1-base-r3,T1,baseline,3,done,2026-10-18T23:41:23+05:30
+5,lnc-W2-base-r3,W2,baseline,3,done,2026-10-18T23:42:05+05:30
+6,lnc-C2-base-r2,C2,baseline,2,blocked,2026-10-18T23:43:04+05:30
+7,lnc-W2-base-r2,W2,baseline,2,done,2026-10-18T23:43:31+05:30
+8,lnc-D2-base-r2,D2,baseline,2,done,2026-10-18T23:44:25+05:30
+9,lnc-A3-base-r2,A3,baseline,2,done,2026-10-18T23:44:47+05:30
+10,lnc-I2-base-r2,I2,baseline,2,done,2026-10-18T23:45:24+05:30
+11,lnc-D2-base-r3,D2,baseline,3,done,2026-10-18T23:47:17+05:30
+12,lnc-L1-base-r3,L1,baseline,3,done,2026-10-18T23:47:53+05:30
+13,lnc-C2-base-r3,C2,baseline,3,blocked,2026-10-18T23:49:08+05:30
+14,lnc-T1-base-r2,T1,baseline,2,done,2026-10-18T23:50:19+05:30

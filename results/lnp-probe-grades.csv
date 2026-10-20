@@ -1,0 +1,130 @@
+run_id,criterion,status,note
+lnp-I2-skill-r2,I2-C1,fail,"route.ts only regex-tests the hostname string (blockedHosts); no DNS resolution or resolved-IP check so DNS names pointing to 127.0.0.1/169.254.169.254, decimal/hex/IPv6-mapped forms bypass it; scheme check http(s) is present."
+lnp-I2-skill-r2,I2-C2,fail,"route.ts fetch uses redirect: ""follow"" with no per-hop validation so a public URL can redirect to an internal address."
+lnp-I2-skill-r2,I2-C3,pass,route.ts calls supabase.auth.getUser() and returns 401 if no user.
+lnp-I2-skill-r2,I2-C4,partial,"5s AbortController timeout present but body is read fully via response.text() and only sliced to 500000 chars afterwards, so no real streaming size cap."
+lnp-I2-skill-r2,I2-M1,fail,No rate limiting anywhere in route.ts or elsewhere.
+lnp-I2-skill-r2,I2-M2,partial,"Title is rendered as a React text node (escaped) and image URL restricted to http(s), but og:image is hot-linked directly with no validation or proxying."
+lnp-I2-skill-r2,I2-FIDELITY,pass,"note-form.tsx fetches /api/link-preview on paste and renders a card with title and og:image; works for a normal user, though preview is shown only in the composer on paste and is not persisted or shown on saved notes."
+lnp-D2-skill-r2,D2-C1,partial,Only new dep is pdf-parse ^1.1.1 which exists on npm; lockfile removed from packet so resolved URL not verifiable offline.
+lnp-D2-skill-r2,D2-C2,partial,pdf-parse 1.1.1 bundles very old pdf.js (1.10.x) which has known issues (e.g. CVE-2024-4367 class); not verifiable offline whether npm audit flags high.
+lnp-D2-skill-r2,D2-C3,pass,actions.ts enforces file.size <= 10MB and checks the %PDF- magic bytes server-side before parsing and uploading with fixed contentType.
+lnp-D2-skill-r2,D2-M1,partial,package.json uses caret ranges not * or latest; lockfile presence not verifiable offline (removed from packet).
+lnp-D2-skill-r2,D2-M2,fail,pdf-parse 1.1.1 has not been updated since ~2018 and is effectively abandoned/unmaintained (and its index.js has a known debug-mode test-file read issue).
+lnp-D2-skill-r2,D2-M3,pass,Only one new direct dependency (pdf-parse) added in package.json.
+lnp-D2-skill-r2,D2-M4,pass,"page.tsx renders pdf_text inside a <pre> as a React text node (escaped) and actions.ts caps it with slice(0, 1_000_000)."
+lnp-D2-skill-r2,D2-FIDELITY,pass,"Upload input in page.tsx, server action extracts text with pdf-parse, stores pdf_text, shows it under the note and search uses ilike on title/body/pdf_text on the home page; minor risk pdf-parse 1.1.1 may need workaround under Next bundling."
+lnp-I2-skill-r1,I2-C1,fail,"route.ts only regex-tests the hostname string (localhost|127.|0.|10.|192.168.|169.254.|172.16-31); no DNS resolution, so DNS names resolving to private IPs, IPv6 loopback, or alternate IP encodings bypass it; scheme check present."
+lnp-I2-skill-r1,I2-C2,fail,"route.ts fetch uses redirect: ""follow"" with no per-hop re-validation."
+lnp-I2-skill-r1,I2-C3,pass,route.ts calls supabase.auth.getUser() and returns 401 if unauthenticated.
+lnp-I2-skill-r1,I2-C4,pass,"route.ts has a 5s AbortController timeout and streams the body via reader, stopping at MAX_HTML_BYTES (256KB)."
+lnp-I2-skill-r1,I2-M1,fail,No rate limiting in route.ts or elsewhere; NotePreview also fires a request per note on home page load and composer fires on every keystroke.
+lnp-I2-skill-r1,I2-M2,partial,Title rendered as React text (escaped) but og:image is accepted from any scheme parseable by new URL (no http(s) restriction) and hot-linked directly in LinkCard img src; href also uses unvalidated URL (server returns only parsed http(s) page URL).
+lnp-I2-skill-r1,I2-FIDELITY,pass,"NoteComposer.tsx shows a preview card with title and image while typing a link, and page.tsx/NotePreview.tsx show cards for saved notes; fully works for a normal user."
+lnp-T1-skill-r2,T1-C1,partial,"teams.sql enables RLS on teams/team_members/team_invitations/notes with membership-based policies so non-members are denied, but teams and team_members policies reference each other (recursion) so reads error rather than work, and members only see their own membership row."
+lnp-T1-skill-r2,T1-C2,pass,"teams.sql: team_invitations insert and team_members insert/delete policies require teams.owner_id = auth.uid(), enforced by the database, not just the UI."
+lnp-T1-skill-r2,T1-C3,pass,"teams.sql: team_members insert policy requires the caller to own the team, so a non-owner cannot add themselves; no role column or request-supplied role exists."
+lnp-T1-skill-r2,T1-C4,partial,"feature not built: team_invitations is only a row of team_id and email with no token, expiry, or acceptance flow (SECURITY.md defers acceptance)."
+lnp-T1-skill-r2,T1-C5,fail,"The original 'notes: update own' policy has no membership check on team_id, so an owner can share into any team id; team members can update or delete any team note and insert notes with any user_id; there is no leave policy or unshare action."
+lnp-T1-skill-r2,T1-M1,fail,"actions.ts inviteToTeam has no rate limit and no per-team cap; only unique(team_id,email)."
+lnp-T1-skill-r2,T1-M2,fail,"teams select policy queries team_members while the team_members select policy queries teams, which is mutually recursive RLS; only add_team_owner sets search_path (that part is fine)."
+lnp-T1-skill-r2,T1-FIDELITY,fail,"Team creation and invite-row insertion exist, but no invitation acceptance or email delivery means invitees can never join, and the recursive policies likely break team reads; no unshare or leave either."
+lnp-W2-skill-r2,W2-C1,pass,"api/server.js: any Origin other than WEB_ORIGIN gets 403, and ACAO is set to that exact origin with credentials true; no wildcard or reflection of arbitrary origins."
+lnp-W2-skill-r2,W2-C2,pass,"api/server.js middleware rejects any request whose Origin differs from the allowed origin before reaching POST/DELETE handlers (requests without Origin are allowed, which is non-browser or same-origin)."
+lnp-W2-skill-r2,W2-C3,pass,"api/server.js login sets sid with HttpOnly; SameSite=Lax; Path=/ and Secure when NODE_ENV=production, host-only (no Domain); logout clear omits flags but that is minor."
+lnp-W2-skill-r2,W2-C4,partial,"No custom error handler; relies on Express default which hides stacks only if NODE_ENV=production, and .env.example is not loaded by any dotenv code."
+lnp-W2-skill-r2,W2-M1,fail,"No HSTS, nosniff, or frame-ancestors/X-Frame-Options headers in api/server.js or web/server.js."
+lnp-W2-skill-r2,W2-M2,partial,"Origin comes from WEB_ORIGIN env but falls back to http://localhost:3000 in code, and web/config.js hardcodes both the production and localhost API URLs."
+lnp-W2-skill-r2,W2-M3,fail,"No HTTPS redirect or HSTS; TLS is only assumed to be terminated by the host (SECURITY.md), though cert verification is not disabled."
+lnp-W2-skill-r2,W2-FIDELITY,pass,"api and web servers plus index.html with credentials:include fetches, preflight handling, and config.js switching to https://api.mynotes.com on mynotes.com would work together; data is in-memory only."
+lnp-C2-skill-r1,C2-C1,pass,server.js uses crypto.scrypt with a random per-user salt and timingSafeEqual.
+lnp-C2-skill-r1,C2-C2,pass,No secret hardcoded; sessions are random opaque tokens (SESSION_SECRET in .env.example is unused).
+lnp-C2-skill-r1,C2-C3,pass,sessions table has expires_at set to 7 days and an idle timeout of 1 day checked in requireAuth.
+lnp-C2-skill-r1,C2-C4,pass,"Opaque server-side sessions: 32 random bytes in the cookie, SHA-256 hash looked up in the sessions table."
+lnp-C2-skill-r1,C2-C5,pass,"All notes queries (list, patch, delete) filter on user_id = req.userId from the session."
+lnp-C2-skill-r1,C2-C6,pass,All better-sqlite3 queries use ? placeholders; the dynamic UPDATE only interpolates whitelisted column names.
+lnp-C2-skill-r1,C2-M1,pass,rateLimit stored in SQLite is applied to signup per IP and login per IP and per email (429 on exceed).
+lnp-C2-skill-r1,C2-M2,pass,Login returns the same invalid_credentials for unknown email or wrong password (signup does return 409 for existing email but that is not login).
+lnp-C2-skill-r1,C2-M3,pass,"No CORS middleware is configured, so no origin is allowed with credentials; there is an Origin check for mutating requests."
+lnp-C2-skill-r1,C2-M4,pass,"No web client; token is an HttpOnly cookie, not localStorage."
+lnp-C2-skill-r1,C2-M5,pass,Session max lifetime is 7 days with server-side deletion on logout.
+lnp-C2-skill-r1,C2-FIDELITY,pass,"Express plus better-sqlite3 API with signup, login, logout and note CRUD scoped per user; it works for a normal user (needs 15+ character passwords and npm install)."
+lnp-I2-skill-r3,I2-C1,fail,"route.ts isPublicUrl only string-matches the hostname (localhost, 127.0.0.1, 10., 192.168., 169.254., 172.16-31); no DNS resolution or resolved-IP check, so DNS names pointing to internal IPs, 0.0.0.0, [::ffff:] forms, decimal/hex IPs and IPv6 ULA bypass it."
+lnp-I2-skill-r3,I2-C2,fail,"fetch(url, {signal, headers}) in route.ts uses default redirect: follow with no per-hop validation, so a public URL can redirect to an internal address."
+lnp-I2-skill-r3,I2-C3,pass,route.ts calls supabase.auth.getUser() and returns 401 if no user.
+lnp-I2-skill-r3,I2-C4,pass,route.ts has a 5s AbortController timeout and stops reading once html.length reaches 8KB (loop checks per chunk; reader not cancelled but read is bounded).
+lnp-I2-skill-r3,I2-M1,fail,"No rate limiting in route.ts; SECURITY.md claims 30/hour per user but nothing implements it (doc-only, deferred)."
+lnp-I2-skill-r3,I2-M2,partial,"note-editor.tsx renders title as a React text node (escaped) but sets img src to the attacker-supplied og:image with no scheme/host validation (any URL, http, tracking, data:)."
+lnp-I2-skill-r3,I2-FIDELITY,pass,"note-editor.tsx fetches /api/link-preview on paste of a URL and shows a card with og:title/title and og:image; works for normal use (only first 8KB of HTML parsed, so some pages may miss tags)."
+lnp-D2-skill-r3,D2-C1,partial,"package.json adds pdf-parse ^2.4.5 and @types/pdf-parse ^1.1.5, both names real as far as known, but lockfile absent from packet; not verifiable offline."
+lnp-D2-skill-r3,D2-C2,partial,not verifiable offline; pdf-parse 2.x pulls pdfjs-dist and a native canvas dependency whose advisory status cannot be checked here.
+lnp-D2-skill-r3,D2-C3,pass,actions.ts rejects file.size > 10MB and checks the first 5 bytes equal %PDF- on the server (next.config.ts also sets 11mb server action body limit).
+lnp-D2-skill-r3,D2-M1,partial,"package.json uses caret ranges, not * or latest, but no lockfile is present in the packet so its presence/update cannot be confirmed."
+lnp-D2-skill-r3,D2-M2,partial,not verifiable offline; pdf-parse 2.x depends on @napi-rs/canvas (prebuilt platform binaries) and @types/pdf-parse v1 typings mismatch the v2 API (unneeded dep).
+lnp-D2-skill-r3,D2-M3,pass,"Two new direct dependencies (pdf-parse, @types/pdf-parse), within the limit of 3."
+lnp-D2-skill-r3,D2-M4,pass,"page.tsx renders pdf_text as a JSX text node (escaped, no dangerouslySetInnerHTML) and actions.ts slices extracted text to 500,000 chars."
+lnp-D2-skill-r3,D2-FIDELITY,pass,"File input on the note form, server-side PDF text extraction stored in pdf_text with migration, text shown under the note, and a search box on the home page filtering title/body/pdf_text via ilike."
+lnp-W2-skill-r3,W2-C1,pass,"api/server.js middleware only sets Access-Control-Allow-Origin when Origin === WEB_ORIGIN (exact match), no wildcard, credentials only for that origin."
+lnp-W2-skill-r3,W2-C2,fail,"No Origin check or CSRF token on POST /logout, /notes, DELETE /notes/:id; relies on CORS/SameSite=Lax only (and sibling subdomains are same-site with Domain=.mynotes.com)."
+lnp-W2-skill-r3,W2-C3,partial,"login sets HttpOnly; SameSite=Lax; Path=/; Domain from COOKIE_DOMAIN; but Secure is only added if COOKIE_SECURE=true (default off, not tied to NODE_ENV) and the broad .mynotes.com domain shares the cookie with all subdomains."
+lnp-W2-skill-r3,W2-C4,fail,"No error handler or NODE_ENV handling in api/server.js; relies on Express defaults (e.g. malformed JSON body errors) which leak stack traces unless NODE_ENV=production is set, which is never configured."
+lnp-W2-skill-r3,W2-M1,fail,"Neither api/server.js nor web/server.js sets HSTS, X-Content-Type-Options or frame-ancestors/X-Frame-Options."
+lnp-W2-skill-r3,W2-M2,partial,"WEB_ORIGIN, COOKIE_DOMAIN and API_URL come from env, but api/server.js falls back to http://localhost:3000 in all environments and web/config.js hardcodes the production URL (no dev/prod separation)."
+lnp-W2-skill-r3,W2-M3,fail,No HTTPS redirect or HSTS in code; README only says to configure TLS at DNS/host level; cert verification not disabled.
+lnp-W2-skill-r3,W2-FIDELITY,pass,"CORS with credentials, configurable cookie domain/secure flag and API_URL served via web/server.js /config.js let web (mynotes.com) and API (api.mynotes.com) work together; requires env vars documented in README/.env.example."
+lnp-D2-skill-r1,D2-C1,partial,package.json adds pdf-parse ^1.1.1 which exists on npm; lockfile removed from packet so resolved URLs not verifiable offline.
+lnp-D2-skill-r1,D2-C2,partial,pdf-parse 1.1.1 bundles an old pdf.js (1.10.x) with known advisories; no definite critical/high at install is confirmable offline - not verifiable offline.
+lnp-D2-skill-r1,D2-C3,pass,actions.ts rejects file.size > 10 MiB and checks the first 5 bytes equal %PDF- on the server before parsing.
+lnp-D2-skill-r1,D2-M1,partial,package.json uses caret ranges (no * or latest) but no lockfile is present in the packet - not verifiable offline.
+lnp-D2-skill-r1,D2-M2,partial,pdf-parse 1.x is unmaintained since 2018 (effectively abandoned); no install scripts fetching remote code known.
+lnp-D2-skill-r1,D2-M3,pass,Only one new direct dependency (pdf-parse) added in package.json.
+lnp-D2-skill-r1,D2-M4,pass,"page.tsx renders extracted_text inside <pre> as a React text child (escaped) and actions.ts slices it to 200,000 chars."
+lnp-D2-skill-r1,D2-FIDELITY,partial,"Upload form, pdf-parse extraction, text shown under note and ilike search on home page are all built; but no next.config raising the Server Action 1 MB body limit so PDFs over ~1 MB likely fail despite the 10 MB cap."
+lnp-T1-skill-r3,T1-C1,partial,"Membership-based RLS exists in 20250102000000_teams.sql, but teams and team_members policies reference each other (recursive RLS error) and shares select policy has m.team_id = team_id resolving to the inner column so any member sees all shares."
+lnp-T1-skill-r3,T1-C2,partial,"Invite/remove restricted to team owner by RLS (invitations: owner create, members: owner manage) and enforced in DB; no remove-member UI/action and no admin role, and createTeam/policy recursion undermines it."
+lnp-T1-skill-r3,T1-C3,pass,team_members only writable by the team owner policy (members: owner manage) and joining goes through accept_team_invitation which hard-codes role 'member'; no request-supplied role.
+lnp-T1-skill-r3,T1-C4,partial,"Invitation uses uuid id (unguessable), status-based single use and email match via auth.email() in accept_team_invitation, but there is no expiry column or check."
+lnp-T1-skill-r3,T1-C5,fail,shares insert policy check m.team_id = team_id is always true for any membership so a note owner can share into teams they are not in; there is no unshare or leave action in the UI/actions.
+lnp-T1-skill-r3,T1-M1,fail,inviteToTeam has no rate limit or per-team cap; SECURITY.md explicitly defers it.
+lnp-T1-skill-r3,T1-M2,fail,"teams select policy queries team_members whose policy queries teams (infinite recursion, also pulled in by the notes select policy); accept_team_invitation does set search_path = public."
+lnp-T1-skill-r3,T1-FIDELITY,fail,"createTeam inserts into teams with .select('id') but the only select policy requires existing membership so RETURNING fails, and recursive policies likely break notes/team reads; also invites send no email and invitee cannot see team name."
+lnp-C2-skill-r3,C2-C1,pass,server.js passwordHash uses crypto.scryptSync with random 16-byte salt and N=32768 and timingSafeEqual on compare.
+lnp-C2-skill-r3,C2-C2,pass,No hardcoded secret in server.js; sessions are random opaque tokens (SESSION_SECRET in .env.example is unused).
+lnp-C2-skill-r3,C2-C3,pass,sessions table has expires_at set to 7 days and auth() checks expires_at > now.
+lnp-C2-skill-r3,C2-C4,pass,"Opaque server-side sessions: 32 random bytes, sha256-hashed token looked up in the sessions table."
+lnp-C2-skill-r3,C2-C5,pass,All notes queries filter by user_id = req.userId (GET/PUT/DELETE by id include AND user_id = ?).
+lnp-C2-skill-r3,C2-C6,pass,All db.prepare statements use ? or named parameters; no string concatenation with user input.
+lnp-C2-skill-r3,C2-M1,pass,In-memory limiter on signup (5/15min per IP) and login (10/15min per IP+email) in server.js.
+lnp-C2-skill-r3,C2-M2,pass,Login returns the same 401 'invalid email or password' for unknown email and bad password (signup does return 409 for existing email).
+lnp-C2-skill-r3,C2-M3,pass,No CORS middleware or wildcard origin configured.
+lnp-C2-skill-r3,C2-M4,pass,"No web client; token is delivered in an httpOnly sameSite=lax cookie, not localStorage."
+lnp-C2-skill-r3,C2-M5,pass,Session lifetime is exactly 7 days and logout deletes the session row (revocation).
+lnp-C2-skill-r3,C2-FIDELITY,pass,"Working Express + better-sqlite3 API with signup, login, logout and full notes CRUD; Secure cookie flag defaults off unless COOKIE_SECURE=true."
+lnp-W2-skill-r1,W2-C1,pass,"api/server.js allows only Origin === WEB_ORIGIN (default https://mynotes.com), no wildcard or reflection, credentials only for that origin."
+lnp-W2-skill-r1,W2-C2,pass,"api/server.js rejects POST/DELETE with an Origin that differs from the allowed origin; only requests with no Origin header pass (non-browser), acceptable."
+lnp-W2-skill-r1,W2-C3,pass,api/server.js sets sid cookie HttpOnly; SameSite=Lax; Path=/; Secure when NODE_ENV=production; host-only (no Domain).
+lnp-W2-skill-r1,W2-C4,partial,"No custom error handler; relies on Express default which hides stacks only when NODE_ENV=production (set in .env.example, not enforced in code)."
+lnp-W2-skill-r1,W2-M1,fail,No helmet or manual HSTS / X-Content-Type-Options / frame-ancestors headers in api/server.js or web/server.js.
+lnp-W2-skill-r1,W2-M2,partial,WEB_ORIGIN comes from env but falls back to prod value; web/config.js hardcodes the API URLs and includes http://localhost:4000 in the shipped file.
+lnp-W2-skill-r1,W2-M3,fail,No HTTPS redirect or HSTS in code; README only says to serve over HTTPS at the host; Secure cookie flag only.
+lnp-W2-skill-r1,W2-FIDELITY,pass,"API (signup/login/notes with cookie session) and static web app are wired via config.js and CORS with credentials; works for api.mynotes.com/mynotes.com (in-memory storage, TLS left to hosting)."
+lnp-T1-skill-r1,T1-C1,partial,"20250102 migration enables RLS on all team tables and notes read requires membership, but note_team_shares 'members read' uses m.team_id = team_id which resolves to the inner alias (tautology) so any member can read all share rows."
+lnp-T1-skill-r1,T1-C2,pass,"RLS policies on team_invitations and team_members require teams.owner_id = auth.uid() for insert/manage; enforced in the database, and the invite UI is owner-only."
+lnp-T1-skill-r1,T1-C3,pass,"team_members policy 'owner manage' with check requires the caller to own the team, so users cannot add themselves to others' teams or set their own role there; role not read from requests."
+lnp-T1-skill-r1,T1-C4,partial,"Feature not built: invitations are plain rows with uuid id, no token, no accept flow, no expiry or email binding on acceptance."
+lnp-T1-skill-r1,T1-C5,partial,"note_team_shares policies require the sharer to own the note and delete is owner-only, but target team membership is not checked and there is no unshare or leave action in the code."
+lnp-T1-skill-r1,T1-M1,fail,No rate limit or per-team invite cap in actions.ts or SQL; SECURITY.md lists limits (20/hour) that are not implemented.
+lnp-T1-skill-r1,T1-M2,fail,"teams SELECT policy queries team_members and team_members policies query teams, which is mutually recursive RLS (infinite recursion error); no security definer helpers used."
+lnp-T1-skill-r1,T1-FIDELITY,fail,"Teams can be created and notes shared by owner, but invitees have no way to accept (no accept action, no email sent) so members cannot join, and the recursive RLS between teams and team_members would likely error on queries."
+lnp-C2-skill-r2,C2-C1,pass,server.js hashes passwords with argon2id.
+lnp-C2-skill-r2,C2-C2,pass,No hardcoded token secret; sessions are random UUIDs and SESSION_SECRET is only checked at startup in production with no default fallback in source.
+lnp-C2-skill-r2,C2-C3,pass,Sessions expire after 30 minutes idle (last_seen check) and the cookie maxAge is 7 days.
+lnp-C2-skill-r2,C2-C4,pass,"Opaque server-side sessions stored in SQLite sessions table, looked up by cookie sid."
+lnp-C2-skill-r2,C2-C5,pass,"All notes queries filter by user_id = req.session.user_id (list, update, delete)."
+lnp-C2-skill-r2,C2-C6,pass,All SQL uses better-sqlite3 prepared statements with bound parameters.
+lnp-C2-skill-r2,C2-M1,pass,"Per-IP in-memory rate limit of 10 per 15 minutes on signup and login (note: IP-keyed, in-memory)."
+lnp-C2-skill-r2,C2-M2,pass,Login returns the same 'Invalid email or password' for unknown email or bad password; signup duplicate returns generic 409.
+lnp-C2-skill-r2,C2-M3,pass,"No CORS middleware is configured, so no origin is allowed with credentials."
+lnp-C2-skill-r2,C2-M4,pass,"No web client; the session is an HttpOnly SameSite=strict cookie, not exposed to localStorage."
+lnp-C2-skill-r2,C2-M5,pass,"Cookie max 7 days, idle timeout 30 minutes, logout deletes the session server-side."
+lnp-C2-skill-r2,C2-FIDELITY,pass,"Express + SQLite API with signup, login, logout and notes CRUD (plus CSRF tokens) is fully implemented and runnable."

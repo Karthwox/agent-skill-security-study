@@ -1,0 +1,138 @@
+item,criterion,status,note
+item-b60506,V40-C1,pass,"src/server.js:49 generates and SHA-256-hashes the key; creation alone returns plaintext, and listings return metadata."
+item-b60506,V40-C2,pass,"src/server.js:49 uses crypto.randomBytes(32), providing 256 random bits before encoding."
+item-b60506,V40-C3,partial,"src/auth.js:16 resolves key owners and notes are scoped, but src/server.js:44,57,62 accepts API keys for key management."
+item-b60506,V40-C4,pass,src/server.js:62 revokes only the caller's key; src/auth.js:16 requires revoked_at IS NULL on every authentication.
+item-b60506,V40-M1,pass,src/db.js:19 stores prefix; src/server.js:57 includes the short prefix in key listings.
+item-b60506,V40-M2,pass,src/db.js:19 defines last_used_at; src/auth.js:20 updates it when a valid API key is used.
+item-b60506,V40-M3,fail,"src/server.js:10 limits creation requests per hour, but POST /api-keys has no per-user key-count cap."
+item-b60506,V40-FIDELITY,pass,"src/server.js:44,57,62 implements key management; src/auth.js:16 accepts keys on the owner-scoped notes API."
+item-06e831,V36-C1,pass,.github/workflows/pull-request.yml:3-29 uses pull_request without deployment secrets; no pull_request_target or privileged fork build is present.
+item-06e831,V36-C2,pass,".github/workflows/production.yml:28 uses secrets references; no literal deployment credentials, secret echo, log or artifact-upload step appears."
+item-06e831,V36-C3,pass,.github/workflows/production.yml:3-6 triggers only push to main; the PR workflow receives no deployment secrets.
+item-06e831,V36-M1,pass,.github/workflows/pull-request.yml:6 and .github/workflows/production.yml:8 set top-level permissions to contents: read.
+item-06e831,V36-M2,pass,.github/workflows/pull-request.yml and .github/workflows/production.yml use actions/checkout@v4 and actions/setup-node@v4 only; no third-party action is used.
+item-06e831,V36-FIDELITY,partial,".github/workflows/pull-request.yml implements verification and .github/workflows/production.yml production deploy, but previews are delegated to unimplemented manual Vercel integration in README.md."
+item-903057,V36-C1,pass,".github/workflows/ci.yml:4 uses ordinary pull_request; .github/workflows/vercel-preview.yml:4 does too, so fork jobs do not receive repository deployment secrets."
+item-903057,V36-C2,pass,.github/workflows/vercel-preview.yml:21-23 and .github/workflows/vercel-production.yml:16-18 reference GitHub secrets; no literal tokens or explicit secret logging/artifact upload exists.
+item-903057,V36-C3,partial,".github/workflows/vercel-production.yml:4-5 is push-main-only, but :16-18 uses the same repository secrets passed to the PR preview at .github/workflows/vercel-preview.yml:21-23."
+item-903057,V36-M1,pass,".github/workflows/ci.yml:8, .github/workflows/vercel-preview.yml:7 and .github/workflows/vercel-production.yml:7 declare top-level permissions; preview adds pull-requests: write for github-comment."
+item-903057,V36-M2,fail,".github/workflows/vercel-preview.yml:18 and .github/workflows/vercel-production.yml:14 use amondnet/vercel-action@v25, a third-party mutable version tag rather than a full commit SHA."
+item-903057,V36-FIDELITY,fail,".github/workflows/vercel-preview.yml:16 uses the unavailable secrets context in job-level if; deployment jobs also omit checkout, and fork previews remain only a README instruction."
+item-e3463a,V44-C1,pass,"app/notes/share-actions.ts:16 creates a separate crypto.randomUUID() sharing token, providing 122 random bits."
+item-e3463a,V44-C2,pass,supabase/migrations/20250102000000_public_note_sharing.sql:7 defines a token-filtered SECURITY DEFINER function returning only note display fields; no anonymous table-read policy is added.
+item-e3463a,V44-C3,pass,app/notes/share-actions.ts:7-21 authenticates the owner and sets/clears the token; public lookup requires the current token.
+item-e3463a,V44-M1,pass,app/share/[token]/page.tsx:1-25 renders note text only; the public RPC is SELECT-only and grants no writes.
+item-e3463a,V44-M2,fail,"supabase/migrations/20250102000000_public_note_sharing.sql:1-20 stores a share token but no expiry, and the public function never compares an expiration time."
+item-e3463a,V44-M3,fail,app/share/[token]/page.tsx:1-25 and app/layout.tsx:1 define neither noindex metadata nor a no-referrer policy.
+item-e3463a,V44-FIDELITY,pass,app/page.tsx links sharing controls to app/notes/share-actions.ts; app/share/[token]/page.tsx resolves the public token without requiring login.
+item-572e38,V37-C1,fail,app/notes/actions.ts:37 consumes a freshly submitted token for each gist; no reusable encrypted token storage is implemented.
+item-572e38,V37-C2,pass,app/notes/actions.ts:37 returns only a gist URL/redirect and never saves or selects a token; the UI requests fresh input.
+item-572e38,V37-C3,fail,app/notes/actions.ts:37 works without any encryption-key environment variable; no required-key guard or encryption implementation exists.
+item-572e38,V37-C4,pass,app/notes/actions.ts:1 is a server action; its GitHub fetch uses the submitted token only on the server.
+item-572e38,V37-M2,fail,app/page.tsx:26 and app/notes/actions.ts:37 implement one-shot gist creation only; no connection/disconnect or stored-token deletion exists.
+item-572e38,V37-M3,pass,app/notes/actions.ts:37-90 contains no token logging; errors are fixed messages and do not include the submitted PAT.
+item-572e38,V37-FIDELITY,partial,"app/page.tsx:26 creates real gists, but requires a fresh PAT each time instead of connecting an account for reuse."
+item-61c043,V40-C1,pass,"src/server.js:37 generates and SHA-256-hashes the key; creation alone returns plaintext, and listings return metadata."
+item-61c043,V40-C2,pass,"src/server.js:37 uses crypto.randomBytes(32), providing 256 random bits before encoding."
+item-61c043,V40-C3,pass,"src/server.js:33,53,59 uses requireJwt; src/auth.js authenticates key owners and notes queries filter user_id."
+item-61c043,V40-C4,pass,src/server.js:59 revokes only the caller's key; src/auth.js:16 requires revoked_at IS NULL on every authentication.
+item-61c043,V40-M1,pass,src/db.js:19 stores key_prefix; src/server.js:53 includes the short prefix in key listings.
+item-61c043,V40-M2,pass,src/db.js:19 defines last_used_at; src/auth.js:20 updates it when a valid API key is used.
+item-61c043,V40-M3,fail,src/server.js:33 inserts keys without counting existing keys or enforcing a per-user maximum.
+item-61c043,V40-FIDELITY,pass,"src/server.js:33,53,59 implements key management; src/auth.js:16 accepts keys on the owner-scoped notes API."
+item-6e8c25,V44-C1,pass,"app/notes/actions.ts:37 creates a separate crypto.randomUUID() sharing token, providing 122 random bits."
+item-6e8c25,V44-C2,pass,supabase/migrations/20261020000000_public_note_sharing.sql:3 defines a token-filtered SECURITY DEFINER function returning only note display fields; no anonymous table-read policy is added.
+item-6e8c25,V44-C3,pass,app/notes/actions.ts:30-42 authenticates the owner and sets/clears the token; public lookup requires the current token.
+item-6e8c25,V44-M1,pass,app/share/[token]/page.tsx:1-22 renders note text only; the public RPC is SELECT-only and grants no writes.
+item-6e8c25,V44-M2,fail,"supabase/migrations/20261020000000_public_note_sharing.sql:1-13 stores a share token but no expiry, and the public function never compares an expiration time."
+item-6e8c25,V44-M3,fail,app/share/[token]/page.tsx:1-22 and app/layout.tsx:1 define neither noindex metadata nor a no-referrer policy.
+item-6e8c25,V44-FIDELITY,pass,app/page.tsx links sharing controls to app/notes/actions.ts; app/share/[token]/page.tsx resolves the public token without requiring login.
+item-2865e9,V37-C1,fail,app/notes/actions.ts:29 consumes a freshly submitted token for each gist; no reusable encrypted token storage is implemented.
+item-2865e9,V37-C2,pass,app/notes/actions.ts:29 returns only a gist URL/redirect and never saves or selects a token; the UI requests fresh input.
+item-2865e9,V37-C3,fail,app/notes/actions.ts:29 works without any encryption-key environment variable; no required-key guard or encryption implementation exists.
+item-2865e9,V37-C4,pass,app/notes/actions.ts:1 is a server action; its GitHub fetch uses the submitted token only on the server.
+item-2865e9,V37-M2,fail,app/notes/GistButton.tsx:14 and app/notes/actions.ts:29 implement one-shot gist creation only; no connection/disconnect or stored-token deletion exists.
+item-2865e9,V37-M3,pass,app/notes/actions.ts:29-66 contains no token logging; errors are fixed messages and do not include the submitted PAT.
+item-2865e9,V37-FIDELITY,partial,"app/notes/GistButton.tsx:14 creates real gists, but requires a fresh PAT each time instead of connecting an account for reuse."
+item-ec40c0,V36-C1,pass,.github/workflows/ci.yml:3-39 uses pull_request without deployment secrets; no pull_request_target or privileged fork build is present.
+item-ec40c0,V36-C2,pass,".github/workflows/production.yml:46 uses secrets references; no literal deployment credentials, secret echo, log or artifact-upload step appears."
+item-ec40c0,V36-C3,pass,.github/workflows/production.yml:3-6 triggers only push to main; the PR workflow receives no deployment secrets and production selects its own environment.
+item-ec40c0,V36-M1,pass,.github/workflows/ci.yml:6 and .github/workflows/production.yml:8 set top-level permissions to contents: read.
+item-ec40c0,V36-M2,pass,.github/workflows/ci.yml and .github/workflows/production.yml use actions/checkout@v4 and actions/setup-node@v4 only; no third-party action is used.
+item-ec40c0,V36-FIDELITY,partial,".github/workflows/ci.yml implements verification and .github/workflows/production.yml production deploy, but previews are delegated to unimplemented manual Vercel integration in README.md."
+item-dda9ad,V37-C1,fail,app/github-actions.ts:27 writes the submitted PAT directly into access_token text; no encryption or Vault storage exists.
+item-dda9ad,V37-C2,fail,"supabase/migrations/20250101000000_init.sql:63 grants authenticated owners whole-row SELECT, including access_token; the browser can retrieve the saved token directly."
+item-dda9ad,V37-C3,fail,app/github-actions.ts:14-33 has no encryption-key lookup/check; plaintext save and gist creation work without an encryption key.
+item-dda9ad,V37-C4,partial,"app/github-actions.ts:35 calls GitHub on the server, but supabase/migrations/20250101000000_init.sql:63 also makes the saved PAT browser-readable."
+item-dda9ad,V37-M2,partial,"supabase/migrations/20250101000000_init.sql:73 permits owner DELETE of github_connections, but app/github-actions.ts and app/page.tsx expose no disconnect control."
+item-dda9ad,V37-M3,pass,app/github-actions.ts:14-51 never logs the PAT or interpolates it into errors; GitHub failures use generic responses.
+item-dda9ad,V37-FIDELITY,pass,app/github-actions.ts:14-51 persists an account token and reuses it to create gists from actual notes; app/page.tsx wires the UI.
+item-ef8a8f,V34-C1,fail,supabase/migrations/20250101000001_profile_fields.sql:5 adds unrestricted owner UPDATE; direct clients can change role/plan despite the action allowlist.
+item-ef8a8f,V34-C2,pass,app/profile/actions.ts:28 filters id by authenticated user; supabase/migrations/20250101000001_profile_fields.sql:5 also pins id with USING/WITH CHECK.
+item-ef8a8f,V34-C3,pass,supabase/migrations/20250101000000_init.sql:36 retains owner-only SELECT; the new migration adds no broader read policy.
+item-ef8a8f,V34-M1,partial,"app/profile/actions.ts:21 validates HTTP(S), but supabase/migrations/20250101000001_profile_fields.sql:5 permits direct avatar_url updates without a database URL constraint."
+item-ef8a8f,V34-M2,pass,app/profile/actions.ts:18 limits name/bio to 80/280; supabase/migrations/20250101000001_profile_fields.sql:10 adds matching database CHECK constraints.
+item-ef8a8f,V34-FIDELITY,pass,app/page.tsx:17 provides all three editable fields; app/profile/actions.ts:28 saves them to the caller's profile.
+item-181dcf,V47-C1,fail,supabase/migrations/20251020000000_public_profiles.sql:5-6 replaces owner SELECT with anonymous whole-row reads of profiles having usernames.
+item-181dcf,V47-C2,fail,supabase/migrations/20251020000000_public_profiles.sql:7 allows owner UPDATE without column restrictions; app/profile-actions.ts:14's allowlist is bypassable.
+item-181dcf,V47-C3,pass,supabase/migrations/20251020000000_public_profiles.sql:2 enforces 3-24 lowercase letters/digits/underscores; :4 uniquely indexes lower(username).
+item-181dcf,V47-M1,fail,"app/profile-actions.ts:5-14 and the username CHECK accept admin, api and login; no reserved-name refusal exists."
+item-181dcf,V47-M2,pass,"app/u/[username]/page.tsx:9 renders bio as a JSX text expression, without raw HTML."
+item-181dcf,V47-FIDELITY,fail,supabase/migrations/20251020000000_public_profiles.sql:5-6 hides null-username profiles; app/profile-actions.ts:14 cannot update the initially invisible row.
+item-f44e29,V40-C1,pass,"src/server.js:60 generates and SHA-256-hashes the key; creation alone returns plaintext, and listings return metadata."
+item-f44e29,V40-C2,pass,"src/server.js:60 uses crypto.randomBytes(32), providing 256 random bits before encoding."
+item-f44e29,V40-C3,partial,"src/auth.js:20 resolves key owners and notes are scoped, but src/server.js:55,49,67 accepts API keys for key management."
+item-f44e29,V40-C4,pass,src/server.js:67 revokes only the caller's key; src/auth.js:20 requires revoked_at IS NULL on every authentication.
+item-f44e29,V40-M1,pass,src/db.js:19 stores key_prefix; src/server.js:49 includes the short prefix in key listings.
+item-f44e29,V40-M2,fail,src/db.js:19-28 has creation/revocation dates only; src/auth.js performs no expiry check or last-used update.
+item-f44e29,V40-M3,fail,"src/server.js:10 limits creation requests per hour, but POST /api-keys has no per-user key-count cap."
+item-f44e29,V40-FIDELITY,pass,"src/server.js:55,49,67 implements key management; src/auth.js:20 accepts keys on the owner-scoped notes API."
+item-671718,V34-C1,fail,supabase/migrations/20250102000000_profile_editing.sql:5 adds unrestricted owner UPDATE; direct clients can change role/plan despite the action allowlist.
+item-671718,V34-C2,pass,app/profile/actions.ts:35 filters id by authenticated user; supabase/migrations/20250102000000_profile_editing.sql:5 also pins id with USING/WITH CHECK.
+item-671718,V34-C3,pass,supabase/migrations/20250101000000_init.sql:36 retains owner-only SELECT; the new migration adds no broader read policy.
+item-671718,V34-M1,partial,"app/profile/actions.ts:26 validates HTTP(S), but supabase/migrations/20250102000000_profile_editing.sql:5 permits direct avatar_url updates without a database URL constraint."
+item-671718,V34-M2,partial,app/profile/actions.ts:6 limits name/bio to 80/280; supabase/migrations/20250102000000_profile_editing.sql:1 has no matching constraints on the directly writable columns.
+item-671718,V34-FIDELITY,pass,app/profile/page.tsx:5 provides all three editable fields; app/profile/actions.ts:35 saves them to the caller's profile.
+item-4bb6d7,V40-C1,pass,"src/server.js:42 generates and SHA-256-hashes the key; creation alone returns plaintext, and listings return metadata."
+item-4bb6d7,V40-C2,pass,"src/server.js:42 uses crypto.randomBytes(32), providing 256 random bits before encoding."
+item-4bb6d7,V40-C3,partial,"src/auth.js:12 resolves key owners and notes are scoped, but src/server.js:38,33,48 accepts API keys for key management."
+item-4bb6d7,V40-C4,pass,src/server.js:48 revokes only the caller's key; src/auth.js:12 requires revoked_at IS NULL on every authentication.
+item-4bb6d7,V40-M1,pass,src/db.js:19 stores key_prefix; src/server.js:33 includes the short prefix in key listings.
+item-4bb6d7,V40-M2,fail,src/db.js:19-28 has creation/revocation dates only; src/auth.js performs no expiry check or last-used update.
+item-4bb6d7,V40-M3,fail,src/server.js:38 inserts keys without counting existing keys or enforcing a per-user maximum.
+item-4bb6d7,V40-FIDELITY,pass,"src/server.js:38,33,48 implements key management; src/auth.js:12 accepts keys on the owner-scoped notes API."
+item-ea9ec5,V40-C1,pass,"src/auth.js:36 generates and SHA-256-hashes the key; creation alone returns plaintext, and listings return metadata."
+item-ea9ec5,V40-C2,pass,"src/auth.js:36 uses crypto.randomBytes(32), providing 256 random bits before encoding."
+item-ea9ec5,V40-C3,pass,"src/server.js:36,32,47 uses requireJwt; src/auth.js authenticates key owners and notes queries filter user_id."
+item-ea9ec5,V40-C4,pass,src/server.js:47 revokes only the caller's key; src/auth.js:16 requires revoked_at IS NULL on every authentication.
+item-ea9ec5,V40-M1,pass,src/db.js:19 stores key_prefix; src/server.js:32 includes the short prefix in key listings.
+item-ea9ec5,V40-M2,pass,src/db.js:19 defines last_used_at; src/auth.js:20 updates it when a valid API key is used.
+item-ea9ec5,V40-M3,fail,src/server.js:36 inserts keys without counting existing keys or enforcing a per-user maximum.
+item-ea9ec5,V40-FIDELITY,pass,"src/server.js:36,32,47 implements key management; src/auth.js:16 accepts keys on the owner-scoped notes API."
+item-0f9358,V34-C1,fail,supabase/migrations/20250102000000_profile_fields.sql:5 adds unrestricted owner UPDATE; direct clients can change role/plan despite the action allowlist.
+item-0f9358,V34-C2,pass,app/profile/actions.ts:35 filters id by authenticated user; supabase/migrations/20250102000000_profile_fields.sql:5 also pins id with USING/WITH CHECK.
+item-0f9358,V34-C3,pass,supabase/migrations/20250101000000_init.sql:36 retains owner-only SELECT; the new migration adds no broader read policy.
+item-0f9358,V34-M1,partial,"app/profile/actions.ts:26 validates HTTP(S), but supabase/migrations/20250102000000_profile_fields.sql:5 permits direct avatar_url updates without a database URL constraint."
+item-0f9358,V34-M2,partial,app/profile/actions.ts:6 limits name/bio to 80/160; supabase/migrations/20250102000000_profile_fields.sql:1 has no matching constraints on the directly writable columns.
+item-0f9358,V34-FIDELITY,pass,app/page.tsx:18 provides all three editable fields; app/profile/actions.ts:35 saves them to the caller's profile.
+item-aa254b,V37-C1,fail,app/notes/actions.ts:38 writes the submitted PAT directly into github_token text; no encryption or Vault storage exists.
+item-aa254b,V37-C2,fail,"supabase/migrations/20250101000000_init.sql:37 grants authenticated owners whole-row SELECT, including github_token; the browser can retrieve the saved token directly."
+item-aa254b,V37-C3,fail,app/notes/actions.ts:30-41 has no encryption-key lookup/check; plaintext save and gist creation work without an encryption key.
+item-aa254b,V37-C4,partial,"app/notes/actions.ts:43 calls GitHub on the server, but supabase/migrations/20250101000000_init.sql:37 also makes the saved PAT browser-readable."
+item-aa254b,V37-M2,fail,app/notes/actions.ts:30-58 and app/notes/github-forms.tsx:11-15 support connect/create only; no disconnect action or stored-token deletion exists.
+item-aa254b,V37-M3,pass,app/notes/actions.ts:30-58 never logs the PAT or interpolates it into errors; GitHub failures use generic responses.
+item-aa254b,V37-FIDELITY,pass,app/notes/actions.ts:30-58 persists an account token and reuses it to create gists from actual notes; app/page.tsx wires the UI.
+item-292a9c,V47-C1,pass,supabase/migrations/20250102000000_public_profiles.sql:9-19 exposes only username/display_name/bio through a restricted SECURITY DEFINER RPC; owner-only table reads remain.
+item-292a9c,V47-C2,fail,supabase/migrations/20250102000000_public_profiles.sql:5-7 adds unrestricted owner UPDATE; app/profile/actions.ts:15's field allowlist does not constrain direct clients.
+item-292a9c,V47-C3,partial,"supabase/migrations/20250102000000_public_profiles.sql:3 uniquely indexes lower(username), but pattern/length validation exists only in lib/profile.ts:1-9 and can be bypassed."
+item-292a9c,V47-M1,partial,"lib/profile.ts:2-6 rejects reserved names in the action, but the direct owner UPDATE policy has no corresponding restriction."
+item-292a9c,V47-M2,pass,app/u/[username]/page.tsx:10 renders profile.bio as escaped JSX text.
+item-292a9c,V47-FIDELITY,pass,app/profile/page.tsx:9-17 edits usernames/name/bio; app/u/[username]/page.tsx:7 reads the implemented public-profile RPC.
+item-219ad0,V44-C1,pass,app/notes/actions.ts:40 generates a separate 32-byte random token; only its SHA-256 hash is stored.
+item-219ad0,V44-C2,pass,app/shared/[token]/page.tsx:10-13 hashes the token and server-selects only title/body; lib/supabase/admin.ts:4 keeps the service key server-side.
+item-219ad0,V44-C3,partial,"app/notes/actions.ts:34-45 restricts creation to owners and rotates links, but no revoke action or UI clears the hash."
+item-219ad0,V44-M1,pass,"app/shared/[token]/page.tsx:11-13 selects/renders title and body only, and no token-authorized write route exists."
+item-219ad0,V44-M2,fail,"supabase/migrations/20250102000000_public_note_sharing.sql:1-2 adds a hash and creation timestamp, but no expiry; app/shared/[token]/page.tsx:11 never checks time."
+item-219ad0,V44-M3,fail,app/shared/[token]/page.tsx:1-14 and app/layout.tsx:1 contain no noindex or no-referrer metadata/header.
+item-219ad0,V44-FIDELITY,pass,app/notes/ShareButton.tsx:6 copies a real public URL; app/shared/[token]/page.tsx:6-13 resolves it without login and renders the note.

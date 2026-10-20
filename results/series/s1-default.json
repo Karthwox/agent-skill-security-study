@@ -1,0 +1,17 @@
+{
+  "series_id": "S1-default",
+  "codex_bin": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "sandbox": "workspace-write",
+  "approval": "never",
+  "windows_sandbox": "elevated",
+  "ignore_user_config": true,
+  "ignore_rules": true,
+  "network_access": true,
+  "skill_dir": "C:\\Better_VibeCoding\\vibe-skill-study\\vibe-skill",
+  "skill_install_subpath": ".codex/skills",
+  "work_root": "C:\\w",
+  "timeout_minutes": 25,
+  "max_followups": 2
+}

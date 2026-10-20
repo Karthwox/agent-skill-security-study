@@ -1,0 +1,17 @@
+Data, grades, reports, preregistrations, prompts, criteria and other
+non-code documentation in this repository (everything under results/,
+human-sample/, preregistrations/, protocol/, manifests/, prompts/, criteria/)
+are licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0).
+
+Copyright (c) 2026 Karthik Annadurai
+
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+You may share and adapt the material for any purpose, including commercially,
+provided you give appropriate credit, link to the license, and indicate if you
+made changes.
+
+Code (tools/, skills/, fixtures/) is under the MIT License in the file LICENSE.
+The public comparison skill is NOT included here (see README.md).

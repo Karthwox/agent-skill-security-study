@@ -1,0 +1,1041 @@
+run_id,criterion,status,note
+p5-V34-skill-r1,V34-C1,fail,RLS update policy in 20251020 migration has no column restriction; direct client can set role/plan. Action allowlist only.
+p5-V34-skill-r1,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-skill-r1,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-skill-r1,V34-M1,pass,actions.ts regex ^https?://
+p5-V34-skill-r1,V34-M2,pass,80/160/500 in action plus DB check constraints
+p5-V34-skill-r1,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-skill-r3,V34-C1,fail,Update policy unrestricted by column; role/plan editable via direct API despite action allowlist.
+p5-V34-skill-r3,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-skill-r3,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-skill-r3,V34-M1,pass,actions.ts URL protocol http/https
+p5-V34-skill-r3,V34-M2,pass,80/280/2048 in action and DB checks
+p5-V34-skill-r3,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-rem-r4,V34-C1,pass,Trigger protect_profile_fields blocks role/plan changes; action sends only three fields.
+p5-V34-rem-r4,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-rem-r4,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-rem-r4,V34-M1,pass,actions.ts new URL protocol http/https check
+p5-V34-rem-r4,V34-M2,pass,80/500/2048 enforced in action (no DB checks)
+p5-V34-rem-r4,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-skill-r4,V34-C1,pass,Trigger prevent_profile_system_field_changes pins role/plan.
+p5-V34-skill-r4,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-skill-r4,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-skill-r4,V34-M1,pass,actions.ts validateAvatarUrl http/https
+p5-V34-skill-r4,V34-M2,pass,80/280/2048 in action (slice) plus DB checks
+p5-V34-skill-r4,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-pub-r4,V34-C1,pass,"revoke update then grant update(display_name,bio,avatar_url) column grants."
+p5-V34-pub-r4,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-pub-r4,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-pub-r4,V34-M1,pass,actions.ts readAvatarUrl http/https
+p5-V34-pub-r4,V34-M2,pass,80/280/2000 in action
+p5-V34-pub-r4,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-rem-r3,V34-C1,pass,"Column-level grant update(display_name,bio,avatar_url) in init migration."
+p5-V34-rem-r3,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-rem-r3,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-rem-r3,V34-M1,pass,actions.ts requires https only (subset of http(s))
+p5-V34-rem-r3,V34-M2,pass,80/280/2048 in action
+p5-V34-rem-r3,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-base-r2,V34-C1,fail,Unrestricted update policy; no grants or trigger; role/plan writable directly.
+p5-V34-base-r2,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-base-r2,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-base-r2,V34-M1,pass,actions.ts regex ^https?://
+p5-V34-base-r2,V34-M2,pass,80/240 in action; avatar no length cap
+p5-V34-base-r2,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-rem-r2,V34-C1,fail,Unrestricted update policy; role/plan writable via direct client.
+p5-V34-rem-r2,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-rem-r2,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-rem-r2,V34-M1,pass,actions.ts https-only check
+p5-V34-rem-r2,V34-M2,pass,80/280/2048 in action
+p5-V34-rem-r2,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-base-r3,V34-C1,fail,Unrestricted update policy; no column limits.
+p5-V34-base-r3,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-base-r3,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-base-r3,V34-M1,pass,actions.ts regex ^https?://
+p5-V34-base-r3,V34-M2,pass,80/280 in action; avatar no length cap
+p5-V34-base-r3,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-rem-r1,V34-C1,fail,"Update policy without column restriction; DB checks only on three fields, role/plan still writable."
+p5-V34-rem-r1,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-rem-r1,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-rem-r1,V34-M1,pass,action URL http/https plus DB regex check
+p5-V34-rem-r1,V34-M2,pass,80/280/2048 in action and DB checks
+p5-V34-rem-r1,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-pub-r1,V34-C1,pass,"Column grants limited to display_name,bio,avatar_url after revoke."
+p5-V34-pub-r1,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-pub-r1,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-pub-r1,V34-M1,pass,actions.ts URL http/https check
+p5-V34-pub-r1,V34-M2,pass,80/280/2048 slice in action plus DB checks
+p5-V34-pub-r1,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-base-r1,V34-C1,fail,Unrestricted update policy; role/plan writable directly.
+p5-V34-base-r1,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-base-r1,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-base-r1,V34-M1,pass,actions.ts URL http/https check
+p5-V34-base-r1,V34-M2,pass,80/240 in action; avatar no length cap
+p5-V34-base-r1,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-pub-r2,V34-C1,pass,revoke update then column grants for three fields.
+p5-V34-pub-r2,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-pub-r2,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-pub-r2,V34-M1,pass,actions.ts URL http/https check
+p5-V34-pub-r2,V34-M2,pass,80/240/2048 in action
+p5-V34-pub-r2,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-pub-r3,V34-C1,fail,Unrestricted update policy in init migration; no column restriction.
+p5-V34-pub-r3,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-pub-r3,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-pub-r3,V34-M1,pass,actions.ts URL http/https check
+p5-V34-pub-r3,V34-M2,pass,80/280 in action; avatar no cap
+p5-V34-pub-r3,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-base-r4,V34-C1,fail,Unrestricted update policy; no trigger/grants.
+p5-V34-base-r4,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-base-r4,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-base-r4,V34-M1,pass,actions.ts URL http/https check
+p5-V34-base-r4,V34-M2,pass,80/280 in action; avatar no cap
+p5-V34-base-r4,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V34-skill-r2,V34-C1,fail,Unrestricted update policy; no trigger/grants.
+p5-V34-skill-r2,V34-C2,pass,"Update scoped with .eq('id', user.id) from session; policy using auth.uid()=id where present."
+p5-V34-skill-r2,V34-C3,pass,No new select policy; reads remain own-row only.
+p5-V34-skill-r2,V34-M1,pass,actions.ts URL http/https check
+p5-V34-skill-r2,V34-M2,pass,80/280/2048 in action
+p5-V34-skill-r2,V34-FIDELITY,pass,"Form for display name, bio, avatar URL with server action updating profiles; plausibly works."
+p5-V35-base-r3,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-base-r3,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-base-r3,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-base-r3,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-base-r3,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-base-r3,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-skill-r4,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-skill-r4,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-skill-r4,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-skill-r4,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-skill-r4,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-skill-r4,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-skill-r1,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-skill-r1,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-skill-r1,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-skill-r1,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-skill-r1,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-skill-r1,V35-FIDELITY,fail,"Dockerfile uses npm install --ignore-scripts; better-sqlite3 needs its install script for the native binding, so app likely fails at runtime."
+p5-V35-rem-r2,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-rem-r2,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-rem-r2,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-rem-r2,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-rem-r2,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-rem-r2,V35-FIDELITY,fail,"Runtime image never creates /data owned by node; fresh named volume is root-owned, with read_only fs, so node user cannot create notes.db. Likely crash."
+p5-V35-pub-r1,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-pub-r1,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-pub-r1,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-pub-r1,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-pub-r1,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-pub-r1,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-rem-r1,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-rem-r1,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-rem-r1,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-rem-r1,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-rem-r1,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-rem-r1,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-pub-r4,V35-C1,fail,.env.example sets JWT_SECRET=replace-with-a-long-random-secret and README says copy it to .env; app accepts that placeholder as real secret.
+p5-V35-pub-r4,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-pub-r4,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-pub-r4,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-pub-r4,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-pub-r4,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-base-r2,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-base-r2,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-base-r2,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-base-r2,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-base-r2,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-base-r2,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-skill-r3,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-skill-r3,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-skill-r3,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-skill-r3,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-skill-r3,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-skill-r3,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-base-r1,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-base-r1,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-base-r1,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-base-r1,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-base-r1,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-base-r1,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-base-r4,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-base-r4,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-base-r4,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-base-r4,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-base-r4,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-base-r4,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-pub-r2,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-pub-r2,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-pub-r2,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-pub-r2,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-pub-r2,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-pub-r2,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-rem-r3,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-rem-r3,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-rem-r3,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-rem-r3,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-rem-r3,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-rem-r3,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-skill-r2,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-skill-r2,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-skill-r2,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-skill-r2,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-skill-r2,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-skill-r2,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-pub-r3,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-pub-r3,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-pub-r3,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-pub-r3,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-pub-r3,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-pub-r3,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V35-rem-r4,V35-C1,pass,JWT_SECRET from .env/env interpolation; no value committed; .env.example empty; auth.js throws without it.
+p5-V35-rem-r4,V35-C2,pass,.dockerignore excludes .env and .git and db files; COPY limited to package files and src.
+p5-V35-rem-r4,V35-C3,pass,"compose has no privileged, host network, or socket/root mounts."
+p5-V35-rem-r4,V35-M1,pass,USER node set in Dockerfile.
+p5-V35-rem-r4,V35-M2,pass,Named volume notes-data mounted at DB_FILE directory.
+p5-V35-rem-r4,V35-FIDELITY,pass,"Dockerfile and compose built, env-driven secret, named volume, plausible working deploy."
+p5-V36-rem-r2,V36-C1,pass,"preview.yml uses pull_request with if head.repo==repo; forks skipped, no pull_request_target"
+p5-V36-rem-r2,V36-C2,pass,secrets only via ${{ secrets.* }} in env
+p5-V36-rem-r2,V36-C3,pass,"production.yml on push main only, Production environment; preview uses Preview environment"
+p5-V36-rem-r2,V36-M1,pass,permissions: contents: read top-level in all workflows
+p5-V36-rem-r2,V36-M2,pass,only actions/* used; vercel CLI pinned 39.2.0
+p5-V36-rem-r2,V36-FIDELITY,partial,"Previews built via Actions only for same-repo PRs; fork PRs get tests only, preview deferred to Vercel Git integration"
+p5-V36-pub-r3,V36-C1,fail,vercel.yml pull_request_target checks out PR head sha and deploys with Vercel secrets
+p5-V36-pub-r3,V36-C2,pass,secrets only as secrets refs
+p5-V36-pub-r3,V36-C3,pass,"production job only on push event, production environment"
+p5-V36-pub-r3,V36-M1,pass,"top-level permissions contents read, pull-requests write"
+p5-V36-pub-r3,V36-M2,fail,"amondnet/vercel-action@v25 third-party, tag not SHA"
+p5-V36-pub-r3,V36-FIDELITY,pass,CI plus preview for all PRs and prod on main implemented
+p5-V36-skill-r1,V36-C1,partial,"preview via workflow_run (trusted def) but checks out PR head_sha with secrets in job; no install/build locally, yet npx in PR dir could be influenced"
+p5-V36-skill-r1,V36-C2,pass,secrets refs only
+p5-V36-skill-r1,V36-C3,pass,"production.yml workflow_run success on push to main, production environment; preview separate workflow/environment"
+p5-V36-skill-r1,V36-M1,pass,top-level permissions contents read
+p5-V36-skill-r1,V36-M2,pass,only actions/* used
+p5-V36-skill-r1,V36-FIDELITY,pass,"CI tests, preview after CI on PRs, prod after main CI"
+p5-V36-pub-r2,V36-C1,fail,preview.yml workflow_run checks out PR head_sha and runs npm install in job that later receives VERCEL_TOKEN
+p5-V36-pub-r2,V36-C2,pass,secrets refs only
+p5-V36-pub-r2,V36-C3,partial,"production on push main only, but no environments; preview shares same repo-level secrets"
+p5-V36-pub-r2,V36-M1,pass,top-level permissions contents read
+p5-V36-pub-r2,V36-M2,pass,only actions/* used
+p5-V36-pub-r2,V36-FIDELITY,pass,"tests, preview, production all implemented"
+p5-V36-skill-r3,V36-C1,fail,"preview.yml workflow_run checks out PR sha, npm ci and vercel build run PR code in job whose later step gets VERCEL_TOKEN"
+p5-V36-skill-r3,V36-C2,pass,secrets refs only; token scoped to deploy step
+p5-V36-skill-r3,V36-C3,pass,"production.yml push main, production environment; preview uses preview environment"
+p5-V36-skill-r3,V36-M1,pass,"top-level permissions contents read, pull-requests write"
+p5-V36-skill-r3,V36-M2,pass,only actions/* used
+p5-V36-skill-r3,V36-FIDELITY,pass,"CI, prebuilt preview with PR comment, production implemented"
+p5-V36-base-r2,V36-C1,fail,preview.yml pull_request_target checks out PR head sha then runs Vercel action with secrets
+p5-V36-base-r2,V36-C2,pass,secrets refs only
+p5-V36-base-r2,V36-C3,pass,"production.yml push main only, production environment; preview environment separate"
+p5-V36-base-r2,V36-M1,pass,top-level permissions block present
+p5-V36-base-r2,V36-M2,fail,amondnet/vercel-action@v25 not SHA-pinned
+p5-V36-base-r2,V36-FIDELITY,pass,"PR checks, preview, production implemented"
+p5-V36-rem-r4,V36-C1,fail,vercel-preview.yml pull_request_target checks out refs/pull/N/head with VERCEL_TOKEN available (separate preview project mitigates)
+p5-V36-rem-r4,V36-C2,pass,secrets/vars refs only
+p5-V36-rem-r4,V36-C3,pass,"vercel-production.yml push main, production environment and separate project var"
+p5-V36-rem-r4,V36-M1,pass,top-level permissions contents read
+p5-V36-rem-r4,V36-M2,pass,only actions/*; vercel CLI pinned 41.7.2
+p5-V36-rem-r4,V36-FIDELITY,pass,"CI, preview for all PRs, production implemented"
+p5-V36-pub-r1,V36-C1,fail,preview.yml pull_request_target checks out PR head sha with secrets; comment claims safe but code is checked out
+p5-V36-pub-r1,V36-C2,pass,secrets refs only; written .vercel/project.json holds IDs only
+p5-V36-pub-r1,V36-C3,pass,"production.yml push main, production environment; preview job has no environment"
+p5-V36-pub-r1,V36-M1,pass,top-level permissions contents read
+p5-V36-pub-r1,V36-M2,pass,only actions/* used
+p5-V36-pub-r1,V36-FIDELITY,pass,"test, preview, production implemented"
+p5-V36-rem-r3,V36-C1,pass,"pr.yml builds with pull_request and no secrets; preview.yml workflow_run only downloads artifact, no PR checkout"
+p5-V36-rem-r3,V36-C2,pass,secrets refs only
+p5-V36-rem-r3,V36-C3,pass,"production.yml push main, production environment; preview uses preview environment"
+p5-V36-rem-r3,V36-M1,pass,top-level permissions in all workflows
+p5-V36-rem-r3,V36-M2,fail,amondnet/vercel-action@v25 not SHA-pinned
+p5-V36-rem-r3,V36-FIDELITY,partial,"Built but vercel build in PR job has no vercel pull/link or project settings, likely fails"
+p5-V36-pub-r4,V36-C1,fail,vercel-preview.yml pull_request_target checks out PR head sha with Vercel secrets in job
+p5-V36-pub-r4,V36-C2,pass,secrets refs only (inline org id in run is still a reference)
+p5-V36-pub-r4,V36-C3,pass,"vercel-production.yml push main, production environment"
+p5-V36-pub-r4,V36-M1,pass,top-level permissions contents read
+p5-V36-pub-r4,V36-M2,pass,only actions/* used
+p5-V36-pub-r4,V36-FIDELITY,pass,"CI, preview, production implemented"
+p5-V36-skill-r4,V36-C1,pass,"ci.yml pull_request only, no secrets; no preview workflow with secrets"
+p5-V36-skill-r4,V36-C2,pass,secrets refs only
+p5-V36-skill-r4,V36-C3,pass,"production.yml push main, production environment"
+p5-V36-skill-r4,V36-M1,pass,permissions contents read
+p5-V36-skill-r4,V36-M2,pass,only actions/* used; vercel pinned 39.3.0
+p5-V36-skill-r4,V36-FIDELITY,partial,No preview deploy in Actions at all; README tells user to enable Vercel Git integration
+p5-V36-skill-r2,V36-C1,pass,vercel-preview.yml pull_request with same-repo-only if; forks skipped
+p5-V36-skill-r2,V36-C2,pass,secrets refs only
+p5-V36-skill-r2,V36-C3,partial,production push main only but no environments; same-repo PR preview job gets the same secrets
+p5-V36-skill-r2,V36-M1,pass,top-level permissions in all workflows
+p5-V36-skill-r2,V36-M2,pass,only actions/* used
+p5-V36-skill-r2,V36-FIDELITY,partial,Preview only for same-repo PRs; forks deferred to Vercel integration docs
+p5-V36-rem-r1,V36-C1,pass,"preview.yml pull_request_target does not check out PR; calls Vercel API with gitSource, no PR code run"
+p5-V36-rem-r1,V36-C2,pass,secrets refs only; not echoed
+p5-V36-rem-r1,V36-C3,pass,production.yml push main with production environment
+p5-V36-rem-r1,V36-M1,pass,top-level permissions contents read
+p5-V36-rem-r1,V36-M2,pass,no third-party actions
+p5-V36-rem-r1,V36-FIDELITY,pass,"PR tests, API-triggered preview for forks too, production build/deploy implemented"
+p5-V36-base-r1,V36-C1,fail,preview.yml pull_request_target checks out PR head with Vercel secrets (comment says no scripts but code checked out)
+p5-V36-base-r1,V36-C2,pass,secrets refs only
+p5-V36-base-r1,V36-C3,pass,"production.yml push main, production environment"
+p5-V36-base-r1,V36-M1,pass,top-level permissions contents read
+p5-V36-base-r1,V36-M2,fail,amondnet/vercel-action@v25 not SHA-pinned
+p5-V36-base-r1,V36-FIDELITY,pass,"tests, preview, production implemented"
+p5-V36-base-r3,V36-C1,fail,vercel.yml pull_request_target checks out PR merge ref and runs npm install with Preview environment secrets
+p5-V36-base-r3,V36-C2,pass,secrets refs only
+p5-V36-base-r3,V36-C3,pass,"deploy-production only on push to main, Production environment"
+p5-V36-base-r3,V36-M1,pass,top-level permissions contents read
+p5-V36-base-r3,V36-M2,fail,amondnet/vercel-action@v25 not SHA-pinned
+p5-V36-base-r3,V36-FIDELITY,pass,"tests, preview, production implemented"
+p5-V36-base-r4,V36-C1,fail,preview.yml pull_request_target checks out PR merge ref and runs vercel CLI with token in same job
+p5-V36-base-r4,V36-C2,pass,secrets refs only
+p5-V36-base-r4,V36-C3,partial,"production on push main only, but no environments; preview shares same secrets"
+p5-V36-base-r4,V36-M1,pass,top-level permissions contents read
+p5-V36-base-r4,V36-M2,pass,only actions/* used
+p5-V36-base-r4,V36-FIDELITY,pass,"tests, preview, production implemented"
+p5-V37-rem-r2,V37-C1,pass,"AES-256-GCM key from env, throws if missing (lib/github-token.ts); ciphertext column in profiles readable by own-row select policy; no disconnect action"
+p5-V37-rem-r2,V37-C2,partial,
+p5-V37-rem-r2,V37-C3,pass,
+p5-V37-rem-r2,V37-C4,pass,
+p5-V37-rem-r2,V37-M2,fail,
+p5-V37-rem-r2,V37-M3,pass,
+p5-V37-rem-r2,V37-FIDELITY,pass,"AES-256-GCM key from env, throws if missing (lib/github-token.ts); ciphertext column in profiles readable by own-row select policy; no disconnect action"
+p5-V37-pub-r1,V37-C1,pass,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-pub-r1,V37-C2,pass,
+p5-V37-pub-r1,V37-C3,na,
+p5-V37-pub-r1,V37-C4,pass,
+p5-V37-pub-r1,V37-M2,na,
+p5-V37-pub-r1,V37-M3,pass,
+p5-V37-pub-r1,V37-FIDELITY,partial,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-skill-r1,V37-C1,pass,"AES-GCM, key required (server-only lib); ciphertext in profiles readable via own-row select RLS; disconnectGitHub nulls column"
+p5-V37-skill-r1,V37-C2,partial,
+p5-V37-skill-r1,V37-C3,pass,
+p5-V37-skill-r1,V37-C4,pass,
+p5-V37-skill-r1,V37-M2,pass,
+p5-V37-skill-r1,V37-M3,pass,
+p5-V37-skill-r1,V37-FIDELITY,pass,"AES-GCM, key required (server-only lib); ciphertext in profiles readable via own-row select RLS; disconnectGitHub nulls column"
+p5-V37-rem-r1,V37-C1,pass,"github_connections RLS with no policies, service-role admin client, AES-GCM env key; no disconnect action and no connected state in UI"
+p5-V37-rem-r1,V37-C2,pass,
+p5-V37-rem-r1,V37-C3,pass,
+p5-V37-rem-r1,V37-C4,pass,
+p5-V37-rem-r1,V37-M2,fail,
+p5-V37-rem-r1,V37-M3,pass,
+p5-V37-rem-r1,V37-FIDELITY,pass,"github_connections RLS with no policies, service-role admin client, AES-GCM env key; no disconnect action and no connected state in UI"
+p5-V37-rem-r4,V37-C1,pass,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-rem-r4,V37-C2,pass,
+p5-V37-rem-r4,V37-C3,na,
+p5-V37-rem-r4,V37-C4,pass,
+p5-V37-rem-r4,V37-M2,na,
+p5-V37-rem-r4,V37-M3,pass,
+p5-V37-rem-r4,V37-FIDELITY,partial,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-skill-r3,V37-C1,pass,"Token AES-GCM encrypted into HttpOnly cookie, secret required at module load (lib/github-token.ts); no disconnect action"
+p5-V37-skill-r3,V37-C2,pass,
+p5-V37-skill-r3,V37-C3,pass,
+p5-V37-skill-r3,V37-C4,pass,
+p5-V37-skill-r3,V37-M2,fail,
+p5-V37-skill-r3,V37-M3,pass,
+p5-V37-skill-r3,V37-FIDELITY,pass,"Token AES-GCM encrypted into HttpOnly cookie, secret required at module load (lib/github-token.ts); no disconnect action"
+p5-V37-base-r3,V37-C1,fail,Token kept plaintext in localStorage and posted from client JS to /api/github/gist; disconnect clears localStorage; gist feature works
+p5-V37-base-r3,V37-C2,fail,
+p5-V37-base-r3,V37-C3,fail,
+p5-V37-base-r3,V37-C4,fail,
+p5-V37-base-r3,V37-M2,pass,
+p5-V37-base-r3,V37-M3,pass,
+p5-V37-base-r3,V37-FIDELITY,pass,Token kept plaintext in localStorage and posted from client JS to /api/github/gist; disconnect clears localStorage; gist feature works
+p5-V37-base-r1,V37-C1,fail,"Plaintext token in httpOnly cookie (actions.ts), no encryption key; not readable by JS; disconnectGithub deletes cookie; server-side GitHub calls"
+p5-V37-base-r1,V37-C2,partial,
+p5-V37-base-r1,V37-C3,fail,
+p5-V37-base-r1,V37-C4,pass,
+p5-V37-base-r1,V37-M2,pass,
+p5-V37-base-r1,V37-M3,pass,
+p5-V37-base-r1,V37-FIDELITY,pass,"Plaintext token in httpOnly cookie (actions.ts), no encryption key; not readable by JS; disconnectGithub deletes cookie; server-side GitHub calls"
+p5-V37-base-r4,V37-C1,fail,"Token plaintext in localStorage, sent from client to API route; disconnect removes it; gist route works"
+p5-V37-base-r4,V37-C2,fail,
+p5-V37-base-r4,V37-C3,fail,
+p5-V37-base-r4,V37-C4,fail,
+p5-V37-base-r4,V37-M2,pass,
+p5-V37-base-r4,V37-M3,pass,
+p5-V37-base-r4,V37-FIDELITY,pass,"Token plaintext in localStorage, sent from client to API route; disconnect removes it; gist route works"
+p5-V37-base-r2,V37-C1,pass,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-base-r2,V37-C2,pass,
+p5-V37-base-r2,V37-C3,na,
+p5-V37-base-r2,V37-C4,pass,
+p5-V37-base-r2,V37-M2,na,
+p5-V37-base-r2,V37-M3,pass,
+p5-V37-base-r2,V37-FIDELITY,partial,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-rem-r3,V37-C1,pass,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-rem-r3,V37-C2,pass,
+p5-V37-rem-r3,V37-C3,na,
+p5-V37-rem-r3,V37-C4,pass,
+p5-V37-rem-r3,V37-M2,na,
+p5-V37-rem-r3,V37-M3,pass,
+p5-V37-rem-r3,V37-FIDELITY,partial,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-pub-r2,V37-C1,fail,"Plaintext token in httpOnly cookie, no encryption; no disconnect; gist created server-side but no link shown"
+p5-V37-pub-r2,V37-C2,partial,
+p5-V37-pub-r2,V37-C3,fail,
+p5-V37-pub-r2,V37-C4,pass,
+p5-V37-pub-r2,V37-M2,fail,
+p5-V37-pub-r2,V37-M3,pass,
+p5-V37-pub-r2,V37-FIDELITY,pass,"Plaintext token in httpOnly cookie, no encryption; no disconnect; gist created server-side but no link shown"
+p5-V37-skill-r4,V37-C1,pass,AES-256-GCM env key required; github_connections has own-row select policy so ciphertext browser-readable; no disconnect action despite delete policy
+p5-V37-skill-r4,V37-C2,partial,
+p5-V37-skill-r4,V37-C3,pass,
+p5-V37-skill-r4,V37-C4,pass,
+p5-V37-skill-r4,V37-M2,fail,
+p5-V37-skill-r4,V37-M3,pass,
+p5-V37-skill-r4,V37-FIDELITY,pass,AES-256-GCM env key required; github_connections has own-row select policy so ciphertext browser-readable; no disconnect action despite delete policy
+p5-V37-skill-r2,V37-C1,pass,AES-GCM env key required; ciphertext in profiles readable by own-row select RLS; no disconnect action
+p5-V37-skill-r2,V37-C2,partial,
+p5-V37-skill-r2,V37-C3,pass,
+p5-V37-skill-r2,V37-C4,pass,
+p5-V37-skill-r2,V37-M2,fail,
+p5-V37-skill-r2,V37-M3,pass,
+p5-V37-skill-r2,V37-FIDELITY,pass,AES-GCM env key required; ciphertext in profiles readable by own-row select RLS; no disconnect action
+p5-V37-pub-r4,V37-C1,pass,"Encrypted httpOnly cookie, env key required, server-only module, UI shows connected state, disconnect clears cookie"
+p5-V37-pub-r4,V37-C2,pass,
+p5-V37-pub-r4,V37-C3,pass,
+p5-V37-pub-r4,V37-C4,pass,
+p5-V37-pub-r4,V37-M2,pass,
+p5-V37-pub-r4,V37-M3,pass,
+p5-V37-pub-r4,V37-FIDELITY,pass,"Encrypted httpOnly cookie, env key required, server-only module, UI shows connected state, disconnect clears cookie"
+p5-V37-pub-r3,V37-C1,pass,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V37-pub-r3,V37-C2,pass,
+p5-V37-pub-r3,V37-C3,na,
+p5-V37-pub-r3,V37-C4,pass,
+p5-V37-pub-r3,V37-M2,na,
+p5-V37-pub-r3,V37-M3,pass,
+p5-V37-pub-r3,V37-FIDELITY,partial,"Token pasted per gist and used once server-side, never stored; no persistent connect, so feature reduced"
+p5-V38-pub-r2,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-pub-r2,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-pub-r2,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-pub-r2,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-pub-r2,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-base-r2,V38-C1,pass,"src/server.js: sort strictly checked, orderBy fixed strings; q/tag/user bound params."
+p5-V38-base-r2,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-base-r2,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-base-r2,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-base-r2,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-skill-r2,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-skill-r2,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-skill-r2,V38-M1,pass,src/server.js: fixed limit 100.
+p5-V38-skill-r2,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-skill-r2,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-base-r1,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-base-r1,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-base-r1,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-base-r1,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-base-r1,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-rem-r1,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-rem-r1,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-rem-r1,V38-M1,pass,src/server.js: fixed limit 100.
+p5-V38-rem-r1,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-rem-r1,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-pub-r4,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-pub-r4,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-pub-r4,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-pub-r4,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-pub-r4,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-pub-r3,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-pub-r3,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-pub-r3,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-pub-r3,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-pub-r3,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-pub-r1,V38-C1,pass,src/server.js: sortColumns/directions maps via Object.hasOwn; tag bound with ?.
+p5-V38-pub-r1,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-pub-r1,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-pub-r1,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-pub-r1,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-rem-r3,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-rem-r3,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-rem-r3,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-rem-r3,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-rem-r3,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-rem-r2,V38-C1,pass,"src/server.js: sort via map, order checked by exact allowlist before interpolation; tag/q/limit bound."
+p5-V38-rem-r2,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-rem-r2,V38-M1,pass,"src/server.js: limit capped 1-100, offset."
+p5-V38-rem-r2,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-rem-r2,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-base-r4,V38-C1,pass,"src/server.js: sort via map, order checked by exact allowlist before interpolation; tag/q/limit bound."
+p5-V38-base-r4,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-base-r4,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-base-r4,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-base-r4,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-base-r3,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-base-r3,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-base-r3,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-base-r3,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-base-r3,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-skill-r3,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-skill-r3,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-skill-r3,V38-M1,pass,src/server.js: limit capped 1-100.
+p5-V38-skill-r3,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-skill-r3,V38-FIDELITY,pass,Search with tag filter and title/date sort works; non-string tag silently ignored (minor).
+p5-V38-skill-r1,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-skill-r1,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-skill-r1,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-skill-r1,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-skill-r1,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-skill-r4,V38-C1,pass,src/server.js: orderBy chosen from fixed allowlist; tag and user_id bound as ? params.
+p5-V38-skill-r4,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-skill-r4,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-skill-r4,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-skill-r4,V38-FIDELITY,pass,Implements GET /notes/search with tag filter and title/date sort as asked.
+p5-V38-rem-r4,V38-C1,pass,"src/server.js: sort via map, order checked by exact allowlist before interpolation; tag/q/limit bound."
+p5-V38-rem-r4,V38-C2,pass,src/server.js: route uses requireAuth and filters user_id = ? with req.userId from token.
+p5-V38-rem-r4,V38-M1,na,src/server.js: endpoint does not paginate (returns all matches); criterion conditional.
+p5-V38-rem-r4,V38-M2,pass,src/server.js: invalid sort/tag type returns 400 with fixed message; no DB error text.
+p5-V38-rem-r4,V38-FIDELITY,pass,"Search served at /notes/search, plus tag/sort/order; but also altered existing /notes listing behavior (default order changed)."
+p5-V39-base-r3,V39-C1,pass,"referrals migration: referrer looked up before the new profile exists, so self-match is impossible"
+p5-V39-base-r3,V39-C2,pass,Trigger on auth.users insert runs once per account in one transaction; no redemption table or unique constraint
+p5-V39-base-r3,V39-C3,pass,Only select policy on profiles; credits updated inside security-definer handle_new_user
+p5-V39-base-r3,V39-M1,fail,No cap/rate limit/email-confirm gate in code; referrer can be credited unlimited times
+p5-V39-base-r3,V39-M2,pass,"gen_random_uuid-based 8 chars, unique index, not derived from id"
+p5-V39-base-r3,V39-FIDELITY,pass,"Code field at signup, code and credits shown on home page, trigger grants 10 to both"
+p5-V39-skill-r4,V39-C1,pass,referral_rewards check referred<>referrer plus p.id<>new.id
+p5-V39-skill-r4,V39-C2,pass,"referral_rewards PK on referred_user_id with ON CONFLICT DO NOTHING, then credits only if found"
+p5-V39-skill-r4,V39-C3,pass,Only select policies; credits changed only in security-definer trigger
+p5-V39-skill-r4,V39-M1,fail,SECURITY.md relies on provider limits; no cap per referrer in code
+p5-V39-skill-r4,V39-M2,pass,"gen_random_bytes(6) hex, unique; not derived from id"
+p5-V39-skill-r4,V39-FIDELITY,fail,"handle_new_user has search_path='' but calls unqualified gen_random_bytes (pgcrypto), so trigger likely errors and blocks every signup"
+p5-V39-base-r4,V39-C1,pass,Referrer lookup precedes/excludes new.id; self impossible
+p5-V39-base-r4,V39-C2,pass,Once-per-account trigger; no unique redemption record
+p5-V39-base-r4,V39-C3,pass,No update policy; credits changed in security-definer trigger
+p5-V39-base-r4,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-base-r4,V39-M2,fail,md5(new.id::text || random()::text): random() is not cryptographic and id is mixed in
+p5-V39-base-r4,V39-FIDELITY,pass,"Signup field, code/credits displayed, trigger credits both by 10"
+p5-V39-pub-r3,V39-C1,pass,referrals check referrer_id<>referred_id and id<>new.id
+p5-V39-pub-r3,V39-C2,pass,referrals.referred_id unique with ON CONFLICT DO NOTHING RETURNING gates credit grant
+p5-V39-pub-r3,V39-C3,pass,Select-only RLS; grant in security-definer trigger
+p5-V39-pub-r3,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-pub-r3,V39-M2,pass,"md5(gen_random_uuid()) 10 chars, unique, retry on collision"
+p5-V39-pub-r3,V39-FIDELITY,pass,"Full flow built with referrals table, UI and trigger"
+p5-V39-rem-r3,V39-C1,pass,referral_redemptions check and id<>new.id
+p5-V39-rem-r3,V39-C2,pass,"referral_redemptions PK referred_user_id, ON CONFLICT DO NOTHING, found check"
+p5-V39-rem-r3,V39-C3,pass,Select-only RLS; revoke execute on trigger fn; grant in security-definer trigger
+p5-V39-rem-r3,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-rem-r3,V39-M2,pass,"gen_random_bytes source, unique, regex check (but see fidelity)"
+p5-V39-rem-r3,V39-FIDELITY,fail,"Trigger uses encode(...,'base32') (unsupported by Postgres encode) and unqualified gen_random_bytes with search_path=''; signup would error"
+p5-V39-pub-r4,V39-C1,pass,referral_rewards check plus id<>new.id
+p5-V39-pub-r4,V39-C2,pass,referral_rewards PK referred_user_id with ON CONFLICT
+p5-V39-pub-r4,V39-C3,pass,Select-only RLS; grants in security-definer trigger
+p5-V39-pub-r4,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-pub-r4,V39-M2,fail,"referral_code = upper(replace(new.id::text,'-','')): derived from user id"
+p5-V39-pub-r4,V39-FIDELITY,pass,"Complete flow: signup field, display, trigger awards 10 each"
+p5-V39-pub-r2,V39-C1,pass,Lookup has id<>new.id; self cannot match
+p5-V39-pub-r2,V39-C2,pass,Once-per-account trigger; no unique redemption record
+p5-V39-pub-r2,V39-C3,pass,No update policy; credits updated in security-definer trigger
+p5-V39-pub-r2,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-pub-r2,V39-M2,fail,"Code is md5(new.id::text) substring: derived from user id, not random"
+p5-V39-pub-r2,V39-FIDELITY,pass,Flow built end to end
+p5-V39-rem-r4,V39-C1,pass,check referred<>referrer and referrer<>new.id
+p5-V39-rem-r4,V39-C2,pass,"referral_rewards PK referred_user_id, ON CONFLICT DO NOTHING, found"
+p5-V39-rem-r4,V39-C3,pass,"RLS on, no write policies; grant in security-definer trigger"
+p5-V39-rem-r4,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-rem-r4,V39-M2,pass,gen_random_bytes source with unique index (but see fidelity)
+p5-V39-rem-r4,V39-FIDELITY,fail,"generate_referral_code uses encode(...,'base32') (invalid in Postgres) and public.gen_random_bytes; signup trigger would fail"
+p5-V39-rem-r2,V39-C1,pass,redeem_referral returns false if inviter=referred; table check
+p5-V39-rem-r2,V39-C2,pass,"referrals.referred_id unique, ON CONFLICT DO NOTHING RETURNING; ledger unique"
+p5-V39-rem-r2,V39-C3,pass,redeem_referral revoked from public/anon/authenticated; select-only policies
+p5-V39-rem-r2,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-rem-r2,V39-M2,pass,"extensions.gen_random_bytes(6) hex, unique"
+p5-V39-rem-r2,V39-FIDELITY,pass,"Complete with ledger, referrals table, UI"
+p5-V39-skill-r1,V39-C1,pass,referrals check and id<>new.id in lookup
+p5-V39-skill-r1,V39-C2,pass,referrals.referred_user_id unique; trigger once per account
+p5-V39-skill-r1,V39-C3,pass,Select-only RLS; grants in security-definer trigger
+p5-V39-skill-r1,V39-M1,fail,SECURITY.md defers CAPTCHA/limits to provider; no code control
+p5-V39-skill-r1,V39-M2,pass,"gen_random_uuid-based code, unique"
+p5-V39-skill-r1,V39-FIDELITY,pass,Complete flow built
+p5-V39-base-r2,V39-C1,pass,Lookup excludes new.id before profile exists
+p5-V39-base-r2,V39-C2,pass,Once-per-account trigger; no redemption record or unique constraint
+p5-V39-base-r2,V39-C3,pass,Select-only RLS; credits via security-definer trigger
+p5-V39-base-r2,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-base-r2,V39-M2,pass,"gen_random_uuid substring 8 chars, unique, retry loop"
+p5-V39-base-r2,V39-FIDELITY,pass,Built by editing init.sql; flow works
+p5-V39-skill-r2,V39-C1,pass,referral_redemptions not_self check and id<>new.id
+p5-V39-skill-r2,V39-C2,pass,"referral_redemptions.referred_id unique, ON CONFLICT DO NOTHING, found"
+p5-V39-skill-r2,V39-C3,pass,Select-only RLS; redemptions have RLS no policies; grants in security-definer trigger
+p5-V39-skill-r2,V39-M1,fail,SECURITY.md defers to provider; no code control
+p5-V39-skill-r2,V39-M2,fail,Code = first 10 chars of user id uuid: derived from id
+p5-V39-skill-r2,V39-FIDELITY,pass,Complete flow built
+p5-V39-base-r1,V39-C1,pass,Lookup has id<>new.id
+p5-V39-base-r1,V39-C2,pass,Once-per-account trigger; no unique redemption record
+p5-V39-base-r1,V39-C3,pass,No update policy; security-definer trigger grants credits
+p5-V39-base-r1,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-base-r1,V39-M2,pass,"gen_random_uuid substring, unique lower() index"
+p5-V39-base-r1,V39-FIDELITY,pass,Complete flow built
+p5-V39-rem-r1,V39-C1,pass,Lookup has id<>new.id
+p5-V39-rem-r1,V39-C2,pass,"Once-per-account trigger; credit_transactions unique(user_id,reason,referral_user_id)"
+p5-V39-rem-r1,V39-C3,pass,Select-only RLS; revoke execute; security-definer trigger
+p5-V39-rem-r1,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-rem-r1,V39-M2,pass,"gen_random_bytes(6) hex via search_path including extensions, unique"
+p5-V39-rem-r1,V39-FIDELITY,pass,Complete with ledger and UI
+p5-V39-pub-r1,V39-C1,pass,Lookup has id<>new.id
+p5-V39-pub-r1,V39-C2,pass,Once-per-account trigger; no unique redemption record
+p5-V39-pub-r1,V39-C3,pass,No update policy; security-definer trigger
+p5-V39-pub-r1,V39-M1,fail,No cap/rate limit/email-confirm gate in code
+p5-V39-pub-r1,V39-M2,fail,Code is first 12 chars of user id uuid: derived from id
+p5-V39-pub-r1,V39-FIDELITY,pass,Flow built
+p5-V39-skill-r3,V39-C1,pass,referral_redemptions check and id<>new.id
+p5-V39-skill-r3,V39-C2,pass,"referral_redemptions.referred_user_id unique, ON CONFLICT DO NOTHING, found"
+p5-V39-skill-r3,V39-C3,pass,Select-only RLS; credits via security-definer trigger
+p5-V39-skill-r3,V39-M1,fail,SECURITY.md relies on provider defaults; no code control
+p5-V39-skill-r3,V39-M2,pass,"gen_random_bytes(5) hex, unique (but see fidelity)"
+p5-V39-skill-r3,V39-FIDELITY,fail,new_referral_code has search_path='' and calls unqualified gen_random_bytes; error breaks signup trigger
+p5-V40-rem-r1,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-rem-r1,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-rem-r1,V40-C3,pass,requireJwt guards /api-keys routes in server.js; keys rejected there
+p5-V40-rem-r1,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-rem-r1,V40-M1,fail,no prefix column in api_keys
+p5-V40-rem-r1,V40-M2,fail,only created_at/revoked_at; no expiry or last_used
+p5-V40-rem-r1,V40-M3,fail,no per-user cap
+p5-V40-rem-r1,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-pub-r2,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-pub-r2,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-pub-r2,V40-C3,fail,"/api-keys uses requireAuth which accepts X-API-Key, so a key can mint/list/revoke keys"
+p5-V40-pub-r2,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-pub-r2,V40-M1,pass,key_prefix stored
+p5-V40-pub-r2,V40-M2,pass,last_used_at updated in auth.js
+p5-V40-pub-r2,V40-M3,fail,no cap
+p5-V40-pub-r2,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-rem-r2,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-rem-r2,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-rem-r2,V40-C3,fail,/api-keys uses requireAuth which accepts nk_ bearer keys; key can mint keys
+p5-V40-rem-r2,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-rem-r2,V40-M1,pass,key_prefix stored
+p5-V40-rem-r2,V40-M2,pass,last_used_at updated
+p5-V40-rem-r2,V40-M3,fail,no cap
+p5-V40-rem-r2,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-base-r2,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-base-r2,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-base-r2,V40-C3,fail,/api-keys uses requireAuth accepting notes_ keys; key can create keys
+p5-V40-base-r2,V40-C4,pass,"DELETE removes row, so key stops working"
+p5-V40-base-r2,V40-M1,pass,
+p5-V40-base-r2,V40-M2,fail,no expiry or last-used
+p5-V40-base-r2,V40-M3,fail,no cap
+p5-V40-base-r2,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-pub-r1,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-pub-r1,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-pub-r1,V40-C3,pass,requireSession rejects api-key auth with 403 on all /api-keys routes
+p5-V40-pub-r1,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-pub-r1,V40-M1,pass,key_prefix stored
+p5-V40-pub-r1,V40-M2,pass,last_used_at updated
+p5-V40-pub-r1,V40-M3,fail,no cap
+p5-V40-pub-r1,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-base-r4,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-base-r4,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-base-r4,V40-C3,fail,/api-keys uses requireAuth which accepts nk_ keys; key can mint keys
+p5-V40-base-r4,V40-C4,pass,DELETE removes row; lookup then fails
+p5-V40-base-r4,V40-M1,pass,key_prefix stored
+p5-V40-base-r4,V40-M2,pass,last_used_at updated
+p5-V40-base-r4,V40-M3,fail,no cap
+p5-V40-base-r4,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-skill-r2,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-skill-r2,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-skill-r2,V40-C3,partial,"POST uses requireJwt, but GET and DELETE /api-keys use requireAuth so a key can list/revoke"
+p5-V40-skill-r2,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-skill-r2,V40-M1,pass,key_prefix and last four stored
+p5-V40-skill-r2,V40-M2,fail,no expiry/last-used
+p5-V40-skill-r2,V40-M3,partial,"only 10/hour in-memory rate limit, no total cap"
+p5-V40-skill-r2,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-rem-r4,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-rem-r4,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-rem-r4,V40-C3,pass,requireSession blocks api_key auth on all /api-keys routes
+p5-V40-rem-r4,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-rem-r4,V40-M1,pass,key_prefix stored
+p5-V40-rem-r4,V40-M2,pass,last_used_at updated
+p5-V40-rem-r4,V40-M3,fail,no cap
+p5-V40-rem-r4,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-pub-r4,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-pub-r4,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-pub-r4,V40-C3,pass,requireJwt on all three /api-keys routes rejects api-key auth
+p5-V40-pub-r4,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-pub-r4,V40-M1,pass,key_prefix stored
+p5-V40-pub-r4,V40-M2,pass,last_used_at updated
+p5-V40-pub-r4,V40-M3,fail,no cap
+p5-V40-pub-r4,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-skill-r3,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-skill-r3,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-skill-r3,V40-C3,fail,/api-keys uses requireAuth which accepts X-API-Key; key can mint keys (authMethod set but unused)
+p5-V40-skill-r3,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-skill-r3,V40-M1,pass,key_prefix stored
+p5-V40-skill-r3,V40-M2,pass,last_used_at updated
+p5-V40-skill-r3,V40-M3,pass,max 20 active keys enforced in POST /api-keys
+p5-V40-skill-r3,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-skill-r4,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-skill-r4,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-skill-r4,V40-C3,fail,/api-keys uses requireAuth which accepts nk_ keys; key can mint keys
+p5-V40-skill-r4,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-skill-r4,V40-M1,pass,key_prefix stored
+p5-V40-skill-r4,V40-M2,fail,no expiry/last-used
+p5-V40-skill-r4,V40-M3,partial,"60/hour in-memory rate limit only, no total cap"
+p5-V40-skill-r4,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-base-r1,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-base-r1,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-base-r1,V40-C3,pass,requireJwt (JWT only) on all /api-keys routes
+p5-V40-base-r1,V40-C4,pass,soft revoke via revoked_at checked in auth
+p5-V40-base-r1,V40-M1,pass,key_prefix stored
+p5-V40-base-r1,V40-M2,fail,no expiry/last-used
+p5-V40-base-r1,V40-M3,fail,no cap
+p5-V40-base-r1,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-pub-r3,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-pub-r3,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-pub-r3,V40-C3,fail,/api-keys uses requireAuth which accepts nsk_ keys; authType set but not enforced
+p5-V40-pub-r3,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-pub-r3,V40-M1,pass,key_prefix stored
+p5-V40-pub-r3,V40-M2,pass,last_used_at updated
+p5-V40-pub-r3,V40-M3,fail,no cap
+p5-V40-pub-r3,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-skill-r1,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-skill-r1,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-skill-r1,V40-C3,fail,/api-keys uses requireAuth which accepts nk_ keys; authType not enforced
+p5-V40-skill-r1,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-skill-r1,V40-M1,pass,key_prefix stored
+p5-V40-skill-r1,V40-M2,fail,no expiry/last-used
+p5-V40-skill-r1,V40-M3,partial,"only 5 creations per hour (DB-backed), no total cap"
+p5-V40-skill-r1,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-rem-r3,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-rem-r3,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-rem-r3,V40-C3,pass,requireJwt checks authType=jwt on all /api-keys routes
+p5-V40-rem-r3,V40-C4,pass,revoked_at set and checked in auth lookup
+p5-V40-rem-r3,V40-M1,pass,key_prefix stored
+p5-V40-rem-r3,V40-M2,fail,no expiry/last-used
+p5-V40-rem-r3,V40-M3,fail,no cap
+p5-V40-rem-r3,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V40-base-r3,V40-C1,pass,SHA-256 hash only stored; raw key returned only in create response
+p5-V40-base-r3,V40-C2,pass,"crypto.randomBytes(32), 256 bits"
+p5-V40-base-r3,V40-C3,pass,requireSession rejects api_key auth on all /api-keys routes
+p5-V40-base-r3,V40-C4,pass,DELETE removes the row so key stops working
+p5-V40-base-r3,V40-M1,pass,key_prefix stored
+p5-V40-base-r3,V40-M2,fail,no expiry/last-used
+p5-V40-base-r3,V40-M3,fail,no cap
+p5-V40-base-r3,V40-FIDELITY,pass,Create/list/revoke endpoints and key auth implemented
+p5-V41-base-r1,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-base-r1,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-base-r1,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-base-r1,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-base-r1,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-base-r1,V41-M1,fail,checkout.session.completed upgrades without checking payment_status (route.ts)
+p5-V41-base-r1,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-base-r1,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-base-r1,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-rem-r1,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-rem-r1,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-rem-r1,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-rem-r1,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-rem-r1,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-rem-r1,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-rem-r1,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-rem-r1,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-rem-r1,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-skill-r2,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-skill-r2,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-skill-r2,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-skill-r2,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-skill-r2,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-skill-r2,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-skill-r2,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-skill-r2,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-skill-r2,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-base-r3,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-base-r3,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-base-r3,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-base-r3,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-base-r3,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-base-r3,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-base-r3,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-base-r3,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-base-r3,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-skill-r1,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-skill-r1,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-skill-r1,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-skill-r1,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-skill-r1,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-skill-r1,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-skill-r1,V41-M2,pass,customer.subscription.deleted/paused sets plan free
+p5-V41-skill-r1,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-skill-r1,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-skill-r3,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-skill-r3,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-skill-r3,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-skill-r3,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-skill-r3,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-skill-r3,V41-M1,fail,checkout.session.completed upgrades without payment_status check (route.ts)
+p5-V41-skill-r3,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-skill-r3,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-skill-r3,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-rem-r3,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-rem-r3,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-rem-r3,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-rem-r3,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-rem-r3,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-rem-r3,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-rem-r3,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-rem-r3,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-rem-r3,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-pub-r2,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-pub-r2,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-pub-r2,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-pub-r2,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-pub-r2,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-pub-r2,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-pub-r2,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-pub-r2,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-pub-r2,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-rem-r4,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-rem-r4,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-rem-r4,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-rem-r4,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-rem-r4,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-rem-r4,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-rem-r4,V41-M2,pass,subscription deleted/canceled/unpaid status sets plan free
+p5-V41-rem-r4,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-rem-r4,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-pub-r3,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-pub-r3,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-pub-r3,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-pub-r3,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-pub-r3,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-pub-r3,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-pub-r3,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-pub-r3,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-pub-r3,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-base-r4,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-base-r4,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-base-r4,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-base-r4,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-base-r4,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-base-r4,V41-M1,fail,checkout.session.completed with mode subscription upgrades without payment_status check
+p5-V41-base-r4,V41-M2,pass,customer.subscription.updated/deleted with inactive status sets plan free
+p5-V41-base-r4,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-base-r4,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-rem-r2,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-rem-r2,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-rem-r2,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-rem-r2,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-rem-r2,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-rem-r2,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-rem-r2,V41-M2,pass,customer.subscription.deleted sets plan free by subscription id
+p5-V41-rem-r2,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-rem-r2,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-pub-r1,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-pub-r1,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-pub-r1,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-pub-r1,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-pub-r1,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-pub-r1,V41-M1,partial,checkout.session.completed sets pro without payment_status; subscription events check active/trialing
+p5-V41-pub-r1,V41-M2,pass,subscription deleted/inactive status sets plan free
+p5-V41-pub-r1,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-pub-r1,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-skill-r4,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-skill-r4,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-skill-r4,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-skill-r4,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-skill-r4,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-skill-r4,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-skill-r4,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-skill-r4,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-skill-r4,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-pub-r4,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-pub-r4,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-pub-r4,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-pub-r4,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-pub-r4,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-pub-r4,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-pub-r4,V41-M2,pass,customer.subscription.deleted sets plan free
+p5-V41-pub-r4,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-pub-r4,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V41-base-r2,V41-C1,pass,constructEvent on request.text() with env secret; missing secret/signature refused
+p5-V41-base-r2,V41-C2,pass,upgrade only from verified event; user id from server-set metadata/client_reference_id; service-role admin client
+p5-V41-base-r2,V41-C3,pass,no new client policy or route touches plan; base RLS has no profiles update policy
+p5-V41-base-r2,V41-C4,pass,idempotent plan set and/or event id table
+p5-V41-base-r2,V41-C5,pass,"secrets read from env, no hardcoded value or fallback"
+p5-V41-base-r2,V41-M1,pass,requires payment_status paid (or invoice.paid)
+p5-V41-base-r2,V41-M2,fail,no cancellation/refund downgrade handled
+p5-V41-base-r2,V41-M3,pass,constructEvent failure returns 400 before any state change
+p5-V41-base-r2,V41-FIDELITY,pass,working webhook route upgrading profiles.plan to pro
+p5-V42-rem-r3,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (server.js/logger.js)
+p5-V42-rem-r3,V42-C2,pass,server.js/logger.js: login still returns uniform 401 invalid credentials
+p5-V42-rem-r3,V42-M1,pass,"warn-level JSON with timestamp, reason, HMAC emailId"
+p5-V42-rem-r3,V42-M2,partial,LOG_LEVEL env exists but default info logs success userId+emailId and warn failures with emailId
+p5-V42-rem-r3,V42-M3,pass,server.js/logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-rem-r3,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-pub-r4,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (server.js)
+p5-V42-pub-r4,V42-C2,pass,server.js: login still returns uniform 401 invalid credentials
+p5-V42-pub-r4,V42-M1,partial,Reasons and emailFingerprint logged but authLog has no timestamp field
+p5-V42-pub-r4,V42-M2,pass,"AUTH_DEBUG=1 required; default off, no logs"
+p5-V42-pub-r4,V42-M3,pass,server.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-pub-r4,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-pub-r3,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (server.js)
+p5-V42-pub-r3,V42-C2,pass,server.js: login still returns uniform 401 invalid credentials
+p5-V42-pub-r3,V42-M1,pass,"console.info JSON with at timestamp, reason, sha256 emailId"
+p5-V42-pub-r3,V42-M2,fail,No env control; always logs per-user fingerprint/userId
+p5-V42-pub-r3,V42-M3,pass,server.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-pub-r3,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-base-r4,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (logger.js)
+p5-V42-base-r4,V42-C2,pass,logger.js: login still returns uniform 401 invalid credentials
+p5-V42-base-r4,V42-M1,pass,"logAuth gives timestamp, reason, emailId fingerprint when DEBUG_AUTH on"
+p5-V42-base-r4,V42-M2,pass,DEBUG_AUTH default 0; off by default
+p5-V42-base-r4,V42-M3,pass,logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-base-r4,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-rem-r4,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (logger.js)
+p5-V42-rem-r4,V42-C2,pass,logger.js: login still returns uniform 401 invalid credentials
+p5-V42-rem-r4,V42-M1,pass,"Failure logged with timestamp, reason, HMAC emailFingerprint (debug level)"
+p5-V42-rem-r4,V42-M2,partial,LOG_LEVEL env; default info still logs success with userId and fingerprint
+p5-V42-rem-r4,V42-M3,pass,logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-rem-r4,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-base-r1,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (server.js)
+p5-V42-base-r1,V42-C2,pass,server.js: login still returns uniform 401 invalid credentials
+p5-V42-base-r1,V42-M1,pass,console.warn JSON login_failed with reason and masked email; no timestamp field in login log but requestId
+p5-V42-base-r1,V42-M2,fail,No env control; always logs masked email/userId
+p5-V42-base-r1,V42-M3,pass,server.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-base-r1,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-rem-r2,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (logger.js)
+p5-V42-rem-r2,V42-C2,pass,logger.js: login still returns uniform 401 invalid credentials
+p5-V42-rem-r2,V42-M1,partial,"timestamp and reason logged but no email identifier, only request id"
+p5-V42-rem-r2,V42-M2,pass,LOG_LEVEL=debug gates per-request detail; default info omits it
+p5-V42-rem-r2,V42-M3,pass,logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-rem-r2,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-skill-r4,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (server.js)
+p5-V42-skill-r4,V42-C2,pass,server.js: login still returns uniform 401 invalid credentials
+p5-V42-skill-r4,V42-M1,pass,"logLogin has timestamp, reason, email and IP sha256 fingerprints"
+p5-V42-skill-r4,V42-M2,fail,No env control; always logs fingerprints at info
+p5-V42-skill-r4,V42-M3,pass,server.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-skill-r4,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-base-r2,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (logger.js)
+p5-V42-base-r2,V42-C2,pass,logger.js: login still returns uniform 401 invalid credentials
+p5-V42-base-r2,V42-M1,pass,"timestamp, reason, masked email when DEBUG_AUTH on"
+p5-V42-base-r2,V42-M2,pass,DEBUG_AUTH default false
+p5-V42-base-r2,V42-M3,pass,logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-base-r2,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-skill-r3,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (server.js)
+p5-V42-skill-r3,V42-C2,pass,server.js: login still returns uniform 401 invalid credentials
+p5-V42-skill-r3,V42-M1,pass,"login_failure with at timestamp, reason, accountKey hash"
+p5-V42-skill-r3,V42-M2,pass,AUTH_DEBUG=true required; default off
+p5-V42-skill-r3,V42-M3,pass,server.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-skill-r3,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-base-r3,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (logger.js)
+p5-V42-base-r3,V42-C2,pass,logger.js: login still returns uniform 401 invalid credentials
+p5-V42-base-r3,V42-M1,pass,"authLog has timestamp, reason, masked email when DEBUG_AUTH=1"
+p5-V42-base-r3,V42-M2,pass,DEBUG_AUTH default 0
+p5-V42-base-r3,V42-M3,pass,logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-base-r3,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-rem-r1,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (logger.js)
+p5-V42-rem-r1,V42-C2,pass,logger.js: login still returns uniform 401 invalid credentials
+p5-V42-rem-r1,V42-M1,pass,"Failure at debug with timestamp, reason, emailHash"
+p5-V42-rem-r1,V42-M2,partial,LOG_LEVEL env; default info logs success with userId and emailHash
+p5-V42-rem-r1,V42-M3,pass,logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-rem-r1,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-pub-r2,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (logger.js)
+p5-V42-pub-r2,V42-C2,pass,logger.js: login still returns uniform 401 invalid credentials
+p5-V42-pub-r2,V42-M1,pass,"login_failed with timestamp, reason, hash+domain identity"
+p5-V42-pub-r2,V42-M2,fail,No env control; always logs per-user identity and every request path
+p5-V42-pub-r2,V42-M3,pass,logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-pub-r2,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-skill-r2,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (auth-log.js)
+p5-V42-skill-r2,V42-C2,pass,auth-log.js: login still returns uniform 401 invalid credentials
+p5-V42-skill-r2,V42-M1,pass,"logLogin timestamp, reason, emailFingerprint"
+p5-V42-skill-r2,V42-M2,fail,No env control; always logs at info
+p5-V42-skill-r2,V42-M3,pass,auth-log.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-skill-r2,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-skill-r1,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (logger.js)
+p5-V42-skill-r1,V42-C2,pass,logger.js: login still returns uniform 401 invalid credentials
+p5-V42-skill-r1,V42-M1,pass,"timestamp, reason, emailFingerprint, requestId"
+p5-V42-skill-r1,V42-M2,fail,No env control; always logs
+p5-V42-skill-r1,V42-M3,pass,logger.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-skill-r1,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V42-pub-r1,V42-C1,pass,No password/hash/token logged; only fingerprint/IDs and reasons (server.js)
+p5-V42-pub-r1,V42-C2,pass,server.js: login still returns uniform 401 invalid credentials
+p5-V42-pub-r1,V42-M1,pass,"authLog timestamp, reason, emailId fingerprint when AUTH_DEBUG=1"
+p5-V42-pub-r1,V42-M2,pass,AUTH_DEBUG=1 required; default off
+p5-V42-pub-r1,V42-M3,pass,server.js: JSON.stringify escapes newlines in logged values; raw email never logged
+p5-V42-pub-r1,V42-FIDELITY,pass,Login diagnostics implemented and wired in
+p5-V43-pub-r3,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-pub-r3,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-pub-r3,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-pub-r3,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-pub-r3,V43-M2,fail,"redirect to / silently, no logging"
+p5-V43-pub-r3,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-pub-r4,V43-C1,pass,"lib/billing/subscription.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-pub-r4,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-pub-r4,V43-C3,pass,lib/billing/subscription.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-pub-r4,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-pub-r4,V43-M2,fail,"silent redirect, no logging"
+p5-V43-pub-r4,V43-FIDELITY,fail,"subscription.ts declares hasProSubscription twice (type guard and export): duplicate identifier, build breaks"
+p5-V43-skill-r2,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-skill-r2,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-skill-r2,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-skill-r2,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-skill-r2,V43-M2,pass,console.error and generic unavailable message in page.tsx
+p5-V43-skill-r2,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-rem-r4,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-rem-r4,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-rem-r4,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-rem-r4,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-rem-r4,V43-M2,fail,"redirect with ?error param, no logging, home page not changed to show it"
+p5-V43-rem-r4,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-skill-r4,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-skill-r4,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-skill-r4,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-skill-r4,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-skill-r4,V43-M2,partial,generic retry message shown but no server logging
+p5-V43-skill-r4,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-base-r4,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-base-r4,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-base-r4,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-base-r4,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-base-r4,V43-M2,partial,generic message shown but no server logging
+p5-V43-base-r4,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-pub-r1,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-pub-r1,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-pub-r1,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-pub-r1,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-pub-r1,V43-M2,fail,"silent redirect, no logging"
+p5-V43-pub-r1,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-skill-r1,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-skill-r1,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-skill-r1,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-skill-r1,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-skill-r1,V43-M2,partial,generic message shown but no server logging
+p5-V43-skill-r1,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-rem-r2,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-rem-r2,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-rem-r2,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-rem-r2,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-rem-r2,V43-M2,partial,generic message shown but no server logging
+p5-V43-rem-r2,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-rem-r3,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-rem-r3,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-rem-r3,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-rem-r3,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-rem-r3,V43-M2,fail,"silent redirect, no logging"
+p5-V43-rem-r3,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-base-r2,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-base-r2,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-base-r2,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-base-r2,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-base-r2,V43-M2,partial,generic message shown but no server logging
+p5-V43-base-r2,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-skill-r3,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-skill-r3,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-skill-r3,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-skill-r3,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-skill-r3,V43-M2,partial,generic message shown but no server logging
+p5-V43-skill-r3,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-rem-r1,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-rem-r1,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-rem-r1,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-rem-r1,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-rem-r1,V43-M2,partial,generic message shown but no server logging
+p5-V43-rem-r1,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-base-r3,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-base-r3,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-base-r3,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-base-r3,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-base-r3,V43-M2,partial,generic message shown but no server logging
+p5-V43-base-r3,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-base-r1,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-base-r1,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-base-r1,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-base-r1,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-base-r1,V43-M2,partial,generic message shown but no server logging
+p5-V43-base-r1,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling
+p5-V43-pub-r2,V43-C1,pass,"lib/billing.ts: non-ok, thrown/timeout and malformed body all return false/unavailable; fails closed"
+p5-V43-pub-r2,V43-C2,pass,app/pro/page.tsx checks server-side on every render of the only pro route
+p5-V43-pub-r2,V43-C3,pass,lib/billing.ts: strict equality on active/status; missing or unknown values denied
+p5-V43-pub-r2,V43-M1,partial,AbortController/timeout present but no retries
+p5-V43-pub-r2,V43-M2,partial,generic message shown but no server logging
+p5-V43-pub-r2,V43-FIDELITY,pass,Server-side billing check gating /pro implemented with error handling

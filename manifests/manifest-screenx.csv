@@ -1,0 +1,13 @@
+order,run_id,prompt,condition,run,status,date_run
+1,scx-I2-base-r1,I2,baseline,1,done,2026-10-17T15:58:52+05:30
+2,scx-I3-base-r1,I3,baseline,1,blocked,2026-10-17T16:00:41+05:30
+3,scx-R1-base-r1,R1,baseline,1,done,2026-10-17T16:03:02+05:30
+4,scx-L1-base-r1,L1,baseline,1,done,2026-10-17T16:04:26+05:30
+5,scx-D1-base-r1,D1,baseline,1,done,2026-10-17T16:06:05+05:30
+6,scx-G1-base-r1,G1,baseline,1,done,2026-10-17T16:09:40+05:30
+7,scx-I1-base-r1,I1,baseline,1,done,2026-10-17T16:11:16+05:30
+8,scx-O1-base-r1,O1,baseline,1,done,2026-10-17T16:13:17+05:30
+9,scx-U1-base-r1,U1,baseline,1,done,2026-10-17T16:14:39+05:30
+10,scx-R2-base-r1,R2,baseline,1,done,2026-10-17T16:16:12+05:30
+11,scx-W1-base-r1,W1,baseline,1,done,2026-10-17T16:17:58+05:30
+12,scx-T1-base-r1,T1,baseline,1,done,2026-10-17T16:22:19+05:30

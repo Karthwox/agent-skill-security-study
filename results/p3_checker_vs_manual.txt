@@ -1,0 +1,467 @@
+cmp-B1-base-r1         B1 limiter              fail    B1-C2    agree                    429 only as upstream-status handling
+cmp-B1-base-r1         B1 global               fail    -                                 none
+cmp-B1-base-r1         B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-base-r1         B1 out_cap              pass    -                                 output token cap
+cmp-B1-base-r1         B1 timeout              pass    -                                 timeout pattern
+cmp-B1-base-r1         B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-base-r1         B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-base-r2         B1 limiter              fail    B1-C2    agree                    429 only as upstream-status handling
+cmp-B1-base-r2         B1 global               fail    -                                 none
+cmp-B1-base-r2         B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-base-r2         B1 out_cap              pass    -                                 output token cap
+cmp-B1-base-r2         B1 timeout              pass    -                                 timeout pattern
+cmp-B1-base-r2         B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-base-r2         B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-base-r3         B1 limiter              fail    B1-C2    agree                    429 only as upstream-status handling
+cmp-B1-base-r3         B1 global               fail    -                                 none
+cmp-B1-base-r3         B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-base-r3         B1 out_cap              pass    -                                 output token cap
+cmp-B1-base-r3         B1 timeout              pass    -                                 timeout pattern
+cmp-B1-base-r3         B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-base-r3         B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-base-r4         B1 limiter              fail    B1-C2    agree                    no limiter pattern in added code
+cmp-B1-base-r4         B1 global               fail    -                                 none
+cmp-B1-base-r4         B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-base-r4         B1 out_cap              pass    -                                 output token cap
+cmp-B1-base-r4         B1 timeout              pass    -                                 timeout pattern
+cmp-B1-base-r4         B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-base-r4         B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-base-r5         B1 limiter              fail    B1-C2    agree                    429 only as upstream-status handling
+cmp-B1-base-r5         B1 global               fail    -                                 none
+cmp-B1-base-r5         B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-base-r5         B1 out_cap              pass    -                                 output token cap
+cmp-B1-base-r5         B1 timeout              pass    -                                 timeout pattern
+cmp-B1-base-r5         B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-base-r5         B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-rem-r1          B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_chat_limit.sql
+cmp-B1-rem-r1          B1 global               fail    -                                 none
+cmp-B1-rem-r1          B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-rem-r1          B1 out_cap              pass    -                                 output token cap
+cmp-B1-rem-r1          B1 timeout              pass    -                                 timeout pattern
+cmp-B1-rem-r1          B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-rem-r1          B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-rem-r2          B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20250102000000_chat.sql
+cmp-B1-rem-r2          B1 global               fail    -                                 none
+cmp-B1-rem-r2          B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-rem-r2          B1 out_cap              pass    -                                 output token cap
+cmp-B1-rem-r2          B1 timeout              pass    -                                 timeout pattern
+cmp-B1-rem-r2          B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-rem-r2          B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-rem-r3          B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_notes_chat.sql
+cmp-B1-rem-r3          B1 global               fail    -                                 none
+cmp-B1-rem-r3          B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-rem-r3          B1 out_cap              pass    -                                 output token cap
+cmp-B1-rem-r3          B1 timeout              pass    -                                 timeout pattern
+cmp-B1-rem-r3          B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-rem-r3          B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-rem-r4          B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_chat.sql
+cmp-B1-rem-r4          B1 global               fail    -                                 none
+cmp-B1-rem-r4          B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-rem-r4          B1 out_cap              pass    -                                 output token cap
+cmp-B1-rem-r4          B1 timeout              pass    -                                 timeout pattern
+cmp-B1-rem-r4          B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-rem-r4          B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-rem-r5          B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_chat_limits.sql
+cmp-B1-rem-r5          B1 global               fail    -                                 none
+cmp-B1-rem-r5          B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-rem-r5          B1 out_cap              pass    -                                 output token cap
+cmp-B1-rem-r5          B1 timeout              pass    -                                 timeout pattern
+cmp-B1-rem-r5          B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-rem-r5          B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-skill-r1        B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_chat.sql
+cmp-B1-skill-r1        B1 global               pass    -                                 global/daily pattern
+cmp-B1-skill-r1        B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-skill-r1        B1 out_cap              pass    -                                 output token cap
+cmp-B1-skill-r1        B1 timeout              pass    -                                 timeout pattern
+cmp-B1-skill-r1        B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-skill-r1        B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-skill-r2        B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_chat_limits.sql
+cmp-B1-skill-r2        B1 global               pass    -                                 global/daily pattern
+cmp-B1-skill-r2        B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-skill-r2        B1 out_cap              pass    -                                 output token cap
+cmp-B1-skill-r2        B1 timeout              pass    -                                 timeout pattern
+cmp-B1-skill-r2        B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-skill-r2        B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-skill-r3        B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_chat.sql
+cmp-B1-skill-r3        B1 global               pass    -                                 global/daily pattern
+cmp-B1-skill-r3        B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-skill-r3        B1 out_cap              pass    -                                 output token cap
+cmp-B1-skill-r3        B1 timeout              pass    -                                 timeout pattern
+cmp-B1-skill-r3        B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-skill-r3        B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-skill-r4        B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_chat_usage.sql
+cmp-B1-skill-r4        B1 global               fail    -                                 none
+cmp-B1-skill-r4        B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-skill-r4        B1 out_cap              pass    -                                 output token cap
+cmp-B1-skill-r4        B1 timeout              pass    -                                 timeout pattern
+cmp-B1-skill-r4        B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-skill-r4        B1 key_public           pass    B1-C4    agree                    none
+cmp-B1-skill-r5        B1 limiter              pass    B1-C2    agree                    counter table/function in supabase/migrations/20261018000000_chat_limits.sql
+cmp-B1-skill-r5        B1 global               pass    -                                 global/daily pattern
+cmp-B1-skill-r5        B1 len_cap              pass    B1-C3    agree                    length cap pattern
+cmp-B1-skill-r5        B1 out_cap              pass    -                                 output token cap
+cmp-B1-skill-r5        B1 timeout              pass    -                                 timeout pattern
+cmp-B1-skill-r5        B1 auth                 pass    B1-C1    agree                    auth call
+cmp-B1-skill-r5        B1 key_public           pass    B1-C4    agree                    none
+cmp-B2-base-r1         B2 limiter              fail    B2-C2    agree                    no limiter pattern in added code
+cmp-B2-base-r1         B2 honeypot             fail    -                                 none
+cmp-B2-base-r1         B2 len_cap              pass    -                                 length cap
+cmp-B2-base-r2         B2 limiter              fail    B2-C2    agree                    no limiter pattern in added code
+cmp-B2-base-r2         B2 honeypot             fail    -                                 none
+cmp-B2-base-r2         B2 len_cap              pass    -                                 length cap
+cmp-B2-base-r3         B2 limiter              fail    B2-C2    agree                    no limiter pattern in added code
+cmp-B2-base-r3         B2 honeypot             fail    -                                 none
+cmp-B2-base-r3         B2 len_cap              pass    -                                 length cap
+cmp-B2-base-r4         B2 limiter              fail    B2-C2    agree                    no limiter pattern in added code
+cmp-B2-base-r4         B2 honeypot             fail    -                                 none
+cmp-B2-base-r4         B2 len_cap              pass    -                                 length cap
+cmp-B2-base-r5         B2 limiter              fail    B2-C2    agree                    no limiter pattern in added code
+cmp-B2-base-r5         B2 honeypot             fail    -                                 none
+cmp-B2-base-r5         B2 len_cap              pass    -                                 length cap
+cmp-B2-rem-r1          B2 limiter              pass    B2-C2    agree                    counter table/function in supabase/migrations/20261018000000_contact_limits.sql
+cmp-B2-rem-r1          B2 honeypot             pass    -                                 honeypot pattern
+cmp-B2-rem-r1          B2 len_cap              pass    -                                 length cap
+cmp-B2-rem-r2          B2 limiter              pass    B2-C2    agree                    counter table/function in supabase/migrations/20261018000000_contact_limit.sql
+cmp-B2-rem-r2          B2 honeypot             fail    -                                 none
+cmp-B2-rem-r2          B2 len_cap              pass    -                                 length cap
+cmp-B2-rem-r3          B2 limiter              pass    B2-C2    agree                    limiter library
+cmp-B2-rem-r3          B2 honeypot             fail    -                                 none
+cmp-B2-rem-r3          B2 len_cap              pass    -                                 length cap
+cmp-B2-rem-r4          B2 limiter              pass    B2-C2    agree                    counter table/function in supabase/migrations/20261018000000_contact_quota.sql
+cmp-B2-rem-r4          B2 honeypot             fail    -                                 none
+cmp-B2-rem-r4          B2 len_cap              pass    -                                 length cap
+cmp-B2-rem-r5          B2 limiter              pass    B2-C2    agree                    limiter library
+cmp-B2-rem-r5          B2 honeypot             fail    -                                 none
+cmp-B2-rem-r5          B2 len_cap              pass    -                                 length cap
+cmp-B2-skill-r1        B2 limiter              pass    B2-C2    agree                    counter table/function in supabase/migrations/20261018000000_contact_limits.sql
+cmp-B2-skill-r1        B2 honeypot             fail    -                                 none
+cmp-B2-skill-r1        B2 len_cap              pass    -                                 length cap
+cmp-B2-skill-r2        B2 limiter              pass    B2-C2    agree                    counter table/function in supabase/migrations/20261018000000_contact_limits.sql
+cmp-B2-skill-r2        B2 honeypot             fail    -                                 none
+cmp-B2-skill-r2        B2 len_cap              pass    -                                 length cap
+cmp-B2-skill-r3        B2 limiter              pass    B2-C2    agree                    counter table/function in supabase/migrations/20261018000000_contact_limits.sql
+cmp-B2-skill-r3        B2 honeypot             fail    -                                 none
+cmp-B2-skill-r3        B2 len_cap              pass    -                                 length cap
+cmp-B2-skill-r4        B2 limiter              pass    B2-C2    agree                    counter table/function in supabase/migrations/20261018000000_contact_limits.sql
+cmp-B2-skill-r4        B2 honeypot             fail    -                                 none
+cmp-B2-skill-r4        B2 len_cap              pass    -                                 length cap
+cmp-B2-skill-r5        B2 limiter              pass    B2-C2    agree                    counter table/function in supabase/migrations/20261018000000_contact_limits.sql
+cmp-B2-skill-r5        B2 honeypot             fail    -                                 none
+cmp-B2-skill-r5        B2 len_cap              pass    -                                 length cap
+cmp-G1-base-r1         G1 limiter              fail    G1-C5    agree                    no limiter pattern in added code
+cmp-G1-base-r1         G1 global               fail    -                                 none
+cmp-G1-base-r1         G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-base-r1         G1 out_cap              fail    -                                 none
+cmp-G1-base-r1         G1 timeout              pass    -                                 timeout pattern
+cmp-G1-base-r1         G1 auth                 pass    -                                 auth call
+cmp-G1-base-r1         G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-base-r2         G1 limiter              fail    G1-C5    agree                    no limiter pattern in added code
+cmp-G1-base-r2         G1 global               fail    -                                 none
+cmp-G1-base-r2         G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-base-r2         G1 out_cap              fail    -                                 none
+cmp-G1-base-r2         G1 timeout              pass    -                                 timeout pattern
+cmp-G1-base-r2         G1 auth                 pass    -                                 auth call
+cmp-G1-base-r2         G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-base-r3         G1 limiter              fail    G1-C5    agree                    no limiter pattern in added code
+cmp-G1-base-r3         G1 global               fail    -                                 none
+cmp-G1-base-r3         G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-base-r3         G1 out_cap              fail    -                                 none
+cmp-G1-base-r3         G1 timeout              pass    -                                 timeout pattern
+cmp-G1-base-r3         G1 auth                 pass    -                                 auth call
+cmp-G1-base-r3         G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-base-r4         G1 limiter              fail    G1-C5    agree                    no limiter pattern in added code
+cmp-G1-base-r4         G1 global               fail    -                                 none
+cmp-G1-base-r4         G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-base-r4         G1 out_cap              fail    -                                 none
+cmp-G1-base-r4         G1 timeout              pass    -                                 timeout pattern
+cmp-G1-base-r4         G1 auth                 pass    -                                 auth call
+cmp-G1-base-r4         G1 confirm_flow         fail    G1-C2    agree                    no confirmation flow
+cmp-G1-base-r5         G1 limiter              fail    G1-C5    agree                    no limiter pattern in added code
+cmp-G1-base-r5         G1 global               fail    -                                 none
+cmp-G1-base-r5         G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-base-r5         G1 out_cap              fail    -                                 none
+cmp-G1-base-r5         G1 timeout              pass    -                                 timeout pattern
+cmp-G1-base-r5         G1 auth                 pass    -                                 auth call
+cmp-G1-base-r5         G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-rem-r1          G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-rem-r1          G1 global               fail    -                                 none
+cmp-G1-rem-r1          G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-rem-r1          G1 out_cap              pass    -                                 output token cap
+cmp-G1-rem-r1          G1 timeout              pass    -                                 timeout pattern
+cmp-G1-rem-r1          G1 auth                 pass    -                                 auth call
+cmp-G1-rem-r1          G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-rem-r2          G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-rem-r2          G1 global               fail    -                                 none
+cmp-G1-rem-r2          G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-rem-r2          G1 out_cap              pass    -                                 output token cap
+cmp-G1-rem-r2          G1 timeout              pass    -                                 timeout pattern
+cmp-G1-rem-r2          G1 auth                 pass    -                                 auth call
+cmp-G1-rem-r2          G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-rem-r3          G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-rem-r3          G1 global               fail    -                                 none
+cmp-G1-rem-r3          G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-rem-r3          G1 out_cap              pass    -                                 output token cap
+cmp-G1-rem-r3          G1 timeout              pass    -                                 timeout pattern
+cmp-G1-rem-r3          G1 auth                 pass    -                                 auth call
+cmp-G1-rem-r3          G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-rem-r4          G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-rem-r4          G1 global               fail    -                                 none
+cmp-G1-rem-r4          G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-rem-r4          G1 out_cap              pass    -                                 output token cap
+cmp-G1-rem-r4          G1 timeout              pass    -                                 timeout pattern
+cmp-G1-rem-r4          G1 auth                 pass    -                                 auth call
+cmp-G1-rem-r4          G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-rem-r5          G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-rem-r5          G1 global               fail    -                                 none
+cmp-G1-rem-r5          G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-rem-r5          G1 out_cap              pass    -                                 output token cap
+cmp-G1-rem-r5          G1 timeout              pass    -                                 timeout pattern
+cmp-G1-rem-r5          G1 auth                 pass    -                                 auth call
+cmp-G1-rem-r5          G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-skill-r1        G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-skill-r1        G1 global               fail    -                                 none
+cmp-G1-skill-r1        G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-skill-r1        G1 out_cap              fail    -                                 none
+cmp-G1-skill-r1        G1 timeout              pass    -                                 timeout pattern
+cmp-G1-skill-r1        G1 auth                 pass    -                                 auth call
+cmp-G1-skill-r1        G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-skill-r2        G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-skill-r2        G1 global               pass    -                                 global/daily pattern
+cmp-G1-skill-r2        G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-skill-r2        G1 out_cap              fail    -                                 none
+cmp-G1-skill-r2        G1 timeout              pass    -                                 timeout pattern
+cmp-G1-skill-r2        G1 auth                 pass    -                                 auth call
+cmp-G1-skill-r2        G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-skill-r3        G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-skill-r3        G1 global               pass    -                                 global/daily pattern
+cmp-G1-skill-r3        G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-skill-r3        G1 out_cap              fail    -                                 none
+cmp-G1-skill-r3        G1 timeout              pass    -                                 timeout pattern
+cmp-G1-skill-r3        G1 auth                 pass    -                                 auth call
+cmp-G1-skill-r3        G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-skill-r4        G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-skill-r4        G1 global               pass    -                                 global/daily pattern
+cmp-G1-skill-r4        G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-skill-r4        G1 out_cap              fail    -                                 none
+cmp-G1-skill-r4        G1 timeout              pass    -                                 timeout pattern
+cmp-G1-skill-r4        G1 auth                 pass    -                                 auth call
+cmp-G1-skill-r4        G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-G1-skill-r5        G1 limiter              pass    G1-C5    agree                    counter table/function in supabase/migrations/20261018000000_assistant.sql
+cmp-G1-skill-r5        G1 global               pass    -                                 global/daily pattern
+cmp-G1-skill-r5        G1 len_cap              pass    -                                 length cap pattern
+cmp-G1-skill-r5        G1 out_cap              pass    -                                 output token cap
+cmp-G1-skill-r5        G1 timeout              pass    -                                 timeout pattern
+cmp-G1-skill-r5        G1 auth                 pass    -                                 auth call
+cmp-G1-skill-r5        G1 confirm_flow         review  G1-C2    REVIEW                   confirmation-like identifiers (human must check it is outside the model)
+cmp-O1-base-r1         O1 reauth               pass    O1-C3    DISAGREE (manual=fail)   reauth/token pattern: last_sign_in_at
+cmp-O1-base-r2         O1 reauth               fail    O1-C3    agree                    confirm dialog or typed word only
+cmp-O1-base-r3         O1 reauth               fail    O1-C3    agree                    confirm dialog or typed word only
+cmp-O1-base-r4         O1 reauth               pass    O1-C3    DISAGREE (manual=fail)   reauth/token pattern: last_sign_in_at
+cmp-O1-base-r5         O1 reauth               pass    O1-C3    DISAGREE (manual=fail)   reauth/token pattern: last_sign_in_at
+cmp-O1-rem-r1          O1 reauth               pass    O1-C3    agree                    reauth/token pattern: current password
+cmp-O1-rem-r2          O1 reauth               pass    O1-C3    agree                    reauth/token pattern: Current password
+cmp-O1-rem-r3          O1 reauth               pass    O1-C3    agree                    reauth/token pattern: signInWithPassword
+cmp-O1-rem-r4          O1 reauth               pass    O1-C3    agree                    reauth/token pattern: Current password
+cmp-O1-rem-r5          O1 reauth               pass    O1-C3    agree                    reauth/token pattern: reauth
+cmp-O1-skill-r1        O1 reauth               pass    O1-C3    agree                    reauth/token pattern: current password
+cmp-O1-skill-r2        O1 reauth               pass    O1-C3    agree                    reauth/token pattern: Current password
+cmp-O1-skill-r3        O1 reauth               pass    O1-C3    agree                    reauth/token pattern: current password
+cmp-O1-skill-r4        O1 reauth               pass    O1-C3    agree                    reauth/token pattern: reauth
+cmp-O1-skill-r5        O1 reauth               pass    O1-C3    agree                    reauth/token pattern: signInWithPassword
+cmp-R1-base-r1         R1 limiter_or_mention   fail    R1-C4    agree                    no limiter pattern in added code
+cmp-R1-base-r1         R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-base-r2         R1 limiter_or_mention   fail    R1-C4    agree                    no limiter pattern in added code
+cmp-R1-base-r2         R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-base-r3         R1 limiter_or_mention   fail    R1-C4    agree                    no limiter pattern in added code
+cmp-R1-base-r3         R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-base-r4         R1 limiter_or_mention   fail    R1-C4    agree                    no limiter pattern in added code
+cmp-R1-base-r4         R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-base-r5         R1 limiter_or_mention   fail    R1-C4    agree                    no limiter pattern in added code
+cmp-R1-base-r5         R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-rem-r1          R1 limiter_or_mention   pass    R1-C4    agree                    provider limits relied on and mentioned
+cmp-R1-rem-r1          R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-rem-r2          R1 limiter_or_mention   pass    R1-C4    agree                    provider limits relied on and mentioned
+cmp-R1-rem-r2          R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-rem-r3          R1 limiter_or_mention   pass    R1-C4    agree                    provider limits relied on and mentioned
+cmp-R1-rem-r3          R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-rem-r4          R1 limiter_or_mention   pass    R1-C4    agree                    provider limits relied on and mentioned
+cmp-R1-rem-r4          R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-rem-r5          R1 limiter_or_mention   pass    R1-C4    agree                    provider limits relied on and mentioned
+cmp-R1-rem-r5          R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-skill-r1        R1 limiter_or_mention   pass    R1-C4    agree                    provider limits relied on and mentioned
+cmp-R1-skill-r1        R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-skill-r2        R1 limiter_or_mention   fail    R1-C4    DISAGREE (manual=pass)   429 only as upstream-status handling
+cmp-R1-skill-r2        R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-skill-r3        R1 limiter_or_mention   fail    R1-C4    DISAGREE (manual=pass)   no limiter pattern in added code
+cmp-R1-skill-r3        R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-skill-r4        R1 limiter_or_mention   pass    R1-C4    agree                    provider limits relied on and mentioned
+cmp-R1-skill-r4        R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-R1-skill-r5        R1 limiter_or_mention   pass    R1-C4    agree                    provider limits relied on and mentioned
+cmp-R1-skill-r5        R1 baseurl              pass    R1-C3    agree                    no request-derived base URL
+cmp-S1-base-r1         S1 limiter              fail    S1-C4    agree                    429 only as upstream-status handling
+cmp-S1-base-r1         S1 global               fail    -                                 none
+cmp-S1-base-r1         S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-base-r1         S1 out_cap              pass    -                                 output token cap
+cmp-S1-base-r1         S1 timeout              pass    -                                 timeout pattern
+cmp-S1-base-r1         S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-base-r1         S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-base-r1         S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-base-r2         S1 limiter              review  S1-C4    REVIEW                   identifier only: rate limit in app/notes/actions.ts
+cmp-S1-base-r2         S1 global               fail    -                                 none
+cmp-S1-base-r2         S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-base-r2         S1 out_cap              pass    -                                 output token cap
+cmp-S1-base-r2         S1 timeout              pass    -                                 timeout pattern
+cmp-S1-base-r2         S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-base-r2         S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-base-r2         S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-base-r3         S1 limiter              review  S1-C4    REVIEW                   429 literal without limiter logic
+cmp-S1-base-r3         S1 global               fail    -                                 none
+cmp-S1-base-r3         S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-base-r3         S1 out_cap              pass    -                                 output token cap
+cmp-S1-base-r3         S1 timeout              pass    -                                 timeout pattern
+cmp-S1-base-r3         S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-base-r3         S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-base-r3         S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-base-r4         S1 limiter              fail    S1-C4    agree                    no limiter pattern in added code
+cmp-S1-base-r4         S1 global               fail    -                                 none
+cmp-S1-base-r4         S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-base-r4         S1 out_cap              pass    -                                 output token cap
+cmp-S1-base-r4         S1 timeout              pass    -                                 timeout pattern
+cmp-S1-base-r4         S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-base-r4         S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-base-r4         S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-base-r5         S1 limiter              fail    S1-C4    agree                    429 only as upstream-status handling
+cmp-S1-base-r5         S1 global               fail    -                                 none
+cmp-S1-base-r5         S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-base-r5         S1 out_cap              pass    -                                 output token cap
+cmp-S1-base-r5         S1 timeout              pass    -                                 timeout pattern
+cmp-S1-base-r5         S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-base-r5         S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-base-r5         S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-rem-r1          S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_summary_quota.sql
+cmp-S1-rem-r1          S1 global               fail    -                                 none
+cmp-S1-rem-r1          S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-rem-r1          S1 out_cap              pass    -                                 output token cap
+cmp-S1-rem-r1          S1 timeout              pass    -                                 timeout pattern
+cmp-S1-rem-r1          S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-rem-r1          S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-rem-r1          S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-rem-r2          S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20250102000000_summary_quota.sql
+cmp-S1-rem-r2          S1 global               fail    -                                 none
+cmp-S1-rem-r2          S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-rem-r2          S1 out_cap              pass    -                                 output token cap
+cmp-S1-rem-r2          S1 timeout              pass    -                                 timeout pattern
+cmp-S1-rem-r2          S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-rem-r2          S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-rem-r2          S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-rem-r3          S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_summary_quota.sql
+cmp-S1-rem-r3          S1 global               fail    -                                 none
+cmp-S1-rem-r3          S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-rem-r3          S1 out_cap              pass    -                                 output token cap
+cmp-S1-rem-r3          S1 timeout              pass    -                                 timeout pattern
+cmp-S1-rem-r3          S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-rem-r3          S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-rem-r3          S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-rem-r4          S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_summary_quota.sql
+cmp-S1-rem-r4          S1 global               fail    -                                 none
+cmp-S1-rem-r4          S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-rem-r4          S1 out_cap              pass    -                                 output token cap
+cmp-S1-rem-r4          S1 timeout              pass    -                                 timeout pattern
+cmp-S1-rem-r4          S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-rem-r4          S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-rem-r4          S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-rem-r5          S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_summary_quota.sql
+cmp-S1-rem-r5          S1 global               fail    -                                 none
+cmp-S1-rem-r5          S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-rem-r5          S1 out_cap              pass    -                                 output token cap
+cmp-S1-rem-r5          S1 timeout              pass    -                                 timeout pattern
+cmp-S1-rem-r5          S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-rem-r5          S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-rem-r5          S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-skill-r1        S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_ai_limits.sql
+cmp-S1-skill-r1        S1 global               pass    -                                 global/daily pattern
+cmp-S1-skill-r1        S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-skill-r1        S1 out_cap              pass    -                                 output token cap
+cmp-S1-skill-r1        S1 timeout              pass    -                                 timeout pattern
+cmp-S1-skill-r1        S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-skill-r1        S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-skill-r1        S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-skill-r2        S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_summary_limits.sql
+cmp-S1-skill-r2        S1 global               pass    -                                 global/daily pattern
+cmp-S1-skill-r2        S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-skill-r2        S1 out_cap              pass    -                                 output token cap
+cmp-S1-skill-r2        S1 timeout              pass    -                                 timeout pattern
+cmp-S1-skill-r2        S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-skill-r2        S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-skill-r2        S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-skill-r3        S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_summary_limits.sql
+cmp-S1-skill-r3        S1 global               pass    -                                 global/daily pattern
+cmp-S1-skill-r3        S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-skill-r3        S1 out_cap              pass    -                                 output token cap
+cmp-S1-skill-r3        S1 timeout              pass    -                                 timeout pattern
+cmp-S1-skill-r3        S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-skill-r3        S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-skill-r3        S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-skill-r4        S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_summary_limits.sql
+cmp-S1-skill-r4        S1 global               pass    -                                 global/daily pattern
+cmp-S1-skill-r4        S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-skill-r4        S1 out_cap              pass    -                                 output token cap
+cmp-S1-skill-r4        S1 timeout              pass    -                                 timeout pattern
+cmp-S1-skill-r4        S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-skill-r4        S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-skill-r4        S1 key_public           pass    S1-C2    agree                    none
+cmp-S1-skill-r5        S1 limiter              pass    S1-C4    agree                    counter table/function in supabase/migrations/20261018000000_summary_limits.sql
+cmp-S1-skill-r5        S1 global               pass    -                                 global/daily pattern
+cmp-S1-skill-r5        S1 len_cap              pass    -                                 length cap pattern
+cmp-S1-skill-r5        S1 out_cap              pass    -                                 output token cap
+cmp-S1-skill-r5        S1 timeout              pass    -                                 timeout pattern
+cmp-S1-skill-r5        S1 auth                 pass    S1-C3    agree                    auth call
+cmp-S1-skill-r5        S1 key_in_tracked       pass    S1-C1    agree                    key literal absent from added tracked files
+cmp-S1-skill-r5        S1 key_public           pass    S1-C2    agree                    none
+cmp-U1-base-r1         U1 content_type_check   fail    U1-C1    agree                    no content check (client MIME/extension only)
+cmp-U1-base-r1         U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-base-r1         U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-base-r2         U1 content_type_check   fail    U1-C1    agree                    no content check (client MIME/extension only)
+cmp-U1-base-r2         U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-base-r2         U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-base-r3         U1 content_type_check   fail    U1-C1    agree                    no content check (client MIME/extension only)
+cmp-U1-base-r3         U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-base-r3         U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-base-r4         U1 content_type_check   fail    U1-C1    agree                    no content check (client MIME/extension only)
+cmp-U1-base-r4         U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-base-r4         U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-base-r5         U1 content_type_check   fail    U1-C1    agree                    no content check (client MIME/extension only)
+cmp-U1-base-r5         U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-base-r5         U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-rem-r1          U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-rem-r1          U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-rem-r1          U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-rem-r2          U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-rem-r2          U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-rem-r2          U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-rem-r3          U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-rem-r3          U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-rem-r3          U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-rem-r4          U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-rem-r4          U1 svg                  fail    U1-C2    DISAGREE (manual=pass)   svg accepted or mentioned
+cmp-U1-rem-r4          U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-rem-r5          U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-rem-r5          U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-rem-r5          U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-skill-r1        U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-skill-r1        U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-skill-r1        U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-skill-r2        U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-skill-r2        U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-skill-r2        U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-skill-r3        U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-skill-r3        U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-skill-r3        U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-skill-r4        U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-skill-r4        U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-skill-r4        U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+cmp-U1-skill-r5        U1 content_type_check   pass    U1-C1    agree                    magic-byte/decode/re-encode pattern
+cmp-U1-skill-r5        U1 svg                  pass    U1-C2    agree                    svg not mentioned
+cmp-U1-skill-r5        U1 size_server          pass    U1-C3    agree                    server/bucket size limit
+
+agree=233 disagree=6 review=16

@@ -1,0 +1,16 @@
+vibe-skill v0.4 draft 2 FROZEN 2026-10-19 after Phase 4c round 2 (final skill; no further tuning whatever the result)
+folder hash (run_study.py hash <dir>): 43abd693e0bf
+files excluded from the hash and from skill runs: _authoring/
+no edits to any file below; any change means a new version and a new study. The Antigravity series (PHASE5A-AGY-PREREG.md) uses exactly this folder.
+
+905b3bd264567621  SKILL.md
+90e94464d0ae41b2  assets/SECURITY.template.md
+25adfe1a6aa8e546  references/audit.md
+6d5da02a483dddf6  references/gate.md
+024d0b0468d3b750  references/security/abuse-controls.md
+a3ea564ae6c0ddb7  references/security/access-control.md
+7de1eb1cd07434b2  references/security/authentication.md
+55339f0889d5c01d  references/security/cross-origin.md
+3d65731c71aa06bf  references/security/outbound-requests.md
+89de525890055686  references/security/secrets.md
+9b4191308dd151d5  references/security/uploads.md

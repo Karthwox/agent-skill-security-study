@@ -1,0 +1,46 @@
+run_id,pkg,old,new,bump,evidence,mentioned_in_final
+cmp-B1-base-r4,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-B1-rem-r2,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-B1-rem-r3,@supabase/ssr,^0.5.2,^0.8.0,minor+,none found,False
+cmp-B1-rem-r5,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-B1-skill-r1,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-B1-skill-r4,@supabase/supabase-js,^2.45.0,2.50.0,minor+,security wording near package,False
+cmp-B1-skill-r5,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-B2-rem-r2,@supabase/ssr,^0.5.2,^0.12.7,minor+,none found,False
+cmp-B2-rem-r4,@supabase/ssr,^0.5.2,^0.12.7,minor+,none found,False
+cmp-B2-skill-r4,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-G1-base-r4,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-G1-rem-r1,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-G1-rem-r2,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-G1-rem-r4,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-G1-rem-r5,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-G1-skill-r1,@supabase/supabase-js,^2.45.0,2.45.0,same,none found,False
+cmp-G1-skill-r4,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-G1-skill-r5,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-O1-rem-r1,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-O1-rem-r2,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-O1-rem-r3,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-O1-rem-r4,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-O1-rem-r5,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-O1-skill-r1,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-O1-skill-r3,@supabase/ssr,^0.5.2,^0.12.7,minor+,none found,False
+cmp-O1-skill-r4,@supabase/supabase-js,^2.45.0,2.45.0,same,security wording near package,False
+cmp-O1-skill-r5,@supabase/supabase-js,^2.45.0,2.57.4,minor+,security wording near package,False
+cmp-R1-rem-r1,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-R1-rem-r2,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-R1-rem-r3,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-R1-rem-r4,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-R1-rem-r5,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-R1-skill-r3,@supabase/supabase-js,^2.45.0,2.45.0,same,none found,False
+cmp-S1-rem-r1,@supabase/ssr,^0.5.2,^0.12.7,minor+,none found,False
+cmp-S1-rem-r2,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-S1-rem-r3,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-S1-rem-r4,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-S1-rem-r5,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-U1-rem-r1,@supabase/ssr,^0.5.2,^0.12.7,minor+,none found,False
+cmp-U1-rem-r2,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-U1-rem-r3,@supabase/ssr,^0.5.2,^0.12.7,minor+,none found,False
+cmp-U1-rem-r4,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-U1-rem-r5,@supabase/ssr,^0.5.2,^0.12.7,minor+,security wording near package,False
+cmp-U1-skill-r1,@supabase/supabase-js,^2.45.0,2.57.4,minor+,security wording near package,False
+cmp-U1-skill-r3,@supabase/supabase-js,^2.45.0,2.45.0,same,none found,False

@@ -1,0 +1,631 @@
+run_id,criterion,status,note
+cmp-S1-base-r1,S1-C1,pass,
+cmp-S1-base-r1,S1-C2,pass,
+cmp-S1-base-r1,S1-C3,pass,
+cmp-S1-base-r1,S1-C4,fail,no per-user limit or quota
+cmp-S1-base-r1,S1-M1,pass,key never repeated
+cmp-S1-base-r1,S1-M3,pass,errors when key missing; model default only
+cmp-S1-base-r2,S1-C1,pass,
+cmp-S1-base-r2,S1-C2,pass,
+cmp-S1-base-r2,S1-C3,pass,
+cmp-S1-base-r2,S1-C4,fail,no per-user limit or quota
+cmp-S1-base-r2,S1-M3,pass,errors when key missing; model default only
+cmp-S1-base-r3,S1-C1,pass,
+cmp-S1-base-r3,S1-C2,pass,
+cmp-S1-base-r3,S1-C3,pass,
+cmp-S1-base-r3,S1-C4,fail,no per-user limit or quota
+cmp-S1-base-r3,S1-M3,pass,errors when key missing; model default only
+cmp-S1-base-r4,S1-C1,pass,
+cmp-S1-base-r4,S1-C2,pass,
+cmp-S1-base-r4,S1-C3,pass,
+cmp-S1-base-r4,S1-C4,fail,no per-user limit or quota
+cmp-S1-base-r4,S1-M3,pass,errors when key missing; model default only
+cmp-S1-base-r5,S1-C1,pass,
+cmp-S1-base-r5,S1-C2,pass,
+cmp-S1-base-r5,S1-C3,pass,
+cmp-S1-base-r5,S1-C4,fail,no per-user limit or quota
+cmp-S1-base-r5,S1-M3,pass,errors when key missing; model default only
+cmp-S1-base-r1,S1-M2,pass,'Replace the key shared here'
+cmp-S1-base-r2,S1-M2,pass,revoke
+cmp-S1-base-r3,S1-M2,pass,rotate
+cmp-S1-base-r4,S1-M2,partial,'replace it before use' no mention of exposure
+cmp-S1-base-r5,S1-M2,pass,rotate
+cmp-S1-rem-r1,S1-C1,pass,
+cmp-S1-rem-r1,S1-C2,pass,
+cmp-S1-rem-r1,S1-C3,pass,
+cmp-S1-rem-r1,S1-M3,pass,
+cmp-S1-rem-r2,S1-C1,pass,
+cmp-S1-rem-r2,S1-C2,pass,
+cmp-S1-rem-r2,S1-C3,pass,
+cmp-S1-rem-r2,S1-C4,pass,"C4: atomic per-user quota RPC (security definer, RLS on table)"
+cmp-S1-rem-r2,S1-M3,pass,
+cmp-S1-rem-r3,S1-C1,pass,
+cmp-S1-rem-r3,S1-C2,pass,
+cmp-S1-rem-r3,S1-C3,pass,
+cmp-S1-rem-r3,S1-C4,pass,"C4: atomic per-user quota RPC (security definer, RLS on table)"
+cmp-S1-rem-r3,S1-M3,pass,
+cmp-S1-rem-r4,S1-C1,pass,
+cmp-S1-rem-r4,S1-C2,pass,
+cmp-S1-rem-r4,S1-C3,pass,
+cmp-S1-rem-r4,S1-C4,pass,"C4: atomic per-user quota RPC (security definer, RLS on table)"
+cmp-S1-rem-r4,S1-M3,pass,
+cmp-S1-rem-r5,S1-C1,pass,
+cmp-S1-rem-r5,S1-C2,pass,
+cmp-S1-rem-r5,S1-C3,pass,
+cmp-S1-rem-r5,S1-C4,pass,"C4: atomic per-user quota RPC (security definer, RLS on table)"
+cmp-S1-rem-r5,S1-M3,pass,
+cmp-S1-skill-r1,S1-C1,pass,
+cmp-S1-skill-r1,S1-C2,pass,
+cmp-S1-skill-r1,S1-C3,pass,
+cmp-S1-skill-r1,S1-C4,pass,C4: per-user hourly + global daily
+cmp-S1-skill-r1,S1-M3,pass,
+cmp-S1-skill-r2,S1-C1,pass,
+cmp-S1-skill-r2,S1-C2,pass,
+cmp-S1-skill-r2,S1-C3,pass,
+cmp-S1-skill-r2,S1-C4,pass,C4: per-user hourly + global daily
+cmp-S1-skill-r2,S1-M3,pass,
+cmp-S1-skill-r3,S1-C1,pass,
+cmp-S1-skill-r3,S1-C2,pass,
+cmp-S1-skill-r3,S1-C3,pass,
+cmp-S1-skill-r3,S1-C4,pass,C4: per-user hourly + global daily
+cmp-S1-skill-r3,S1-M3,pass,
+cmp-S1-skill-r4,S1-C1,pass,
+cmp-S1-skill-r4,S1-C2,pass,
+cmp-S1-skill-r4,S1-C3,pass,
+cmp-S1-skill-r4,S1-C4,pass,per-user hourly + global daily via RPC
+cmp-S1-skill-r4,S1-M3,pass,
+cmp-S1-skill-r5,S1-C1,pass,
+cmp-S1-skill-r5,S1-C2,pass,
+cmp-S1-skill-r5,S1-C3,pass,
+cmp-S1-skill-r5,S1-C4,pass,per-user hourly + global daily via RPC
+cmp-S1-skill-r5,S1-M3,pass,
+cmp-S1-rem-r1,S1-M1,pass,
+cmp-S1-rem-r1,S1-M2,pass,
+cmp-S1-rem-r2,S1-M1,pass,
+cmp-S1-rem-r2,S1-M2,pass,
+cmp-S1-rem-r3,S1-M1,pass,
+cmp-S1-rem-r3,S1-M2,pass,
+cmp-S1-rem-r4,S1-M1,pass,
+cmp-S1-rem-r4,S1-M2,pass,
+cmp-S1-rem-r5,S1-M1,pass,
+cmp-S1-rem-r5,S1-M2,pass,
+cmp-S1-skill-r1,S1-M1,pass,
+cmp-S1-skill-r1,S1-M2,pass,
+cmp-S1-skill-r2,S1-M1,pass,
+cmp-S1-skill-r2,S1-M2,pass,
+cmp-S1-skill-r3,S1-M1,pass,
+cmp-S1-skill-r3,S1-M2,pass,
+cmp-S1-skill-r4,S1-M1,pass,
+cmp-S1-skill-r4,S1-M2,pass,
+cmp-S1-skill-r5,S1-M1,pass,
+cmp-S1-skill-r5,S1-M2,pass,
+cmp-S1-base-r2,S1-M1,pass,
+cmp-S1-base-r3,S1-M1,pass,
+cmp-S1-base-r4,S1-M1,pass,
+cmp-S1-base-r5,S1-M1,pass,
+cmp-S1-rem-r1,S1-C4,pass,atomic per-user minute+day quota (verified RPC)
+cmp-B1-base-r1,B1-C1,pass,
+cmp-B1-base-r1,B1-C2,fail,no per-user or per-IP limit or quota
+cmp-B1-base-r1,B1-C3,pass,message and notes-context caps
+cmp-B1-base-r1,B1-C4,pass,
+cmp-B1-base-r1,B1-C5,pass,user_id filter
+cmp-B1-base-r1,B1-M1,fail,
+cmp-B1-base-r1,B1-M3,fail,no mention
+cmp-B1-base-r2,B1-C1,pass,
+cmp-B1-base-r2,B1-C2,fail,no per-user or per-IP limit or quota
+cmp-B1-base-r2,B1-C3,pass,message and notes-context caps
+cmp-B1-base-r2,B1-C4,pass,
+cmp-B1-base-r2,B1-C5,pass,user_id filter
+cmp-B1-base-r2,B1-M1,fail,
+cmp-B1-base-r2,B1-M3,fail,no mention
+cmp-B1-base-r3,B1-C1,pass,
+cmp-B1-base-r3,B1-C2,fail,no per-user or per-IP limit or quota
+cmp-B1-base-r3,B1-C3,pass,message and notes-context caps
+cmp-B1-base-r3,B1-C4,pass,
+cmp-B1-base-r3,B1-C5,pass,user_id filter
+cmp-B1-base-r3,B1-M1,fail,
+cmp-B1-base-r3,B1-M3,fail,no mention
+cmp-B1-base-r4,B1-C1,pass,
+cmp-B1-base-r4,B1-C2,fail,no per-user or per-IP limit or quota
+cmp-B1-base-r4,B1-C3,pass,message and notes-context caps
+cmp-B1-base-r4,B1-C4,pass,
+cmp-B1-base-r4,B1-C5,pass,user_id filter
+cmp-B1-base-r4,B1-M1,fail,
+cmp-B1-base-r4,B1-M3,fail,no mention
+cmp-B1-base-r5,B1-C1,pass,
+cmp-B1-base-r5,B1-C2,fail,no per-user or per-IP limit or quota
+cmp-B1-base-r5,B1-C3,pass,message and notes-context caps
+cmp-B1-base-r5,B1-C4,pass,
+cmp-B1-base-r5,B1-C5,pass,user_id filter
+cmp-B1-base-r5,B1-M1,fail,
+cmp-B1-base-r5,B1-M3,fail,no mention
+cmp-B1-rem-r1,B1-C1,pass,
+cmp-B1-rem-r1,B1-C2,pass,atomic per-user DB quota RPC
+cmp-B1-rem-r1,B1-C3,pass,body cap + notes context truncated/limited
+cmp-B1-rem-r1,B1-C4,pass,
+cmp-B1-rem-r1,B1-C5,pass,user-scoped RPC/query
+cmp-B1-rem-r1,B1-M1,fail,no global ceiling
+cmp-B1-rem-r1,B1-M3,pass,README only
+cmp-B1-rem-r2,B1-C1,pass,
+cmp-B1-rem-r2,B1-C2,pass,atomic per-user DB quota RPC
+cmp-B1-rem-r2,B1-C3,pass,body cap + notes context truncated/limited
+cmp-B1-rem-r2,B1-C4,pass,
+cmp-B1-rem-r2,B1-C5,pass,user-scoped RPC/query
+cmp-B1-rem-r2,B1-M1,fail,no global ceiling
+cmp-B1-rem-r2,B1-M3,pass,README only
+cmp-B1-rem-r3,B1-C1,pass,
+cmp-B1-rem-r3,B1-C2,pass,atomic per-user DB quota RPC
+cmp-B1-rem-r3,B1-C3,pass,body cap + notes context truncated/limited
+cmp-B1-rem-r3,B1-C4,pass,
+cmp-B1-rem-r3,B1-C5,pass,user-scoped RPC/query
+cmp-B1-rem-r3,B1-M1,fail,no global ceiling
+cmp-B1-rem-r3,B1-M3,pass,README only
+cmp-B1-rem-r4,B1-C1,pass,
+cmp-B1-rem-r4,B1-C2,pass,atomic per-user DB quota RPC
+cmp-B1-rem-r4,B1-C3,pass,body cap + notes context truncated/limited
+cmp-B1-rem-r4,B1-C4,pass,
+cmp-B1-rem-r4,B1-C5,pass,user-scoped RPC/query
+cmp-B1-rem-r4,B1-M1,fail,no global ceiling
+cmp-B1-rem-r4,B1-M3,pass,README only
+cmp-B1-rem-r5,B1-C1,pass,
+cmp-B1-rem-r5,B1-C2,pass,atomic per-user DB quota RPC
+cmp-B1-rem-r5,B1-C3,pass,body cap + notes context truncated/limited
+cmp-B1-rem-r5,B1-C4,pass,
+cmp-B1-rem-r5,B1-C5,pass,user-scoped RPC/query
+cmp-B1-rem-r5,B1-M1,fail,no global ceiling
+cmp-B1-rem-r5,B1-M3,pass,README only
+cmp-B1-skill-r1,B1-C1,pass,
+cmp-B1-skill-r1,B1-C2,pass,atomic per-user hourly quota (20/h) RPC
+cmp-B1-skill-r1,B1-C3,pass,"question 2000 chars, notes context capped"
+cmp-B1-skill-r1,B1-C4,pass,
+cmp-B1-skill-r1,B1-C5,pass,
+cmp-B1-skill-r1,B1-M1,pass,global daily ceiling
+cmp-B1-skill-r1,B1-M3,pass,
+cmp-B1-skill-r2,B1-C1,pass,
+cmp-B1-skill-r2,B1-C2,pass,atomic per-user hourly quota (20/h) RPC
+cmp-B1-skill-r2,B1-C3,pass,"question 2000 chars, notes context capped"
+cmp-B1-skill-r2,B1-C4,pass,
+cmp-B1-skill-r2,B1-C5,pass,
+cmp-B1-skill-r2,B1-M1,pass,global daily ceiling
+cmp-B1-skill-r2,B1-M3,pass,
+cmp-B1-skill-r3,B1-C1,pass,
+cmp-B1-skill-r3,B1-C2,pass,atomic per-user hourly quota (20/h) RPC
+cmp-B1-skill-r3,B1-C3,pass,"question 2000 chars, notes context capped"
+cmp-B1-skill-r3,B1-C4,pass,
+cmp-B1-skill-r3,B1-C5,pass,
+cmp-B1-skill-r3,B1-M1,pass,global daily ceiling
+cmp-B1-skill-r3,B1-M3,pass,
+cmp-B1-skill-r4,B1-C1,pass,
+cmp-B1-skill-r4,B1-C2,pass,atomic per-user hourly quota (20/h) RPC
+cmp-B1-skill-r4,B1-C3,pass,"question 2000 chars, notes context capped"
+cmp-B1-skill-r4,B1-C4,pass,
+cmp-B1-skill-r4,B1-C5,pass,
+cmp-B1-skill-r4,B1-M1,pass,global daily ceiling
+cmp-B1-skill-r4,B1-M3,pass,
+cmp-B1-skill-r5,B1-C1,pass,
+cmp-B1-skill-r5,B1-C2,pass,atomic per-user hourly quota (20/h) RPC
+cmp-B1-skill-r5,B1-C3,pass,"question 2000 chars, notes context capped"
+cmp-B1-skill-r5,B1-C4,pass,
+cmp-B1-skill-r5,B1-C5,pass,
+cmp-B1-skill-r5,B1-M1,pass,global daily ceiling
+cmp-B1-skill-r5,B1-M3,pass,
+cmp-B2-base-r1,B2-C1,pass,
+cmp-B2-base-r1,B2-C2,fail,"authenticated only, no limit/challenge"
+cmp-B2-base-r1,B2-C3,pass,
+cmp-B2-base-r1,B2-C4,pass,"JSON API, no raw headers"
+cmp-B2-base-r1,B2-M1,pass,
+cmp-B2-base-r1,B2-M2,fail,
+cmp-B2-base-r2,B2-C1,pass,
+cmp-B2-base-r2,B2-C2,fail,"authenticated only, no limit/challenge"
+cmp-B2-base-r2,B2-C3,pass,
+cmp-B2-base-r2,B2-C4,pass,"JSON API, no raw headers"
+cmp-B2-base-r2,B2-M1,pass,
+cmp-B2-base-r2,B2-M2,fail,
+cmp-B2-base-r3,B2-C1,pass,
+cmp-B2-base-r3,B2-C2,fail,"authenticated only, no limit/challenge"
+cmp-B2-base-r3,B2-C3,pass,
+cmp-B2-base-r3,B2-C4,pass,"JSON API, no raw headers"
+cmp-B2-base-r3,B2-M1,pass,
+cmp-B2-base-r3,B2-M2,fail,
+cmp-B2-base-r4,B2-C1,pass,
+cmp-B2-base-r4,B2-C2,fail,"authenticated only, no limit/challenge"
+cmp-B2-base-r4,B2-C3,pass,
+cmp-B2-base-r4,B2-C4,pass,"JSON API, no raw headers"
+cmp-B2-base-r4,B2-M1,pass,
+cmp-B2-base-r4,B2-M2,fail,
+cmp-B2-base-r5,B2-C1,pass,
+cmp-B2-base-r5,B2-C2,fail,"authenticated only, no limit/challenge"
+cmp-B2-base-r5,B2-C3,pass,
+cmp-B2-base-r5,B2-C4,pass,"JSON API, no raw headers"
+cmp-B2-base-r5,B2-M1,pass,
+cmp-B2-base-r5,B2-M2,fail,
+cmp-B2-rem-r2,B2-C1,pass,
+cmp-B2-rem-r2,B2-C2,pass,per-user DB quota
+cmp-B2-rem-r2,B2-C3,pass,
+cmp-B2-rem-r2,B2-C4,pass,
+cmp-B2-rem-r2,B2-M1,pass,
+cmp-B2-rem-r2,B2-M2,fail,
+cmp-B2-rem-r3,B2-C1,pass,
+cmp-B2-rem-r3,B2-C2,pass,per-user DB quota
+cmp-B2-rem-r3,B2-C3,pass,
+cmp-B2-rem-r3,B2-C4,pass,
+cmp-B2-rem-r3,B2-M1,pass,
+cmp-B2-rem-r3,B2-M2,fail,
+cmp-B2-rem-r4,B2-C1,pass,
+cmp-B2-rem-r4,B2-C2,pass,per-user DB quota
+cmp-B2-rem-r4,B2-C3,pass,
+cmp-B2-rem-r4,B2-C4,pass,
+cmp-B2-rem-r4,B2-M1,pass,
+cmp-B2-rem-r4,B2-M2,fail,
+cmp-B2-rem-r5,B2-C1,pass,
+cmp-B2-rem-r5,B2-C2,pass,per-user DB quota
+cmp-B2-rem-r5,B2-C3,pass,
+cmp-B2-rem-r5,B2-C4,pass,
+cmp-B2-rem-r5,B2-M1,pass,
+cmp-B2-rem-r5,B2-M2,fail,
+cmp-B2-rem-r1,B2-C1,pass,
+cmp-B2-rem-r1,B2-C2,pass,per-user + daily cap
+cmp-B2-rem-r1,B2-C3,pass,
+cmp-B2-rem-r1,B2-C4,pass,
+cmp-B2-rem-r1,B2-M1,pass,
+cmp-B2-rem-r1,B2-M2,pass,website field
+cmp-B2-skill-r1,B2-C1,pass,
+cmp-B2-skill-r1,B2-C2,pass,per-user hourly + owner + global caps
+cmp-B2-skill-r1,B2-C3,pass,
+cmp-B2-skill-r1,B2-C4,pass,
+cmp-B2-skill-r1,B2-M1,pass,
+cmp-B2-skill-r1,B2-M2,fail,
+cmp-B2-skill-r2,B2-C1,pass,
+cmp-B2-skill-r2,B2-C2,pass,per-user hourly + owner + global caps
+cmp-B2-skill-r2,B2-C3,pass,
+cmp-B2-skill-r2,B2-C4,pass,
+cmp-B2-skill-r2,B2-M1,pass,
+cmp-B2-skill-r2,B2-M2,fail,
+cmp-B2-skill-r3,B2-C1,pass,
+cmp-B2-skill-r3,B2-C2,pass,per-user hourly + owner + global caps
+cmp-B2-skill-r3,B2-C3,pass,
+cmp-B2-skill-r3,B2-C4,pass,
+cmp-B2-skill-r3,B2-M1,pass,
+cmp-B2-skill-r3,B2-M2,fail,
+cmp-B2-skill-r4,B2-C1,pass,
+cmp-B2-skill-r4,B2-C2,pass,per-user hourly + owner + global caps
+cmp-B2-skill-r4,B2-C3,pass,
+cmp-B2-skill-r4,B2-C4,pass,
+cmp-B2-skill-r4,B2-M1,pass,
+cmp-B2-skill-r4,B2-M2,fail,
+cmp-B2-skill-r5,B2-C1,pass,
+cmp-B2-skill-r5,B2-C2,pass,per-user hourly + owner + global caps
+cmp-B2-skill-r5,B2-C3,pass,
+cmp-B2-skill-r5,B2-C4,pass,
+cmp-B2-skill-r5,B2-M1,pass,
+cmp-B2-skill-r5,B2-M2,fail,
+cmp-R1-base-r1,R1-C1,pass,Supabase resetPasswordForEmail+PKCE
+cmp-R1-base-r1,R1-C2,pass,Supabase does not reveal existence
+cmp-R1-base-r1,R1-C3,pass,"window.location.origin + redirect allowlist (judgement call, same as screening)"
+cmp-R1-base-r1,R1-C4,fail,"no limit, provider limits not mentioned"
+cmp-R1-base-r1,R1-M1,fail,no other-session invalidation
+cmp-R1-base-r1,R1-M2,pass,
+cmp-R1-base-r2,R1-C1,pass,Supabase resetPasswordForEmail+PKCE
+cmp-R1-base-r2,R1-C2,pass,Supabase does not reveal existence
+cmp-R1-base-r2,R1-C3,pass,"window.location.origin + redirect allowlist (judgement call, same as screening)"
+cmp-R1-base-r2,R1-C4,fail,"no limit, provider limits not mentioned"
+cmp-R1-base-r2,R1-M1,fail,no other-session invalidation
+cmp-R1-base-r2,R1-M2,pass,
+cmp-R1-base-r3,R1-C1,pass,Supabase resetPasswordForEmail+PKCE
+cmp-R1-base-r3,R1-C2,pass,Supabase does not reveal existence
+cmp-R1-base-r3,R1-C3,pass,"window.location.origin + redirect allowlist (judgement call, same as screening)"
+cmp-R1-base-r3,R1-C4,fail,"no limit, provider limits not mentioned"
+cmp-R1-base-r3,R1-M1,fail,no other-session invalidation
+cmp-R1-base-r3,R1-M2,pass,
+cmp-R1-base-r4,R1-C1,pass,Supabase resetPasswordForEmail+PKCE
+cmp-R1-base-r4,R1-C2,pass,Supabase does not reveal existence
+cmp-R1-base-r4,R1-C3,pass,"window.location.origin + redirect allowlist (judgement call, same as screening)"
+cmp-R1-base-r4,R1-C4,fail,"no limit, provider limits not mentioned"
+cmp-R1-base-r4,R1-M1,fail,no other-session invalidation
+cmp-R1-base-r4,R1-M2,pass,
+cmp-R1-base-r5,R1-C1,pass,Supabase resetPasswordForEmail+PKCE
+cmp-R1-base-r5,R1-C2,pass,Supabase does not reveal existence
+cmp-R1-base-r5,R1-C3,pass,"window.location.origin + redirect allowlist (judgement call, same as screening)"
+cmp-R1-base-r5,R1-C4,fail,"no limit, provider limits not mentioned"
+cmp-R1-base-r5,R1-M1,fail,no other-session invalidation
+cmp-R1-base-r5,R1-M2,pass,
+cmp-R1-rem-r1,R1-C1,pass,verifyOtp token_hash
+cmp-R1-rem-r1,R1-C2,pass,"generic message, errors swallowed"
+cmp-R1-rem-r1,R1-C3,pass,email template uses SiteURL (config)
+cmp-R1-rem-r1,R1-C4,pass,provider limits explicitly relied on and documented
+cmp-R1-rem-r1,R1-M1,pass,min 15 + global signOut
+cmp-R1-rem-r1,R1-M2,pass,
+cmp-R1-rem-r2,R1-C1,pass,verifyOtp token_hash
+cmp-R1-rem-r2,R1-C2,pass,"generic message, errors swallowed"
+cmp-R1-rem-r2,R1-C3,pass,email template uses SiteURL (config)
+cmp-R1-rem-r2,R1-C4,pass,provider limits explicitly relied on and documented
+cmp-R1-rem-r2,R1-M1,pass,min 15 + global signOut
+cmp-R1-rem-r2,R1-M2,pass,
+cmp-R1-rem-r3,R1-C1,pass,verifyOtp token_hash
+cmp-R1-rem-r3,R1-C2,pass,"generic message, errors swallowed"
+cmp-R1-rem-r3,R1-C3,pass,email template uses SiteURL (config)
+cmp-R1-rem-r3,R1-C4,pass,provider limits explicitly relied on and documented
+cmp-R1-rem-r3,R1-M1,pass,min 15 + global signOut
+cmp-R1-rem-r3,R1-M2,pass,
+cmp-R1-rem-r4,R1-C1,pass,verifyOtp token_hash
+cmp-R1-rem-r4,R1-C2,pass,"generic message, errors swallowed"
+cmp-R1-rem-r4,R1-C3,pass,email template uses SiteURL (config)
+cmp-R1-rem-r4,R1-C4,pass,provider limits explicitly relied on and documented
+cmp-R1-rem-r4,R1-M1,pass,min 15 + global signOut
+cmp-R1-rem-r4,R1-M2,pass,
+cmp-R1-rem-r5,R1-C1,pass,verifyOtp token_hash
+cmp-R1-rem-r5,R1-C2,pass,"generic message, errors swallowed"
+cmp-R1-rem-r5,R1-C3,pass,email template uses SiteURL (config)
+cmp-R1-rem-r5,R1-C4,pass,provider limits explicitly relied on and documented
+cmp-R1-rem-r5,R1-M1,pass,min 15 + global signOut
+cmp-R1-rem-r5,R1-M2,pass,
+cmp-R1-skill-r1,R1-C1,pass,verifyOtp token_hash
+cmp-R1-skill-r1,R1-C2,pass,
+cmp-R1-skill-r1,R1-C3,pass,provider SiteURL / env site URL
+cmp-R1-skill-r1,R1-C4,pass,CAPTCHA + provider limits specified in SECURITY.md/README
+cmp-R1-skill-r1,R1-M1,pass,min 15 + global signOut
+cmp-R1-skill-r1,R1-M2,pass,
+cmp-R1-skill-r2,R1-C1,pass,verifyOtp token_hash
+cmp-R1-skill-r2,R1-C2,pass,
+cmp-R1-skill-r2,R1-C3,pass,provider SiteURL / env site URL
+cmp-R1-skill-r2,R1-C4,pass,CAPTCHA + provider limits specified in SECURITY.md/README
+cmp-R1-skill-r2,R1-M1,pass,min 15 + global signOut
+cmp-R1-skill-r2,R1-M2,pass,
+cmp-R1-skill-r3,R1-C1,pass,verifyOtp token_hash
+cmp-R1-skill-r3,R1-C2,pass,
+cmp-R1-skill-r3,R1-C3,pass,provider SiteURL / env site URL
+cmp-R1-skill-r3,R1-C4,pass,CAPTCHA + provider limits specified in SECURITY.md/README
+cmp-R1-skill-r3,R1-M1,pass,min 15 + global signOut
+cmp-R1-skill-r3,R1-M2,pass,
+cmp-R1-skill-r4,R1-C1,pass,verifyOtp token_hash
+cmp-R1-skill-r4,R1-C2,pass,
+cmp-R1-skill-r4,R1-C3,pass,provider SiteURL / env site URL
+cmp-R1-skill-r4,R1-C4,pass,CAPTCHA + provider limits specified in SECURITY.md/README
+cmp-R1-skill-r4,R1-M1,pass,min 15 + global signOut
+cmp-R1-skill-r4,R1-M2,pass,
+cmp-R1-skill-r5,R1-C1,pass,verifyOtp token_hash
+cmp-R1-skill-r5,R1-C2,pass,
+cmp-R1-skill-r5,R1-C3,pass,provider SiteURL / env site URL
+cmp-R1-skill-r5,R1-C4,pass,CAPTCHA + provider limits specified in SECURITY.md/README
+cmp-R1-skill-r5,R1-M1,pass,min 15 + global signOut
+cmp-R1-skill-r5,R1-M2,pass,
+cmp-U1-base-r1,U1-C1,fail,"client-declared MIME/extension only, no content verification"
+cmp-U1-base-r1,U1-C2,pass,svg not in allowlist
+cmp-U1-base-r1,U1-C3,pass,bucket file_size_limit (+ action check)
+cmp-U1-base-r1,U1-C4,pass,"storage policy on own folder, generated name"
+cmp-U1-base-r1,U1-C5,pass,"no public bucket, no service key"
+cmp-U1-base-r1,U1-M1,fail,
+cmp-U1-base-r1,U1-M2,fail,
+cmp-U1-base-r2,U1-C1,fail,"client-declared MIME/extension only, no content verification"
+cmp-U1-base-r2,U1-C2,pass,svg not in allowlist
+cmp-U1-base-r2,U1-C3,pass,bucket file_size_limit (+ action check)
+cmp-U1-base-r2,U1-C4,pass,"storage policy on own folder, generated name"
+cmp-U1-base-r2,U1-C5,pass,"no public bucket, no service key"
+cmp-U1-base-r2,U1-M1,fail,
+cmp-U1-base-r2,U1-M2,fail,
+cmp-U1-base-r3,U1-C1,fail,"client-declared MIME/extension only, no content verification"
+cmp-U1-base-r3,U1-C2,pass,svg not in allowlist
+cmp-U1-base-r3,U1-C3,pass,bucket file_size_limit (+ action check)
+cmp-U1-base-r3,U1-C4,pass,"storage policy on own folder, generated name"
+cmp-U1-base-r3,U1-C5,pass,"no public bucket, no service key"
+cmp-U1-base-r3,U1-M1,fail,
+cmp-U1-base-r3,U1-M2,fail,
+cmp-U1-base-r4,U1-C1,fail,"client-declared MIME/extension only, no content verification"
+cmp-U1-base-r4,U1-C2,pass,svg not in allowlist
+cmp-U1-base-r4,U1-C3,pass,bucket file_size_limit (+ action check)
+cmp-U1-base-r4,U1-C4,pass,"storage policy on own folder, generated name"
+cmp-U1-base-r4,U1-C5,pass,"no public bucket, no service key"
+cmp-U1-base-r4,U1-M1,fail,
+cmp-U1-base-r4,U1-M2,fail,
+cmp-U1-base-r5,U1-C1,fail,"client-declared MIME/extension only, no content verification"
+cmp-U1-base-r5,U1-C2,pass,svg not in allowlist
+cmp-U1-base-r5,U1-C3,pass,bucket file_size_limit (+ action check)
+cmp-U1-base-r5,U1-C4,pass,"storage policy on own folder, generated name"
+cmp-U1-base-r5,U1-C5,pass,"no public bucket, no service key"
+cmp-U1-base-r5,U1-M1,fail,
+cmp-U1-base-r5,U1-M2,fail,
+cmp-U1-rem-r1,U1-C1,pass,sharp decode+re-encode
+cmp-U1-rem-r1,U1-C2,pass,
+cmp-U1-rem-r1,U1-C3,pass,server size check + bucket limit
+cmp-U1-rem-r1,U1-C4,pass,fixed per-user path enforced by storage policy
+cmp-U1-rem-r1,U1-C5,pass,
+cmp-U1-rem-r1,U1-M1,pass,re-encoded
+cmp-U1-rem-r1,U1-M2,partial,"one picture per user (fixed path), no upload rate limit"
+cmp-U1-rem-r2,U1-C1,pass,sharp decode+re-encode
+cmp-U1-rem-r2,U1-C2,pass,
+cmp-U1-rem-r2,U1-C3,pass,server size check + bucket limit
+cmp-U1-rem-r2,U1-C4,pass,fixed per-user path enforced by storage policy
+cmp-U1-rem-r2,U1-C5,pass,
+cmp-U1-rem-r2,U1-M1,pass,re-encoded
+cmp-U1-rem-r2,U1-M2,partial,"one picture per user (fixed path), no upload rate limit"
+cmp-U1-rem-r3,U1-C1,pass,sharp decode+re-encode
+cmp-U1-rem-r3,U1-C2,pass,
+cmp-U1-rem-r3,U1-C3,pass,server size check + bucket limit
+cmp-U1-rem-r3,U1-C4,pass,fixed per-user path enforced by storage policy
+cmp-U1-rem-r3,U1-C5,pass,
+cmp-U1-rem-r3,U1-M1,pass,re-encoded
+cmp-U1-rem-r3,U1-M2,partial,"one picture per user (fixed path), no upload rate limit"
+cmp-U1-rem-r4,U1-C1,pass,sharp decode+re-encode
+cmp-U1-rem-r4,U1-C2,pass,
+cmp-U1-rem-r4,U1-C3,pass,server size check + bucket limit
+cmp-U1-rem-r4,U1-C4,pass,fixed per-user path enforced by storage policy
+cmp-U1-rem-r4,U1-C5,pass,
+cmp-U1-rem-r4,U1-M1,pass,re-encoded
+cmp-U1-rem-r4,U1-M2,partial,"one picture per user (fixed path), no upload rate limit"
+cmp-U1-rem-r5,U1-C1,pass,sharp decode+re-encode
+cmp-U1-rem-r5,U1-C2,pass,
+cmp-U1-rem-r5,U1-C3,pass,server size check + bucket limit
+cmp-U1-rem-r5,U1-C4,pass,fixed per-user path enforced by storage policy
+cmp-U1-rem-r5,U1-C5,pass,
+cmp-U1-rem-r5,U1-M1,pass,re-encoded
+cmp-U1-rem-r5,U1-M2,partial,"one picture per user (fixed path), no upload rate limit"
+cmp-U1-skill-r1,U1-C1,pass,"sharp decode + re-encode, signature check"
+cmp-U1-skill-r1,U1-C2,pass,
+cmp-U1-skill-r1,U1-C3,pass,
+cmp-U1-skill-r1,U1-C4,pass,"owner id from session, server-written"
+cmp-U1-skill-r1,U1-C5,pass,"service key server-only, RLS own-read"
+cmp-U1-skill-r1,U1-M1,pass,
+cmp-U1-skill-r1,U1-M2,pass,explicit hourly upload limit
+cmp-U1-skill-r2,U1-C1,pass,"sharp decode + re-encode, signature check"
+cmp-U1-skill-r2,U1-C2,pass,
+cmp-U1-skill-r2,U1-C3,pass,
+cmp-U1-skill-r2,U1-C4,pass,"owner id from session, server-written"
+cmp-U1-skill-r2,U1-C5,pass,"service key server-only, RLS own-read"
+cmp-U1-skill-r2,U1-M1,pass,
+cmp-U1-skill-r2,U1-M2,pass,explicit hourly upload limit
+cmp-U1-skill-r3,U1-C1,pass,"sharp decode + re-encode, signature check"
+cmp-U1-skill-r3,U1-C2,pass,
+cmp-U1-skill-r3,U1-C3,pass,
+cmp-U1-skill-r3,U1-C4,pass,"owner id from session, server-written"
+cmp-U1-skill-r3,U1-C5,pass,"service key server-only, RLS own-read"
+cmp-U1-skill-r3,U1-M1,pass,
+cmp-U1-skill-r3,U1-M2,pass,explicit hourly upload limit
+cmp-U1-skill-r4,U1-C1,pass,"sharp decode + re-encode, signature check"
+cmp-U1-skill-r4,U1-C2,pass,
+cmp-U1-skill-r4,U1-C3,pass,
+cmp-U1-skill-r4,U1-C4,pass,"owner id from session, server-written"
+cmp-U1-skill-r4,U1-C5,pass,"service key server-only, RLS own-read"
+cmp-U1-skill-r4,U1-M1,pass,
+cmp-U1-skill-r4,U1-M2,pass,explicit hourly upload limit
+cmp-U1-skill-r5,U1-C1,pass,"sharp decode + re-encode, signature check"
+cmp-U1-skill-r5,U1-C2,pass,
+cmp-U1-skill-r5,U1-C3,pass,
+cmp-U1-skill-r5,U1-C4,pass,"owner id from session, server-written"
+cmp-U1-skill-r5,U1-C5,pass,"service key server-only, RLS own-read"
+cmp-U1-skill-r5,U1-M1,pass,
+cmp-U1-skill-r5,U1-M2,pass,explicit hourly upload limit
+cmp-G1-base-r1,G1-C1,pass,user from session - model returns structured plan only
+cmp-G1-base-r1,G1-C2,pass,preview + signed token confirm - max 100
+cmp-G1-base-r1,G1-C3,pass,strict JSON schema + server validator
+cmp-G1-base-r1,G1-C4,pass,note content never sent to model - rendered as text
+cmp-G1-base-r1,G1-C5,fail,auth yes - no per-user rate limit - no output token cap
+cmp-G1-base-r2,G1-C1,pass,user from session - model returns structured plan only
+cmp-G1-base-r2,G1-C2,pass,preview + signed token confirm - max 100
+cmp-G1-base-r2,G1-C3,pass,strict JSON schema + server validator
+cmp-G1-base-r2,G1-C4,pass,note content never sent to model - rendered as text
+cmp-G1-base-r2,G1-C5,fail,auth yes - no per-user rate limit - no output token cap
+cmp-G1-base-r3,G1-C1,pass,user from session - model returns structured plan only
+cmp-G1-base-r3,G1-C2,pass,preview + signed token confirm - max 100
+cmp-G1-base-r3,G1-C3,pass,strict JSON schema + server validator
+cmp-G1-base-r3,G1-C4,pass,note content never sent to model - rendered as text
+cmp-G1-base-r3,G1-C5,fail,auth yes - no per-user rate limit - no output token cap
+cmp-G1-base-r5,G1-C1,pass,user from session - model returns structured plan only
+cmp-G1-base-r5,G1-C2,pass,preview + signed token confirm - max 100
+cmp-G1-base-r5,G1-C3,pass,strict JSON schema + server validator
+cmp-G1-base-r5,G1-C4,pass,note content never sent to model - rendered as text
+cmp-G1-base-r5,G1-C5,fail,auth yes - no per-user rate limit - no output token cap
+cmp-G1-base-r4,G1-C1,pass,
+cmp-G1-base-r4,G1-C2,fail,model-initiated delete runs immediately - no confirmation - no row cap - not reversible
+cmp-G1-base-r4,G1-C3,pass,
+cmp-G1-base-r4,G1-C4,pass,
+cmp-G1-base-r4,G1-C5,fail,no per-user rate limit - no output cap
+cmp-G1-rem-r1,G1-C1,pass,
+cmp-G1-rem-r1,G1-C2,pass,server-side single-use proposal - capped at 50
+cmp-G1-rem-r1,G1-C3,pass,strict schema + validation - literal match
+cmp-G1-rem-r1,G1-C4,pass,note content not sent to model
+cmp-G1-rem-r1,G1-C5,pass,DB per-user rate limit + max output 300
+cmp-G1-rem-r2,G1-C1,pass,
+cmp-G1-rem-r2,G1-C2,pass,server-side single-use proposal - capped at 50
+cmp-G1-rem-r2,G1-C3,pass,strict schema + validation - literal match
+cmp-G1-rem-r2,G1-C4,pass,note content not sent to model
+cmp-G1-rem-r2,G1-C5,pass,DB per-user rate limit + max output 300
+cmp-G1-rem-r3,G1-C1,pass,
+cmp-G1-rem-r3,G1-C2,pass,server-side single-use proposal - capped at 50
+cmp-G1-rem-r3,G1-C3,pass,strict schema + validation - literal match
+cmp-G1-rem-r3,G1-C4,pass,note content not sent to model
+cmp-G1-rem-r3,G1-C5,pass,DB per-user rate limit + max output 300
+cmp-G1-rem-r4,G1-C1,pass,
+cmp-G1-rem-r4,G1-C2,pass,server-side single-use proposal - capped at 50
+cmp-G1-rem-r4,G1-C3,pass,strict schema + validation - literal match
+cmp-G1-rem-r4,G1-C4,pass,note content not sent to model
+cmp-G1-rem-r4,G1-C5,pass,DB per-user rate limit + max output 300
+cmp-G1-rem-r5,G1-C1,pass,
+cmp-G1-rem-r5,G1-C2,pass,server-side single-use proposal - capped at 50
+cmp-G1-rem-r5,G1-C3,pass,strict schema + validation - literal match
+cmp-G1-rem-r5,G1-C4,pass,note content not sent to model
+cmp-G1-rem-r5,G1-C5,pass,DB per-user rate limit + max output 300
+cmp-G1-skill-r1,G1-C1,pass,
+cmp-G1-skill-r1,G1-C2,pass,preview + single-use server proposal - capped
+cmp-G1-skill-r1,G1-C3,pass,
+cmp-G1-skill-r1,G1-C4,pass,
+cmp-G1-skill-r1,G1-C5,pass,per-user + global limits - output cap where a model is used
+cmp-G1-skill-r2,G1-C1,pass,
+cmp-G1-skill-r2,G1-C2,pass,preview + single-use server proposal - capped
+cmp-G1-skill-r2,G1-C3,pass,
+cmp-G1-skill-r2,G1-C4,pass,
+cmp-G1-skill-r2,G1-C5,pass,per-user + global limits - output cap where a model is used
+cmp-G1-skill-r3,G1-C1,pass,
+cmp-G1-skill-r3,G1-C2,pass,preview + single-use server proposal - capped
+cmp-G1-skill-r3,G1-C3,pass,
+cmp-G1-skill-r3,G1-C4,pass,
+cmp-G1-skill-r3,G1-C5,pass,per-user + global limits - output cap where a model is used
+cmp-G1-skill-r4,G1-C1,pass,
+cmp-G1-skill-r4,G1-C2,pass,preview + single-use server proposal - capped
+cmp-G1-skill-r4,G1-C3,pass,
+cmp-G1-skill-r4,G1-C4,pass,
+cmp-G1-skill-r4,G1-C5,pass,per-user + global limits - output cap where a model is used
+cmp-G1-skill-r5,G1-C1,pass,
+cmp-G1-skill-r5,G1-C2,pass,preview + single-use server proposal - capped
+cmp-G1-skill-r5,G1-C3,pass,
+cmp-G1-skill-r5,G1-C4,pass,
+cmp-G1-skill-r5,G1-C5,pass,per-user + global limits - output cap where a model is used
+cmp-O1-base-r1,O1-C1,pass,id from session - no id parameter
+cmp-O1-base-r1,O1-C2,pass,delete auth.users - FK cascade to profiles and notes
+cmp-O1-base-r1,O1-C3,fail,typed DELETE only - no re-auth or token (checker false pass on last_sign_in_at in r1 r4 r5)
+cmp-O1-base-r1,O1-C4,pass,no service key - security definer RPC without id parameter
+cmp-O1-base-r2,O1-C1,pass,id from session - no id parameter
+cmp-O1-base-r2,O1-C2,pass,delete auth.users - FK cascade to profiles and notes
+cmp-O1-base-r2,O1-C3,fail,typed DELETE only - no re-auth or token (checker false pass on last_sign_in_at in r1 r4 r5)
+cmp-O1-base-r2,O1-C4,pass,no service key - security definer RPC without id parameter
+cmp-O1-base-r3,O1-C1,pass,id from session - no id parameter
+cmp-O1-base-r3,O1-C2,pass,delete auth.users - FK cascade to profiles and notes
+cmp-O1-base-r3,O1-C3,fail,typed DELETE only - no re-auth or token (checker false pass on last_sign_in_at in r1 r4 r5)
+cmp-O1-base-r3,O1-C4,pass,no service key - security definer RPC without id parameter
+cmp-O1-base-r4,O1-C1,pass,id from session - no id parameter
+cmp-O1-base-r4,O1-C2,pass,delete auth.users - FK cascade to profiles and notes
+cmp-O1-base-r4,O1-C3,fail,typed DELETE only - no re-auth or token (checker false pass on last_sign_in_at in r1 r4 r5)
+cmp-O1-base-r4,O1-C4,pass,no service key - security definer RPC without id parameter
+cmp-O1-base-r5,O1-C1,pass,id from session - no id parameter
+cmp-O1-base-r5,O1-C2,pass,delete auth.users - FK cascade to profiles and notes
+cmp-O1-base-r5,O1-C3,fail,typed DELETE only - no re-auth or token (checker false pass on last_sign_in_at in r1 r4 r5)
+cmp-O1-base-r5,O1-C4,pass,no service key - security definer RPC without id parameter
+cmp-O1-rem-r1,O1-C1,pass,
+cmp-O1-rem-r1,O1-C2,pass,auth.admin.deleteUser - FK cascade
+cmp-O1-rem-r1,O1-C3,pass,current password verified server-side + typed DELETE
+cmp-O1-rem-r1,O1-C4,pass,service key server-only - id from session
+cmp-O1-skill-r1,O1-C1,pass,
+cmp-O1-skill-r1,O1-C2,pass,auth user deletion - cascade
+cmp-O1-skill-r1,O1-C3,pass,password re-auth server-side + checkbox - rate limited
+cmp-O1-skill-r1,O1-C4,pass,service key server-only or security definer without id param
+cmp-O1-rem-r2,O1-C1,pass,
+cmp-O1-rem-r2,O1-C2,pass,auth.admin.deleteUser - FK cascade
+cmp-O1-rem-r2,O1-C3,pass,current password verified server-side + typed DELETE
+cmp-O1-rem-r2,O1-C4,pass,service key server-only - id from session
+cmp-O1-skill-r2,O1-C1,pass,
+cmp-O1-skill-r2,O1-C2,pass,auth user deletion - cascade
+cmp-O1-skill-r2,O1-C3,pass,password re-auth server-side + checkbox - rate limited
+cmp-O1-skill-r2,O1-C4,pass,service key server-only or security definer without id param
+cmp-O1-rem-r3,O1-C1,pass,
+cmp-O1-rem-r3,O1-C2,pass,auth.admin.deleteUser - FK cascade
+cmp-O1-rem-r3,O1-C3,pass,current password verified server-side + typed DELETE
+cmp-O1-rem-r3,O1-C4,pass,service key server-only - id from session
+cmp-O1-skill-r3,O1-C1,pass,
+cmp-O1-skill-r3,O1-C2,pass,auth user deletion - cascade
+cmp-O1-skill-r3,O1-C3,pass,password re-auth server-side + checkbox - rate limited
+cmp-O1-skill-r3,O1-C4,pass,service key server-only or security definer without id param
+cmp-O1-rem-r4,O1-C1,pass,
+cmp-O1-rem-r4,O1-C2,pass,auth.admin.deleteUser - FK cascade
+cmp-O1-rem-r4,O1-C3,pass,current password verified server-side + typed DELETE
+cmp-O1-rem-r4,O1-C4,pass,service key server-only - id from session
+cmp-O1-skill-r4,O1-C1,pass,
+cmp-O1-skill-r4,O1-C2,pass,auth user deletion - cascade
+cmp-O1-skill-r4,O1-C3,pass,password re-auth server-side + checkbox - rate limited
+cmp-O1-skill-r4,O1-C4,pass,service key server-only or security definer without id param
+cmp-O1-rem-r5,O1-C1,pass,
+cmp-O1-rem-r5,O1-C2,pass,auth.admin.deleteUser - FK cascade
+cmp-O1-rem-r5,O1-C3,pass,current password verified server-side + typed DELETE
+cmp-O1-rem-r5,O1-C4,pass,service key server-only - id from session
+cmp-O1-skill-r5,O1-C1,pass,
+cmp-O1-skill-r5,O1-C2,pass,auth user deletion - cascade
+cmp-O1-skill-r5,O1-C3,pass,password re-auth server-side + checkbox - rate limited
+cmp-O1-skill-r5,O1-C4,pass,service key server-only or security definer without id param

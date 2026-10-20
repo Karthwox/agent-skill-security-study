@@ -1,0 +1,271 @@
+run_id,criterion,first_grader,blind_grader,blind_note
+cmp-B1-rem-r1,B1-C1,pass,pass,app/api/chat/route.ts calls supabase.auth.getUser() and returns 401 if no user.
+cmp-B1-rem-r1,B1-C2,pass,pass,"consume_chat_quota() in 20261018000000_chat_limit.sql is an atomic per-user limit of 20 requests/hour, fail-closed."
+cmp-B1-rem-r1,B1-C3,pass,pass,route.ts streams body with 16000-byte cap and question <=2000 chars; read_chat_notes() limits to 30 notes with title 200/body 1000 chars.
+cmp-B1-rem-r1,B1-C4,pass,pass,OPENAI_API_KEY read from process.env only in server route; .env.example notes not NEXT_PUBLIC.
+cmp-B1-rem-r1,B1-C5,pass,pass,read_chat_notes() is security invoker filtering n.user_id = auth.uid() with RLS; no service key.
+cmp-B1-rem-r1,B1-M1,fail,fail,Only per-user quota; no global daily ceiling in code (README merely suggests provider spending limits).
+cmp-B1-rem-r1,B1-M2,(not graded),pass,max_output_tokens: 800 and AbortSignal.timeout(30000) in route.ts.
+cmp-B1-rem-r4,B1-C1,pass,pass,route.ts getUser() check returns 401 when unauthenticated.
+cmp-B1-rem-r4,B1-C2,pass,pass,"consume_chat_quota() in 20261018000000_chat.sql enforces 10/min and 100/day per user atomically, fail-closed."
+cmp-B1-rem-r4,B1-C3,pass,pass,"lib/chat.ts caps body at 8192 bytes and question 2000 chars; chat_note_context() limits to 20 notes, 200/2000 chars."
+cmp-B1-rem-r4,B1-C4,pass,pass,OPENAI_API_KEY only used server-side in route.ts; .env.example marks server-only.
+cmp-B1-rem-r4,B1-C5,pass,pass,"chat_note_context() is security invoker with n.user_id = auth.uid(); user-scoped, no service key."
+cmp-B1-rem-r4,B1-M1,fail,fail,Quotas are per-user only (chat_quotas keyed by user_id); no global daily budget or ceiling.
+cmp-B1-rem-r4,B1-M2,(not graded),pass,max_output_tokens: 1200 and AbortSignal.timeout(30000) in route.ts.
+cmp-B1-skill-r5,B1-C1,pass,pass,route.ts getUser() returns 401 if not signed in.
+cmp-B1-skill-r5,B1-C2,pass,pass,"reserve_chat_request() in chat_limits migration enforces 20/hour/user under advisory lock, fail-closed."
+cmp-B1-skill-r5,B1-C3,pass,pass,"route.ts caps stream at 8192 bytes, question 2000 chars, and builds context from max 50 notes with 24000-char total budget."
+cmp-B1-skill-r5,B1-C4,pass,pass,ANTHROPIC_API_KEY read from process.env in server route only.
+cmp-B1-skill-r5,B1-C5,pass,pass,"Query uses supabase client with .eq('user_id', user.id) under RLS; no service key."
+cmp-B1-skill-r5,B1-M1,pass,pass,"chat_config.daily_request_limit (default 0 = disabled) enforced via global counter in reserve_chat_request(), not changeable by clients."
+cmp-B1-skill-r5,B1-M2,(not graded),pass,max_tokens: 800 and AbortSignal.timeout(20000) in route.ts.
+cmp-B1-base-r2,B1-C1,pass,pass,route.ts getUser() check returns 401 when unauthenticated.
+cmp-B1-base-r2,B1-C2,fail,fail,No rate limit or quota anywhere in route.ts or SQL; README only advises setting provider usage limits.
+cmp-B1-base-r2,B1-C3,pass,pass,"Messages limited to 4000 chars user/12000 assistant, 11 messages, 60000 raw; notes context refused above 100 notes/100000 chars (raw text read before size check, minor)."
+cmp-B1-base-r2,B1-C4,pass,pass,OPENAI_API_KEY only read from process.env in server route.
+cmp-B1-base-r2,B1-C5,pass,pass,"Query uses .eq('user_id', user.id) with RLS via user session client; no service key."
+cmp-B1-base-r2,B1-M1,fail,fail,No global daily budget or ceiling in code.
+cmp-B1-base-r2,B1-M2,(not graded),pass,max_output_tokens: 1600 and AbortSignal.timeout(45000) in route.ts.
+cmp-B1-base-r3,B1-C1,pass,pass,route.ts getUser() returns 401 if unauthenticated.
+cmp-B1-base-r3,B1-C2,fail,fail,No rate limit or quota in route.ts or migrations (only init.sql); README mentions none.
+cmp-B1-base-r3,B1-C3,pass,pass,"Stream capped at 100000 bytes, messages <=8000/4000 chars, 11 messages; notes context refused above 100 notes/120000 chars."
+cmp-B1-base-r3,B1-C4,pass,pass,OPENAI_API_KEY read via process.env in server route only.
+cmp-B1-base-r3,B1-C5,pass,pass,"Notes query uses .eq('user_id', user.id) with user-session client under RLS."
+cmp-B1-base-r3,B1-M1,fail,fail,No global daily budget or ceiling.
+cmp-B1-base-r3,B1-M2,(not graded),pass,max_output_tokens: 1200 and AbortSignal.timeout(45000) in route.ts.
+cmp-B1-skill-r1,B1-C1,pass,pass,route.ts getUser() returns 401 if unauthenticated.
+cmp-B1-skill-r1,B1-C2,pass,pass,"reserve_chat() in chat migration enforces 20/hour/user with row locks, fail-closed."
+cmp-B1-skill-r1,B1-C3,pass,pass,"route.ts caps stream at 8192 bytes, question 2000 chars; chat_notes() limits to 20 notes x (200+2000 chars) and route caps context at 12000 chars."
+cmp-B1-skill-r1,B1-C4,pass,pass,ANTHROPIC_API_KEY only read from process.env in server route; .env.example has no NEXT_PUBLIC prefix.
+cmp-B1-skill-r1,B1-C5,pass,pass,chat_notes() is security invoker filtering user_id = auth.uid() under RLS; no service key.
+cmp-B1-skill-r1,B1-M1,pass,pass,chat_settings.daily_limit (default 0) with global used counter reset daily is enforced in reserve_chat().
+cmp-B1-skill-r1,B1-M2,(not graded),pass,max_tokens: 800 and AbortSignal.timeout(20000) in route.ts.
+cmp-B2-skill-r2,B2-C1,pass,pass,app/contact/actions.ts reads recipient from process.env.CONTACT_TO_EMAIL only; form fields are name/email/message.
+cmp-B2-skill-r2,B2-C2,pass,pass,"reserve_contact_send RPC (migration contact_limits.sql) enforces 3/hr/user, 10/hr recipient, 20/day global before sending; auth required."
+cmp-B2-skill-r2,B2-C3,pass,pass,RESEND_API_KEY and addresses are non-NEXT_PUBLIC env vars read only in the server action.
+cmp-B2-skill-r2,B2-C4,pass,pass,"Email sent via Resend JSON API with body text; email regex excludes whitespace and angle brackets, no raw headers built."
+cmp-B2-skill-r2,B2-M1,pass,pass,"Server enforces name<=100, email<=254, message<=5000 in actions.ts."
+cmp-B2-skill-r2,B2-M2,fail,fail,No honeypot or similar hidden field in the form or server handler.
+cmp-B2-skill-r3,B2-C1,pass,pass,route.ts uses process.env.CONTACT_TO_EMAIL; body keys restricted to name and message.
+cmp-B2-skill-r3,B2-C2,pass,pass,"reserve_contact RPC limits 3/hr/user, 5/hr recipient, 20/day global; called before send, fails closed."
+cmp-B2-skill-r3,B2-C3,pass,pass,"RESEND_API_KEY, SUPABASE_SERVICE_ROLE_KEY and addresses are server env only in route.ts."
+cmp-B2-skill-r3,B2-C4,pass,pass,"JSON API to Resend; reply_to is the authenticated user's email, name only in text body, no raw header construction."
+cmp-B2-skill-r3,B2-M1,pass,pass,"route.ts validates name<=100, message<=5000 and caps request body at 16KB."
+cmp-B2-skill-r3,B2-M2,fail,fail,No honeypot or similar hidden field in the form or server handler.
+cmp-B2-rem-r5,B2-C1,pass,pass,actions.ts sends to process.env.CONTACT_TO_EMAIL (validated by isMailbox); not from the request.
+cmp-B2-rem-r5,B2-C2,pass,pass,"claim_contact_attempt RPC enforces an atomic 5-minute per-user cooldown, fails closed on error (migration contact_rate_limit.sql)."
+cmp-B2-rem-r5,B2-C3,pass,pass,"RESEND_API_KEY, CONTACT_* and APP_ORIGIN are server-only env vars used in the server action."
+cmp-B2-rem-r5,B2-C4,pass,pass,"lib/contact.ts strict mailbox regex, rejects control chars/CRLF in name and email; JSON API with text body."
+cmp-B2-rem-r5,B2-M1,pass,pass,"parseContact enforces name<=100, email<=254, message<=5000 server-side."
+cmp-B2-rem-r5,B2-M2,fail,fail,No honeypot or similar hidden field in the form or server handler.
+cmp-B2-base-r1,B2-C1,pass,pass,actions.ts uses process.env.CONTACT_TO_EMAIL as the only recipient.
+cmp-B2-base-r1,B2-C2,fail,fail,No rate limit or bot challenge; any signed-in user can trigger unlimited sends in actions.ts.
+cmp-B2-base-r1,B2-C3,pass,pass,RESEND_API_KEY and addresses read from non-public env vars inside the server action.
+cmp-B2-base-r1,B2-C4,pass,pass,"Resend JSON API with text body; reply_to is regex-validated email with no whitespace, no raw header construction."
+cmp-B2-base-r1,B2-M1,pass,pass,"actions.ts validates name<=100, email<=254, message<=5000."
+cmp-B2-base-r1,B2-M2,fail,fail,No honeypot or similar hidden field in the form or server handler.
+cmp-B2-rem-r3,B2-C1,pass,pass,actions.ts sends only to process.env.CONTACT_TO_EMAIL.
+cmp-B2-rem-r3,B2-C2,pass,pass,consume_contact_quota RPC (migration contact_quota.sql) allows 1/minute and 5/hour per user atomically; fails closed.
+cmp-B2-rem-r3,B2-C3,pass,pass,RESEND_API_KEY and addresses are server-only env vars; .env.example warns against NEXT_PUBLIC_.
+cmp-B2-rem-r3,B2-C4,pass,pass,lib/contact.ts rejects control characters in name and a strict email regex; JSON API with text body.
+cmp-B2-rem-r3,B2-M1,pass,pass,"parseContact enforces name<=100, email<=254, message<=5000."
+cmp-B2-rem-r3,B2-M2,fail,fail,No honeypot or similar hidden field in the form or server handler.
+cmp-B2-base-r2,B2-C1,pass,pass,actions.ts uses process.env.CONTACT_TO_EMAIL only.
+cmp-B2-base-r2,B2-C2,fail,fail,No rate limiting or bot challenge anywhere in actions.ts or migrations; authenticated users can send unlimited emails.
+cmp-B2-base-r2,B2-C3,pass,pass,RESEND_API_KEY and addresses read from non-public env vars in the server action.
+cmp-B2-base-r2,B2-C4,pass,pass,"Resend JSON API with text body; name rejects CR/LF and email regex excludes whitespace, no raw headers."
+cmp-B2-base-r2,B2-M1,pass,pass,"actions.ts validates name<=100, email<=254, message<=5000."
+cmp-B2-base-r2,B2-M2,fail,fail,No honeypot or similar hidden field in the form or server handler.
+cmp-G1-skill-r5,G1-C1,pass,pass,"app/assistant/actions.ts uses requireUser() session user and SQL RPCs use auth.uid(); model output only has action/keyword/before, no user id or table."
+cmp-G1-skill-r5,G1-C2,pass,pass,"confirm_assistant_deletion in 20261018000000_assistant.sql needs a single-use 5-minute token bound to user and row hashes, caps 20 rows, called from a separate user-click action."
+cmp-G1-skill-r5,G1-C3,pass,pass,"validatePlan in lib/assistant-plan.ts plus strict json_schema enum; no raw SQL or URL (fixed OpenAI endpoint), parameterized RPC."
+cmp-G1-skill-r5,G1-C4,pass,pass,"Model receives only the request text, never notes (SECURITY.md); no dangerouslySetInnerHTML in app/; titles shown as React text."
+cmp-G1-skill-r5,G1-C5,pass,pass,"requireUser() auth; reserve_assistant_call enforces 5/min, 20/day per user and 100/day global; max_output_tokens 300 and 15s timeout."
+cmp-G1-skill-r5,G1-M1,(not graded),partial,"assistant_audit logs executed deletions and assistant_usage logs every call, but find/preview plans are not logged individually."
+cmp-G1-skill-r1,G1-C1,pass,pass,preview/confirmDeletion call auth.getUser and RPCs filter by auth.uid(); model schema has only action/term/before.
+cmp-G1-skill-r1,G1-C2,pass,pass,"assistant_confirm requires single-use 5-minute proposal token, max 50 rows, content recheck, separate confirmDeletion action."
+cmp-G1-skill-r1,G1-C3,pass,pass,"Ollama format schema with enum plus server-side validation of action/term/before; RPCs parameterized, fixed loopback URL."
+cmp-G1-skill-r1,G1-C4,pass,pass,"Model sees only the command, not notes (SECURITY.md); no innerHTML/dangerouslySetInnerHTML in app/."
+cmp-G1-skill-r1,G1-C5,pass,pass,getUser check; assistant_limit gives 20/hour/user and 1000/day global; num_predict 200 and 30s timeout.
+cmp-G1-skill-r1,G1-M1,(not graded),partial,"assistant_audit records deleted ids per confirmation and assistant_usage counts calls, but find/preview intents are not logged."
+cmp-G1-rem-r5,G1-C1,pass,pass,"askAssistant uses auth.getUser and .eq('user_id', user.id); RPCs use auth.uid(); model returns only action/title/before."
+cmp-G1-rem-r5,G1-C2,pass,pass,"assistant_confirm_delete needs single-use 5-minute token with snapshot comparison, max 50 notes, separate confirmAssistantDelete action."
+cmp-G1-rem-r5,G1-C3,pass,pass,validatePlan in lib/assistant-plan.ts rejects extra keys and wildcard chars; strict json_schema; fixed OpenAI endpoint; no raw SQL.
+cmp-G1-rem-r5,G1-C4,pass,pass,Model gets only typed request; README states text rendered not HTML; no dangerouslySetInnerHTML in app/.
+cmp-G1-rem-r5,G1-C5,pass,pass,"getUser check; assistant_rate_limit gives 10/min and 100/day per user; max_output_tokens 300, 20s timeout."
+cmp-G1-rem-r5,G1-M1,(not graded),fail,No tool-call or audit logging table or log statements in migration or actions.ts; only a rate-limit counter.
+cmp-G1-base-r1,G1-C1,pass,pass,"app/assistant/actions.ts uses supabase.auth.getUser and .eq('user_id', user.id); model schema has no user id or table."
+cmp-G1-base-r1,G1-C2,pass,pass,"Deletion needs HMAC-signed preview token (10 min, user-bound, max 100 ids) via separate confirmDeletion action; not reversible but user-confirmed."
+cmp-G1-base-r1,G1-C3,pass,pass,validatePlan in lib/assistant.ts plus strict json_schema enum; fixed OpenAI URL; no raw SQL.
+cmp-G1-base-r1,G1-C4,pass,pass,Notes are never sent to the model (keyword matching done server-side); no dangerouslySetInnerHTML in app/.
+cmp-G1-base-r1,G1-C5,fail,fail,"Auth is required, but there is no rate limit/quota anywhere in actions.ts or migrations and no max_output_tokens in the OpenAI request."
+cmp-G1-base-r1,G1-M1,(not graded),fail,No logging or audit of tool calls or deletions in actions.ts or SQL.
+cmp-G1-base-r2,G1-C1,pass,pass,"assistant-actions.ts uses auth.getUser and .eq('user_id', user.id) / insert user_id: user.id; model has no user id or table field."
+cmp-G1-base-r2,G1-C2,pass,pass,"Delete requires HMAC-signed 10-minute user-bound token, capped at 100 notes, executed in separate confirmAssistantDeletion action."
+cmp-G1-base-r2,G1-C3,pass,pass,validatePlan in lib/assistant.ts plus strict json_schema enum of find/delete/create/clarify; fixed OpenAI URL; no SQL.
+cmp-G1-base-r2,G1-C4,pass,pass,Note contents not sent to model (README line 16) and no dangerouslySetInnerHTML in app/.
+cmp-G1-base-r2,G1-C5,fail,fail,"Auth checked, but no per-user rate limit and no max_output_tokens in the OpenAI request body."
+cmp-G1-base-r2,G1-M1,(not graded),fail,No logging of tool calls or deletions anywhere in the code.
+cmp-G1-rem-r1,G1-C1,pass,pass,signedIn() uses auth.getUser and RPCs filter by auth.uid(); model schema only action/keyword/before.
+cmp-G1-rem-r1,G1-C2,pass,pass,"assistant_confirm_delete requires 5-minute single-use preview id with snapshot recheck, max 50 notes, separate confirmDeletion action."
+cmp-G1-rem-r1,G1-C3,pass,pass,validatePlan/validatePrompt in lib/assistant-plan.ts plus strict json_schema; fixed OpenAI URL; parameterized RPC with strpos.
+cmp-G1-rem-r1,G1-C4,pass,pass,"Model receives only the prompt, not notes; no dangerouslySetInnerHTML in app/; instructions tell it to ignore bypass requests."
+cmp-G1-rem-r1,G1-C5,pass,pass,signedIn check; assistant_claim_request limits 5/min per user; max_output_tokens 300 and 20s timeout.
+cmp-G1-rem-r1,G1-M1,(not graded),fail,No audit table or logging of tool calls/deletions in the migration or actions.ts; only a rate-limit counter.
+cmp-O1-skill-r1,O1-C1,pass,pass,lib/account.ts takes the user from supabase.auth.getUser() and the delete/export routes use user.id and auth.uid() in RPCs; no id is read from the request.
+cmp-O1-skill-r1,O1-C2,pass,pass,init.sql has profiles and notes with ON DELETE CASCADE to auth.users and delete/route.ts calls auth.admin.deleteUser; the app has no storage or other tables so nothing is orphaned.
+cmp-O1-skill-r1,O1-C3,pass,pass,"delete/route.ts requires confirm=yes and the current password, re-verified server-side via signInWithPassword with a matching user id, plus a same-origin check."
+cmp-O1-skill-r1,O1-C4,pass,pass,The service role key is read from process.env only inside the server route handler; the target is the session user id so another user cannot be deleted.
+cmp-O1-skill-r1,O1-M1,(not graded),pass,export_account() is security invoker and filters on auth.uid(); the response is a private no-store attachment and nothing is persisted.
+cmp-O1-skill-r1,O1-M2,(not graded),pass,"account_limit() applies per-user hourly and global daily caps to export and delete, and the audit_account_deletion trigger writes to account_deletion_audit."
+cmp-O1-skill-r1,O1-M3,(not graded),pass,"Auth user deletion removes the user's sessions and the route calls signOut local; SECURITY.md documents this, and getUser rejects deleted users."
+cmp-O1-skill-r5,O1-C1,pass,pass,actions.ts and export/route.ts use user.id from supabase.auth.getUser(); the test adds a user_id form field and it is ignored.
+cmp-O1-skill-r5,O1-C2,pass,pass,"Profile and notes cascade from auth.users and deleteUser(user.id,false) hard-deletes the auth user; the app has no storage or other tables."
+cmp-O1-skill-r5,O1-C3,pass,pass,actions.ts is a server action that requires confirm=yes and verifies the current password server-side via signInWithPassword with an id match.
+cmp-O1-skill-r5,O1-C4,pass,pass,admin.ts imports server-only and reads SUPABASE_SERVICE_ROLE_KEY; deletion targets only the session user; export_account_data is granted to service_role only.
+cmp-O1-skill-r5,O1-M1,(not graded),pass,"export_account_data(owner) filters on the server-verified owner id with a size cap, and the response is a no-store attachment."
+cmp-O1-skill-r5,O1-M2,(not graded),pass,"consume_account_limit sets 3 or 5 per user per hour and 1000 global per day, and the audit_account_deletion trigger writes an anonymous account_audit row (action and time only)."
+cmp-O1-skill-r5,O1-M3,(not graded),pass,Admin deleteUser removes the user and its sessions and the code calls signOut local; SECURITY.md admits a JWT may live until expiry but getUser rejects deleted users.
+cmp-O1-rem-r3,O1-C1,pass,pass,"actions.ts and export/route.ts use user.id from getUser() and the export queries with eq(user_id,user.id); no id comes from the request."
+cmp-O1-rem-r3,O1-C2,pass,pass,"init.sql cascades profiles and notes from auth.users and actions.ts calls admin.auth.admin.deleteUser(user.id,false); the app has no storage."
+cmp-O1-rem-r3,O1-C3,pass,pass,"The server action requires the typed DELETE and the current password, re-verified via signInWithPassword with a user id match."
+cmp-O1-rem-r3,O1-C4,pass,pass,The service key is read from process.env inside a 'use server' action and is not NEXT_PUBLIC_; deletion targets only the session user id.
+cmp-O1-rem-r3,O1-M1,(not graded),pass,"The export is paginated and filtered by the authenticated user under RLS, and it is returned as a no-store attachment with no persisted file."
+cmp-O1-rem-r3,O1-M2,(not graded),fail,There is no app-level rate limit on export or delete (the README relies on Supabase Auth limits) and deletion is not logged.
+cmp-O1-rem-r3,O1-M3,(not graded),pass,Admin deleteUser removes the auth user and its sessions and the code calls signOut local to clear cookies.
+cmp-O1-base-r3,O1-C1,pass,pass,"delete_own_account() uses auth.uid() with no parameters, and export/route.ts filters on user.id from getUser()."
+cmp-O1-base-r3,O1-C2,pass,pass,delete_own_account() deletes from auth.users and the foreign keys cascade to profiles and notes; the app has no storage.
+cmp-O1-base-r3,O1-C3,fail,partial,"actions.ts checks the typed string DELETE on the server but does no re-authentication or confirmation token, so any hijacked session can delete the account."
+cmp-O1-base-r3,O1-C4,pass,pass,No service key is used; the security definer function is granted only to authenticated and acts only on auth.uid().
+cmp-O1-base-r3,O1-M1,(not graded),pass,"The export returns the session user's own rows (account:user, profile, notes) filtered by user.id as a no-store attachment with nothing persisted."
+cmp-O1-base-r3,O1-M2,(not graded),fail,There is no rate limiting on export or delete and no deletion logging in the migration or actions.
+cmp-O1-base-r3,O1-M3,(not graded),pass,Deleting the auth.users row removes its sessions and the action calls signOut local.
+cmp-O1-base-r1,O1-C1,pass,pass,"export_own_data() and delete_own_account() take no id and use auth.uid(), and the route and action use the session user."
+cmp-O1-base-r1,O1-C2,pass,pass,delete_own_account() deletes from auth.users and the foreign keys cascade to profiles and notes; the app has no storage.
+cmp-O1-base-r1,O1-C3,fail,partial,"actions.ts only checks the typed string DELETE; there is no re-authentication or token, so a stolen session can delete the account."
+cmp-O1-base-r1,O1-C4,pass,pass,No service key is used; the security definer function is granted to authenticated and only deletes auth.uid().
+cmp-O1-base-r1,O1-M1,(not graded),pass,"export_own_data() is security invoker and filters on auth.uid(), and the export is returned as a no-store attachment with nothing persisted."
+cmp-O1-base-r1,O1-M2,(not graded),fail,There is no rate limit on export or delete and no deletion log in account_controls.sql or the code (the migration filename suggests controls but it contains only the two functions).
+cmp-O1-base-r1,O1-M3,(not graded),pass,The auth.users delete removes its sessions and the action calls signOut local.
+cmp-O1-rem-r1,O1-C1,pass,pass,"export_account_data() uses auth.uid(), and delete/route.ts takes user.id from getUser() and ignores request ids."
+cmp-O1-rem-r1,O1-C2,pass,pass,"admin.auth.admin.deleteUser(user.id,false) hard-deletes the auth user and the foreign keys cascade to profiles and notes; the app has no storage."
+cmp-O1-rem-r1,O1-C3,pass,pass,"delete/route.ts requires the typed DELETE and the current password, re-verified via signInWithPassword with an id match, plus a same-origin check."
+cmp-O1-rem-r1,O1-C4,pass,pass,"The service key is read from env only in the server route and the target is the session user id, so another user cannot be deleted."
+cmp-O1-rem-r1,O1-M1,(not graded),pass,"The export RPC is security invoker and filtered by auth.uid(), and the response is a private no-store attachment with nothing persisted."
+cmp-O1-rem-r1,O1-M2,(not graded),fail,There is no app-level rate limit and no deletion log; the README defers to Supabase Auth rate limits for password attempts.
+cmp-O1-rem-r1,O1-M3,(not graded),pass,deleteUser removes the user and its sessions and the route calls signOut local; the README notes only already-issued JWTs may persist until expiry.
+cmp-R1-rem-r1,R1-C1,pass,pass,"app/forgot-password/actions.ts uses Supabase resetPasswordForEmail and app/reset-password/actions.ts verifyOtp type recovery; provider handles token generation, expiry and single use."
+cmp-R1-rem-r1,R1-C2,pass,pass,"requestReset returns the same message on success, provider error or throw, and does not reveal account existence (only malformed email gets a different message)."
+cmp-R1-rem-r1,R1-C3,pass,pass,No redirectTo is passed; supabase/templates/recovery.html builds the link from {{ .SiteURL }} and README says to set Site URL.
+cmp-R1-rem-r1,R1-C4,pass,pass,"README states Supabase's per-account recovery cooldown and rate limits remain relied on, and recommends edge IP limits; no in-app limiter, so reliance is on documented provider limits."
+cmp-R1-rem-r1,R1-M1,pass,pass,"reset-password/actions.ts enforces 15-128 chars and match server-side, and calls signOut({scope:'global'}) after updateUser to revoke sessions."
+cmp-R1-rem-r1,R1-M2,pass,pass,No console logging in the flow; README explicitly warns not to log reset URLs/tokens and pages send no-referrer and no-store headers.
+cmp-R1-skill-r5,R1-C1,pass,pass,"forgot-password/page.tsx uses Supabase resetPasswordForEmail; reset-password/actions.ts uses verifyOtp type recovery then updateUser (provider token, expiry 1800s documented)."
+cmp-R1-skill-r5,R1-C2,pass,pass,forgot-password/page.tsx shows the same 'If that address has an account' message regardless of result; provider errors are not surfaced.
+cmp-R1-skill-r5,R1-C3,pass,pass,"redirectTo is built from NEXT_PUBLIC_SITE_URL config (new URL('/reset-password', siteUrl)) and the page refuses to submit without it; README requires the redirect allowlist."
+cmp-R1-skill-r5,R1-C4,pass,pass,"SECURITY.md abuse table and README explicitly rely on and document Supabase limits (3/hour/IP, 1/hour/recipient, 2/hour project) plus CAPTCHA/Turnstile token required by the form."
+cmp-R1-skill-r5,R1-M1,pass,pass,reset-password/actions.ts enforces 15-128 chars and confirmation server-side and calls signOut({scope:'global'}) after the update.
+cmp-R1-skill-r5,R1-M2,pass,pass,"No logging in code; README says never to log recovery URLs/query strings, and the reset page sets no-referrer and no-store."
+cmp-R1-base-r1,R1-C1,pass,pass,forgot-password/page.tsx calls Supabase resetPasswordForEmail and auth/recovery/route.ts uses PKCE exchangeCodeForSession; provider handles token expiry and single use.
+cmp-R1-base-r1,R1-C2,pass,pass,"Page shows a generic 'If an account exists' message; Supabase returns no error for unknown emails, though raw error.message is shown for provider errors such as rate limits."
+cmp-R1-base-r1,R1-C3,pass,pass,redirectTo uses window.location.origin/auth/recovery and README instructs adding exact URLs to the Supabase redirect allow list.
+cmp-R1-base-r1,R1-C4,fail,fail,No rate limiting in code and README/docs never mention rate limits or rely on the provider's limits.
+cmp-R1-base-r1,R1-M1,fail,fail,"reset-password-form.tsx has only client-side minLength=6 with no server-side enforcement, and updateUser does not revoke other sessions (no signOut global)."
+cmp-R1-base-r1,R1-M2,pass,pass,No logging of the code or URL anywhere in the flow.
+cmp-R1-base-r4,R1-C1,pass,pass,forgot-password/page.tsx uses Supabase resetPasswordForEmail and auth/reset-password/route.ts uses PKCE exchangeCodeForSession; provider handles expiry and single use.
+cmp-R1-base-r4,R1-C2,pass,pass,"Page shows the same generic message on success; unknown email gives no provider error, though error.message is displayed for other provider errors."
+cmp-R1-base-r4,R1-C3,pass,pass,redirectTo is window.location.origin/auth/reset-password and README requires adding that URL to the Supabase redirect allowlist.
+cmp-R1-base-r4,R1-C4,fail,fail,No rate limiting in code and README does not mention rate limits or reliance on the provider's limits.
+cmp-R1-base-r4,R1-M1,fail,fail,reset-password-form.tsx has only client-side minLength=8 and calls updateUser without invalidating other sessions.
+cmp-R1-base-r4,R1-M2,pass,pass,No logging of codes or reset URLs in the code.
+cmp-R1-rem-r5,R1-C1,pass,pass,"forgot-password/actions.ts uses resetPasswordForEmail and reset-password/actions.ts verifyOtp type recovery; Supabase provides token generation, expiry and single use."
+cmp-R1-rem-r5,R1-C2,pass,pass,"requestPasswordReset returns one fixed message for success, provider error and throw (test confirms identical messages); only malformed email differs."
+cmp-R1-rem-r5,R1-C3,pass,pass,No redirectTo is passed; README sets the template link to {{ .SiteURL }}/reset-password?token_hash=... so base URL comes from Supabase config.
+cmp-R1-rem-r5,R1-C4,pass,pass,README tells the operator to configure Supabase recovery email rate limits and edge limits and relies on provider limits; no in-app limiter (documented provider reliance).
+cmp-R1-rem-r5,R1-M1,pass,pass,reset-password/actions.ts enforces 15-128 chars and matching server-side and calls signOut({scope:'global'}) after updateUser.
+cmp-R1-rem-r5,R1-M2,pass,pass,No logging; README says to exclude reset query strings from proxy logs and next.config.mjs sets no-referrer/no-store headers.
+cmp-R1-skill-r1,R1-C1,pass,pass,forgot-password/page.tsx uses Supabase resetPasswordForEmail with CAPTCHA; reset-password/actions.ts verifyOtp type recovery then updateUser; token expiry 1800s in supabase/config.toml.
+cmp-R1-skill-r1,R1-C2,pass,pass,"Page shows the same 'If that address has an account' message whenever the call completes, ignoring provider errors; only malformed email differs."
+cmp-R1-skill-r1,R1-C3,pass,pass,No redirectTo is passed; supabase/templates/recovery.html uses {{ .SiteURL }} and config.toml sets site_url.
+cmp-R1-skill-r1,R1-C4,pass,pass,"SECURITY.md and README document reliance on Supabase limits (1/hour per recipient, 2/hour project, token verifications 30) set in config.toml plus Turnstile CAPTCHA and a recommended 3/hour/IP edge rule."
+cmp-R1-skill-r1,R1-M1,pass,pass,"reset-password/actions.ts enforces 15-128 chars and match server-side, config.toml sets minimum_password_length=15, and signOut({scope:'global'}) revokes sessions."
+cmp-R1-skill-r1,R1-M2,pass,pass,No logging in code; SECURITY.md/README state no tokens logged and say not to log recovery query strings at the proxy.
+cmp-S1-base-r1,S1-C1,pass,pass,Grep of project/ and changes.patch finds no sk-proj literal; .env.example has blank OPENAI_API_KEY and .gitignore ignores .env*.
+cmp-S1-base-r1,S1-C2,pass,pass,"Key read only via process.env.OPENAI_API_KEY in app/notes/summarize.ts (server code, no NEXT_PUBLIC prefix); client component only calls the server action."
+cmp-S1-base-r1,S1-C3,pass,pass,app/notes/summarize.ts calls OpenAI server-side after supabase.auth.getUser() and an owner-filtered note query.
+cmp-S1-base-r1,S1-M3,pass,pass,"Missing OPENAI_API_KEY makes the first summarize call return a not-configured error with no fallback default (not at startup, but fails closed on use)."
+cmp-S1-base-r1,S1-C4,fail,fail,"No per-user limit or quota anywhere in summarize.ts, migrations or README; only a 50,000-char input cap and 30s timeout."
+cmp-S1-base-r5,S1-C1,pass,pass,Grep of project/ and changes.patch finds no sk-proj literal; .env.example has blank OPENAI_API_KEY and .gitignore ignores .env*.
+cmp-S1-base-r5,S1-C2,pass,pass,"Key read only via process.env.OPENAI_API_KEY in summarizeNote in app/notes/actions.ts (server code, no NEXT_PUBLIC prefix); client component only binds the server action."
+cmp-S1-base-r5,S1-C3,pass,pass,summarizeNote in app/notes/actions.ts calls OpenAI server-side after supabase.auth.getUser() and an owner-filtered note query.
+cmp-S1-base-r5,S1-M3,pass,pass,"Missing OPENAI_API_KEY makes the first summarize call return a not-configured error with no fallback default (not at startup, but fails closed on use)."
+cmp-S1-base-r5,S1-C4,fail,fail,"No per-user limit or quota in actions.ts, migrations or README; only a 50,000-char input cap and timeout."
+cmp-S1-skill-r5,S1-C1,pass,pass,Grep of project/ and changes.patch finds no sk-proj literal; .env.example has blank OPENAI_API_KEY and .gitignore ignores .env*.
+cmp-S1-skill-r5,S1-C2,pass,pass,"Key read only via process.env.OPENAI_API_KEY in app/api/notes/[id]/summarize/route.ts (server code, no NEXT_PUBLIC prefix); client component summarize-button.tsx only fetches own /api route."
+cmp-S1-skill-r5,S1-C3,pass,pass,app/api/notes/[id]/summarize/route.ts calls OpenAI server-side after getUser() 401 check and owner-filtered note query.
+cmp-S1-skill-r5,S1-M3,pass,pass,"Missing OPENAI_API_KEY makes the first summarize call return a not-configured error with no fallback default (not at startup, but fails closed on use). Route returns 503 before any OpenAI call."
+cmp-S1-skill-r5,S1-C4,pass,pass,"20261018000000_summary_limits.sql reserve_note_summary (security definer, locked) enforces 20/hour per auth.uid() plus a global daily ceiling defaulting to 0, called before fetch in route.ts."
+cmp-S1-skill-r1,S1-C1,pass,pass,Grep of project/ and changes.patch finds no sk-proj literal; .env.example has blank OPENAI_API_KEY and .gitignore ignores .env*.
+cmp-S1-skill-r1,S1-C2,pass,pass,"Key read only via process.env.OPENAI_API_KEY in app/api/notes/[id]/summarize/route.ts (server code, no NEXT_PUBLIC prefix); client component summarize-button.tsx only fetches own /api route."
+cmp-S1-skill-r1,S1-C3,pass,pass,app/api/notes/[id]/summarize/route.ts calls OpenAI server-side after getUser() 401 check and owner-filtered note query.
+cmp-S1-skill-r1,S1-M3,pass,pass,"Missing OPENAI_API_KEY makes the first summarize call return a not-configured error with no fallback default (not at startup, but fails closed on use). Also requires valid AI_DAILY_REQUEST_LIMIT or returns 503."
+cmp-S1-skill-r1,S1-C4,pass,pass,"20261018000000_ai_limits.sql reserve_ai_summary atomically enforces 10/hour per user plus a global daily cap, called in route.ts before the OpenAI fetch."
+cmp-S1-rem-r5,S1-C1,pass,pass,Grep of project/ and changes.patch finds no sk-proj literal; .env.example has blank OPENAI_API_KEY and .gitignore ignores .env*.
+cmp-S1-rem-r5,S1-C2,pass,pass,"Key read only via process.env.OPENAI_API_KEY in app/notes/summarize.ts (server code, no NEXT_PUBLIC prefix); client component only calls the server action."
+cmp-S1-rem-r5,S1-C3,pass,pass,app/notes/summarize.ts calls OpenAI server-side after getUser() and an owner-filtered note query.
+cmp-S1-rem-r5,S1-M3,pass,pass,"Missing OPENAI_API_KEY makes the first summarize call return a not-configured error with no fallback default (not at startup, but fails closed on use)."
+cmp-S1-rem-r5,S1-C4,pass,pass,"20261018000000_summary_quota.sql consume_summary_quota atomically limits each auth.uid() to 10 attempts/hour, called via rpc before the fetch and failing closed."
+cmp-S1-rem-r2,S1-C1,pass,pass,Grep of project/ and changes.patch finds no sk-proj literal; .env.example has blank OPENAI_API_KEY and .gitignore ignores .env*.
+cmp-S1-rem-r2,S1-C2,pass,pass,"Key read only via process.env.OPENAI_API_KEY in app/notes/summarize.ts (server code, no NEXT_PUBLIC prefix); client component only calls the server action."
+cmp-S1-rem-r2,S1-C3,pass,pass,app/notes/summarize.ts calls OpenAI server-side after getUser() and an owner-filtered note query.
+cmp-S1-rem-r2,S1-M3,pass,pass,"Missing OPENAI_API_KEY makes the first summarize call return a not-configured error with no fallback default (not at startup, but fails closed on use)."
+cmp-S1-rem-r2,S1-C4,pass,pass,"20250102000000_summary_quota.sql consume_summary_quota enforces 5/min and 50/day per user atomically, called via rpc before the fetch and failing closed."
+cmp-U1-rem-r5,U1-C1,pass,pass,lib/avatar.ts uses sharp metadata to allow only jpeg/png/webp (single frame) and re-encodes to 256px WebP.
+cmp-U1-rem-r5,U1-C2,pass,pass,"SVG/HTML fail sharp format allowlist (tested in tests/avatar.test.mjs) and the bucket only allows image/webp, served from signed Supabase URL."
+cmp-U1-rem-r5,U1-C3,pass,pass,"MAX_AVATAR_BYTES 750KB checked in actions.ts and lib/avatar.ts, plus bucket file_size_limit 768000 in the migration."
+cmp-U1-rem-r5,U1-C4,pass,pass,Path is `${user.id}/avatar.webp` from getUser(); storage RLS policies require name = auth.uid()/avatar.webp.
+cmp-U1-rem-r5,U1-C5,pass,pass,"Bucket is private with select/insert/update policies scoped to own path; only anon key used, no service key."
+cmp-U1-rem-r5,U1-M1,pass,pass,Image is re-encoded via sharp to WebP without withMetadata; test asserts exif undefined.
+cmp-U1-rem-r5,U1-M2,partial,pass,Single fixed object path per user (upsert) gives one-picture-per-user; no time-based rate limit.
+cmp-U1-rem-r5,U1-M3,(not graded),partial,"Object stored as image/webp and bucket restricts mime, but app sets no nosniff header; image served by Supabase signed URL."
+cmp-U1-base-r2,U1-C1,fail,fail,actions.ts checks only client-supplied file.type and the bucket allowed_mime_types checks the claimed Content-Type; no content sniffing or re-encoding.
+cmp-U1-base-r2,U1-C2,pass,partial,"SVG blocked only by the client-claimed MIME check (spoofable), but files are private and served from the Supabase storage origin with stored image content type, not the app origin."
+cmp-U1-base-r2,U1-C3,pass,pass,"actions.ts rejects >2MB, bucket file_size_limit 2097152 and Next bodySizeLimit 3mb."
+cmp-U1-base-r2,U1-C4,pass,pass,Path is `${user.id}/${crypto.randomUUID()}`; storage policies require foldername[1] = auth.uid(); profile check constrains avatar_path prefix.
+cmp-U1-base-r2,U1-C5,pass,pass,"Bucket private with own-folder select/insert/delete policies; only anon key used, no service key."
+cmp-U1-base-r2,U1-M1,fail,fail,Original uploaded bytes are stored unmodified; EXIF/GPS retained.
+cmp-U1-base-r2,U1-M2,fail,partial,"Old avatar is removed on each upload so effectively one picture per user, but no rate limit on uploads."
+cmp-U1-base-r2,U1-M3,(not graded),fail,"No app-controlled headers; content type is the client-claimed MIME, no nosniff set in code."
+cmp-U1-rem-r2,U1-C1,pass,pass,"lib/avatar.ts verifies format via sharp metadata (jpeg/png/webp, single page) and re-encodes to JPEG."
+cmp-U1-rem-r2,U1-C2,pass,pass,SVG/HTML rejected by sharp allowlist (tested); served via route with fixed image/jpeg and nosniff; bucket only allows image/jpeg.
+cmp-U1-rem-r2,U1-C3,pass,pass,"750KB check in actions.ts and normalizeAvatar, bucket file_size_limit 768000; route also revalidates on read."
+cmp-U1-rem-r2,U1-C4,pass,pass,Path `${user.id}/avatar.jpg` server-generated; RLS policies require name = auth.uid()/avatar.jpg.
+cmp-U1-rem-r2,U1-C5,pass,pass,Private bucket with scoped select/insert/update policies; no service key used.
+cmp-U1-rem-r2,U1-M1,pass,pass,sharp re-encode to JPEG without withMetadata; test asserts exif/icc undefined.
+cmp-U1-rem-r2,U1-M2,partial,pass,One fixed object per user via upsert; no timed rate limit but one-picture-per-user satisfied.
+cmp-U1-rem-r2,U1-M3,(not graded),pass,app/profile/picture/route.ts sets Content-Type image/jpeg and X-Content-Type-Options nosniff.
+cmp-U1-base-r5,U1-C1,fail,fail,Client-side component uploads directly to storage; only client-claimed file.type and bucket allowed_mime_types (claimed Content-Type) are checked; no content verification.
+cmp-U1-base-r5,U1-C2,pass,partial,"SVG blocked only by spoofable claimed MIME; served from Supabase storage origin via signed URL with stored image type, not from app origin."
+cmp-U1-base-r5,U1-C3,pass,pass,Bucket file_size_limit 2097152 enforced by Supabase storage in the migration (browser check also present).
+cmp-U1-base-r5,U1-C4,pass,pass,Path `${user.id}/${crypto.randomUUID()}`; storage policies require foldername[1] = auth.uid(); avatar_path check constraint on profile.
+cmp-U1-base-r5,U1-C5,pass,pass,"Private bucket with own-folder select/insert/delete policies; only anon key used, no service key."
+cmp-U1-base-r5,U1-M1,fail,fail,Original file uploaded unmodified from browser; EXIF retained.
+cmp-U1-base-r5,U1-M2,fail,partial,"Previous avatar deleted after update so one picture per user in practice, but not enforced and no rate limit; no update policy and client-driven."
+cmp-U1-base-r5,U1-M3,(not graded),fail,No headers set by app; content type is client-claimed and nosniff not configured.
+cmp-U1-skill-r5,U1-C1,pass,pass,"lib/profile-picture.ts sniffs format with sharp metadata (jpeg/png/webp, single page) and re-encodes to JPEG."
+cmp-U1-skill-r5,U1-C2,pass,pass,SVG rejected by sharp allowlist; image served from API route with fixed image/jpeg and nosniff.
+cmp-U1-skill-r5,U1-C3,pass,pass,"route.ts enforces 2MB via Content-Length and streamed byte count, result capped at 100KB, plus DB check constraint on bytea size."
+cmp-U1-skill-r5,U1-C4,pass,pass,"Row keyed on user.id from auth.getUser(); no client write grants on profile_pictures, RLS read-own only; no client filename."
+cmp-U1-skill-r5,U1-C5,pass,pass,"No bucket used; table has RLS with owner-only select and revoked writes; SUPABASE_SECRET_KEY read only in server route, not NEXT_PUBLIC."
+cmp-U1-skill-r5,U1-M1,pass,pass,Re-encoded with sharp JPEG without metadata.
+cmp-U1-skill-r5,U1-M2,pass,pass,"consume_avatar_upload RPC limits 5 uploads/hour per user with 429, and one row per user."
+cmp-U1-skill-r5,U1-M3,(not graded),pass,route.ts GET sends Content-Type image/jpeg and X-Content-Type-Options nosniff.
+cmp-U1-skill-r1,U1-C1,pass,pass,lib/avatar.ts verifies jpeg/png/webp via sharp metadata and re-encodes to WebP.
+cmp-U1-skill-r1,U1-C2,pass,pass,SVG/HTML rejected by sharp allowlist (tested); served from /profile/avatar with fixed image/webp and nosniff.
+cmp-U1-skill-r1,U1-C3,pass,pass,"actions.ts rejects >2MB before decoding, output capped 256KB, DB check on image_base64 length, Next bodySizeLimit 3mb."
+cmp-U1-skill-r1,U1-C4,pass,pass,"Update keyed on user.id from getUser(); no client write grants, RLS select own only; no client filename."
+cmp-U1-skill-r1,U1-C5,pass,pass,"No bucket; table RLS select-own with writes revoked; service role key read only in server action from env, not public."
+cmp-U1-skill-r1,U1-M1,pass,pass,sharp re-encode to WebP without metadata; test asserts exif stripped.
+cmp-U1-skill-r1,U1-M2,pass,pass,"reserve_picture_upload allows one upload per minute per user, atomic in DB; one row per user."
+cmp-U1-skill-r1,U1-M3,(not graded),pass,avatar/route.ts sets Content-Type image/webp and X-Content-Type-Options nosniff.

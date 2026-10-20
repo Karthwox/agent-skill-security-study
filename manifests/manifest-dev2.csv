@@ -1,0 +1,17 @@
+order,run_id,prompt,condition,run,status,date_run
+1,dv2-V8-base-r2,V8,baseline,2,done,2026-10-17T23:23:05+05:30
+2,dv2-V6-skill-r1,V6,skill,1,done,2026-10-17T23:28:03+05:30
+3,dv2-V9-base-r2,V9,baseline,2,done,2026-10-17T23:29:49+05:30
+4,dv2-V7-skill-r2,V7,skill,2,done,2026-10-17T23:31:54+05:30
+5,dv2-V9-base-r1,V9,baseline,1,done,2026-10-17T23:33:14+05:30
+6,dv2-V7-skill-r1,V7,skill,1,done,2026-10-17T23:36:47+05:30
+7,dv2-V9-skill-r2,V9,skill,2,done,2026-10-17T23:38:33+05:30
+8,dv2-V9-skill-r1,V9,skill,1,done,2026-10-17T23:40:25+05:30
+9,dv2-V8-base-r1,V8,baseline,1,done,2026-10-17T23:42:12+05:30
+10,dv2-V6-skill-r2,V6,skill,2,done,2026-10-17T23:45:28+05:30
+11,dv2-V6-base-r1,V6,baseline,1,done,2026-10-17T23:47:18+05:30
+12,dv2-V8-skill-r1,V8,skill,1,done,2026-10-17T23:51:04+05:30
+13,dv2-V7-base-r1,V7,baseline,1,done,2026-10-17T23:52:50+05:30
+14,dv2-V6-base-r2,V6,baseline,2,done,2026-10-17T23:54:50+05:30
+15,dv2-V8-skill-r2,V8,skill,2,done,2026-10-17T23:59:50+05:30
+16,dv2-V7-base-r2,V7,baseline,2,done,2026-10-18T00:01:56+05:30

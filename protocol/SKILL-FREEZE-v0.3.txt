@@ -1,0 +1,14 @@
+vibe-skill v0.3 FROZEN 2026-10-18 for Phase 3
+folder hash (run_study.py hash <dir>): 414759660eb6
+files excluded from the hash and from skill runs: _authoring/
+no edits to any file below until Phase 3 and its analysis are finished; any change means a new version and a new Phase 3
+
+f2099d836f42dd4a  SKILL.md
+90e94464d0ae41b2  assets/SECURITY.template.md
+25adfe1a6aa8e546  references/audit.md
+6d5da02a483dddf6  references/gate.md
+024d0b0468d3b750  references/security/abuse-controls.md
+23d4ffaccc06dffb  references/security/access-control.md
+4e9e4375b42659b7  references/security/authentication.md
+89de525890055686  references/security/secrets.md
+9b4191308dd151d5  references/security/uploads.md

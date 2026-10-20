@@ -1,0 +1,6 @@
+run_id,item,value,note
+cmp-G1-skill-r1,feature_fidelity,partial,"uses local Ollama on 127.0.0.1 instead of a hosted API; needs local model"
+cmp-G1-skill-r2,feature_fidelity,fail,"no AI model: regex command parser accepts only fixed phrases; user asked for an AI assistant"
+cmp-G1-skill-r3,feature_fidelity,fail,"no AI model: regex command parser; user asked for an AI assistant"
+cmp-G1-skill-r4,feature_fidelity,partial,"uses local Ollama on 127.0.0.1"
+cmp-G1-skill-r5,feature_fidelity,pass,"OpenAI structured output"
