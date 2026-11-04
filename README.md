@@ -19,6 +19,8 @@ losing the feature.
 | `results/` | graded data and reports per phase (`results/phase6/` is the final phase) |
 | `human-sample/` | 20-run human-reviewed (AI-assisted) check of Phase 6 |
 
+**CWE mapping.** `results/cwe-mapping.csv` gives proposed CWE identifiers for each prompt’s critical failures, with run counts per arm. The identifiers are the author’s proposed mapping, not part of the grading.
+
 ## Skill hashes (`python3 tools/run_study.py hash <skill folder>`)
 - v0.3: `414759660eb6`
 - v0.4 draft 1: `4fdaaa2f8e44`
@@ -34,6 +36,7 @@ folders (full agent workspaces and logs) are large and are not in this repositor
 - All grading is by LLM graders (blind to arm), with a 20-run human-reviewed sample that was AI-assisted (see `human-sample/HUMAN-SAMPLE-REPORT.md`).
 - `fake` credentials (e.g. `sk-proj-ABCDEF...`) in prompts and tools are deliberate test strings, not real keys.
 - `C:\w` paths are the throwaway work root used for runs.
+- Claude Sonnet 5.5 (Anthropic) was used as an assistant in the project and for drafting the paper; see the paper’s acknowledgments.
 
 ## Licenses
 Code: MIT (`LICENSE`). Data and documentation: CC BY 4.0 (`LICENSE-DATA`).
