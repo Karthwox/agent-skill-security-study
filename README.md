@@ -5,6 +5,8 @@ Materials for the AGENT 2027 workshop short paper on whether security guidance
 placebo) helps an AI coding agent (Codex CLI, gpt-5.6-luna) write safer code without
 losing the feature.
 
+**Paper (preprint):** Annadurai, K., "Does a Security Skill Beat a One-Line Reminder? A Blinded, Pre-Registered Test of Agent Skill Files for Safer AI-Generated Code", https://doi.org/10.5281/zenodo.24042354 (submitted to AGENT 2027; not yet peer reviewed).
+
 ## Layout
 | folder | contents |
 |---|---|
